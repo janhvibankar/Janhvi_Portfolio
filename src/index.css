@@ -354,6 +354,16 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   outline-offset: 3px;
 }
 
+/* Certifications Page Custom Styles */
+.certifications-page input:focus {
+  border-color: var(--accent-cobalt) !important;
+  box-shadow: 0 0 0 3px var(--accent-cobalt-subtle);
+}
+
+.certifications-page .card-editorial:hover {
+  transform: translateY(-4px);
+}
+
 /* Reduced Motion */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {

@@ -5,22 +5,22 @@ export const profileData = {
   initials: "JB",
   role: "Software Developer · Full-Stack & Applied AI/ML",
   tagline: "Software Developer · Full-Stack & Applied AI/ML",
-  headline: "Building meaningful software applications, full-stack solutions, and applied AI systems.",
-  aboutBrief: "Computer Science undergraduate passionate about building meaningful software applications, full-stack solutions, and AI-powered systems.",
+  headline: "Building AI/ML applications, full-stack systems, computer vision, and RAG architectures.",
+  aboutBrief: "Computer Science undergraduate with experience in AI/ML applications, full-stack development, computer vision, predictive analytics and Retrieval-Augmented Generation (RAG) systems.",
   education: {
-    institution: "Rajarambapu Institute of Technology (RIT), Islampur",
-    degree: "B.Tech in Computer Science and Engineering",
-    cpi: "8.34",
+    institution: "Rajarambapu Institute of Technology, Islampur, Maharashtra",
+    degree: "B.Tech (CSE) – Computer Science and Engineering",
+    cpi: "8.37",
     period: "2023 – 2027",
     status: "Undergraduate (B.Tech CSE)",
     location: "Sangola / Islampur, Maharashtra, India",
     hsc: {
-      school: "New English School Jr. College, Sangola",
+      school: "New English School Jr. College, Sangola, Maharashtra",
       percentage: "81.83%",
       year: "2023"
     },
     ssc: {
-      school: "New English School, Sangola",
+      school: "New English School, Sangola, Maharashtra",
       percentage: "97.20%",
       year: "2021"
     }
@@ -34,7 +34,7 @@ export const profileData = {
   },
   availability: {
     status: "Available for Opportunities",
-    note: "Open for Software Developer Internships & Full-Stack / Applied AI Roles",
+    note: "Open for Software Engineering Internships & Full-Stack / AI/ML Roles",
     active: true
   },
   contact: {
@@ -44,20 +44,20 @@ export const profileData = {
     linkedin: "https://linkedin.com/in/janhvi-bankar"
   },
   stats: [
-    { label: "B.Tech CPI", value: "8.34", note: "RIT (2023–2027)" },
+    { label: "B.Tech CPI", value: "8.37", note: "RIT (2023–2027)" },
     { label: "SIH '25 Winner", value: "01", note: "Smart India Hackathon" },
-    { label: "Core Projects", value: "04", note: "Full-Stack & Applied AI" },
+    { label: "Core Projects", value: "04", note: "Full-Stack, Vision & RAG" },
     { label: "SSC Distinction", value: "97.2%", note: "Merit Standing" }
   ],
   identityJson: {
     developer: "Janhvi Pradip Bankar",
     focus: [
-      "Full-Stack Web & Mobile Engineering",
-      "Applied AI/ML & Computer Vision",
-      "RAG & Retrieval Architectures",
-      "Human-Centered UI/UX Design"
+      "AI/ML & Computer Vision (YOLO, CNN, MediaPipe, OpenCV)",
+      "Generative AI & RAG (LangChain, Embeddings, Vector Search)",
+      "Full-Stack Web & Mobile (React.js, Flutter, Node.js, Express.js, FastAPI)",
+      "Databases (MySQL, MongoDB Atlas, Firebase Firestore)"
     ],
-    tools_of_choice: ["React", "Flutter", "Node.js", "Express.js", "MongoDB", "YOLO", "OpenCV"],
+    tools_of_choice: ["React.js", "Flutter", "Node.js", "FastAPI", "MongoDB Atlas", "YOLO", "OpenCV", "LangChain"],
     philosophy: "Build reliable code that solves real problems and empowers people."
   }
 };

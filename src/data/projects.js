@@ -9,203 +9,200 @@ export const projectsData = [
   {
     id: "bharatanatyam-learning-app",
     title: "AI-Based Bharatanatyam Learning App",
-    tagline: "Real-time gesture recognition & classical dance pose accuracy evaluation",
-    shortDescription: "An AI-powered classical dance learning platform that evaluates hand mudras and posture accuracy in real time using YOLO, CNNs, and MediaPipe landmark tracking inside a cross-platform Flutter app.",
-    detailedDescription: "Developed as the winning project for Smart India Hackathon 2025, this platform bridges classical Indian cultural art with modern computer vision. Using a custom dataset curated with OpenCV and MediaPipe, the application tracks 21-point hand telemetry from mobile camera streams and runs lightweight YOLO and CNN classifiers to evaluate posture accuracy in real time, delivering immediate corrective visual cues for dance students.",
+    tagline: "Real-time Bharatanatyam mudra recognition and practice assistance",
+    shortDescription: "A real-time learning application featuring Bharatanatyam gesture recognition and practice assistance, powered by YOLO/CNN, OpenCV, MediaPipe, and cross-platform Flutter integration.",
+    detailedDescription: "Awarded 1st place in the Smart India Hackathon (SIH) 2025, this project bridges classical Indian cultural dance with computer vision. The system captures live video feeds, extracts 21-point hand landmarks using MediaPipe and OpenCV, and runs YOLO/CNN classifiers on a custom curated dataset to evaluate dance gesture accuracy in real time with immediate visual feedback inside a Flutter application.",
     category: "Applied AI/ML",
     status: "Completed (SIH '25 Winner)",
     featured: true,
     year: "2024 – 2025",
     accentColor: "var(--accent-coral)",
-    technologies: ["Flutter", "YOLO", "CNN", "OpenCV", "MediaPipe", "Python"],
+    technologies: ["YOLO", "CNN", "OpenCV", "MediaPipe", "Flutter", "Custom Dataset"],
     github: "https://github.com/janhvibankar/Bharatanatyam-Mudra-Detector",
     live: null,
     metrics: [
-      { label: "Classification", value: "Real-Time Mudras" },
-      { label: "Telemetry", value: "21-Pt Landmarks" },
-      { label: "Hackathon Standing", value: "SIH '25 Winner" }
+      { label: "Recognition", value: "Real-Time YOLO/CNN" },
+      { label: "Telemetry", value: "MediaPipe 21-Pt" },
+      { label: "Recognition Standing", value: "SIH '25 Winner" }
     ],
     myContribution: [
-      "Built the real-time gesture recognition system combining YOLO object detection and CNN feature extractors.",
-      "Engineered the spatial-temporal landmark extraction pipeline utilizing OpenCV and MediaPipe.",
-      "Created a custom annotated dataset of classical single and double-hand mudras (Asamyutta and Samyutta Hastas).",
-      "Developed the responsive cross-platform Flutter application integrated with backend APIs for real-time visual feedback."
+      "Developed a learning application featuring real-time Bharatanatyam mudra recognition and practice assistance.",
+      "Implemented gesture recognition using YOLO/CNN, OpenCV and MediaPipe, with a custom dataset and Flutter application integration.",
+      "Designed real-time feedback to assess dance gesture accuracy."
     ],
     keyFeatures: [
-      "Real-time 21-point hand landmark telemetry overlay on mobile camera feeds.",
-      "Dual classification for single-hand (Asamyutta) and combined (Samyutta) mudras.",
-      "Real-time pose deviation math engine calculating angular finger alignment.",
-      "Practice mode with accuracy score logging and corrective visual indicators."
+      "Real-time Bharatanatyam mudra recognition and practice assistance.",
+      "Computer vision pipeline combining YOLO/CNN, OpenCV, and MediaPipe.",
+      "Custom curated and annotated classical dance gesture dataset.",
+      "Interactive Flutter mobile application providing real-time gesture accuracy feedback."
     ],
     challenges: [
-      "Managing occlusions and rapid rotational hand transitions during fast adavu sequences.",
-      "Optimizing mobile inference latency to maintain smooth frame rates on consumer smartphones."
+      "Handling rotational wrist movement and self-occlusions during rapid dance movements.",
+      "Achieving low-latency inference on mobile devices for smooth real-time evaluation."
     ],
     outcomes: [
-      "Awarded 1st Place National Champion at Smart India Hackathon 2025.",
-      "Built a functional Flutter application enabling dancers to self-evaluate without specialized sensors."
+      "Secured 1st prize at the national Smart India Hackathon (SIH) 2025 Grand Finale.",
+      "Successfully created an accessible digital assistant for classical Indian dance learners."
     ],
     architecture: {
-      type: "Edge Computer Vision & Mobile Pipeline",
+      type: "Computer Vision & Mobile Pipeline",
       flow: [
-        "Live Mobile Camera Stream",
-        "OpenCV Preprocessing & Normalization",
-        "MediaPipe Hand Mesh Landmark Extraction",
-        "YOLO & CNN Gesture Classification",
-        "Pose Accuracy Angle Evaluation Engine",
-        "Flutter Interface with Corrective Visual Cues"
+        "Live Camera Stream",
+        "OpenCV Image Processing",
+        "MediaPipe Landmark Extraction",
+        "YOLO / CNN Classification",
+        "Accuracy Assessment Engine",
+        "Flutter Practice Feedback UI"
       ]
     }
   },
   {
     id: "migraine-guardian",
-    title: "MigraineGuardian — AI Risk Prediction System",
-    tagline: "Multimodal healthcare platform forecasting migraine risk before symptoms manifest",
-    shortDescription: "An AI-based early warning system that predicts daily migraine risk levels by synthesizing lifestyle patterns, weather conditions, adaptive trigger weighting, and health data visualization with chatbot assistance.",
-    detailedDescription: "MigraineGuardian is an ongoing proactive healthcare platform designed to shift migraine care from reactive treatment to timely prevention. By processing time-series lifestyle logs alongside localized atmospheric factors (barometric pressure, temperature, humidity), the machine learning models calculate personalized risk likelihood with adaptive trigger weighting and preventive recommendations.",
+    title: "MigraineGuardian — AI Migraine Risk Prediction System",
+    tagline: "Daily risk prediction using lifestyle indicators, weather telemetry & SHAP explainability",
+    shortDescription: "An AI-based risk prediction system forecasting daily migraine risk from lifestyle indicators (sleep, stress, hydration, mood, screen time), weather features, a FastAPI ML service, Firebase Firestore, and an integrated RAG chatbot.",
+    detailedDescription: "MigraineGuardian is an early warning health intelligence platform that analyzes multivariable lifestyle and environmental triggers to forecast daily migraine risk levels. It features an asynchronous FastAPI ML service, predictive models incorporating weather metrics, Firebase Firestore for check-ins, SHAP-based feature importance explanations, and an integrated RAG chatbot for document-grounded healthcare advice.",
     category: "Applied AI/ML",
     status: "Ongoing",
     featured: true,
     year: "2024 – 2025",
     accentColor: "var(--accent-lavender)",
-    technologies: ["Machine Learning", "Python", "Flutter", "Adaptive Weighting", "Predictive Analytics"],
+    technologies: ["FastAPI", "Python", "SHAP", "Firebase Firestore", "React.js", "Node.js/Express", "Flutter"],
     github: "https://github.com/janhvibankar/MigraineGuardian",
     live: null,
     metrics: [
-      { label: "Project State", value: "Active Development" },
-      { label: "Inputs", value: "Lifestyle + Weather" },
-      { label: "Analytics", value: "Adaptive Weighting" }
+      { label: "Backend Service", value: "FastAPI ML" },
+      { label: "Explainability", value: "SHAP Values" },
+      { label: "Datastore", value: "Firebase Firestore" }
     ],
     myContribution: [
-      "Constructing the machine learning risk prediction model incorporating adaptive trigger weighting.",
-      "Designing the cross-platform Flutter mobile interface featuring intuitive health data visualizers.",
-      "Integrating localized weather and barometric telemetry APIs into the daily risk computation pipeline.",
-      "Developing an interactive preventive chatbot assistant for lifestyle trigger guidance."
+      "Developing a daily migraine risk prediction system using lifestyle indicators, including sleep, stress, hydration, mood and screen time.",
+      "Built a FastAPI-based ML service and evaluated experimental prediction models incorporating weather features.",
+      "Integrated Firebase Firestore for user check-ins and weather records, with React and Node.js/Express for the application backend.",
+      "Implemented SHAP-based explanations and integrated a RAG chatbot for document-grounded healthcare information."
     ],
     keyFeatures: [
-      "Daily personalized migraine risk score forecasting acute risk windows.",
-      "Adaptive trigger weighting that tunes sensitivity based on individual user history.",
-      "Flutter-based health telemetry dashboard visualizing longitudinal trigger trends.",
-      "Integrated chatbot assistance providing preventive recommendations and symptom logging."
+      "Daily risk prediction tracking sleep, stress, hydration, mood, and screen time.",
+      "FastAPI microservice running predictive models trained with localized weather features.",
+      "Firebase Firestore integration for user daily check-in logs and historical weather records.",
+      "SHAP-powered visual explanations alongside an integrated RAG chatbot for grounded guidance."
     ],
     challenges: [
-      "Capturing idiosyncratic, non-linear trigger interactions that differ widely between individuals.",
-      "Designing clear, actionable risk visualization without inducing unnecessary patient anxiety."
+      "Balancing multidimensional lifestyle factors with fluctuating atmospheric parameters.",
+      "Providing transparent, explainable predictions to give users actionable preventive insights."
     ],
     outcomes: [
-      "Engineered an adaptive framework that personalizes trigger impact over 14-day observation cycles.",
-      "Demonstrated reliable early warning indications combining atmospheric and self-reported inputs."
+      "Built a functional predictive pipeline combining lifestyle and environmental risk indicators.",
+      "Delivered transparent SHAP attribution helping users identify their top personal triggers."
     ],
     architecture: {
-      type: "Predictive Analytics & Mobile Architecture",
+      type: "Multimodal ML & Healthcare Service",
       flow: [
-        "User Lifestyle Logs & Sleep Metrics",
-        "Weather & Atmospheric Telemetry Ingestion",
-        "Feature Engineering & Adaptive Trigger Weighting",
-        "Predictive Machine Learning Risk Model",
-        "Flutter Healthcare Dashboard & Alert Notifications",
-        "Preventive Chatbot Guidance Module"
+        "Lifestyle & Sleep Check-In Data",
+        "Weather Telemetry Synchronization",
+        "FastAPI Machine Learning Service",
+        "SHAP Feature Attribution Explainer",
+        "Firebase Firestore Datastore",
+        "React & Flutter Healthcare Interface"
       ]
     }
   },
   {
     id: "rag-chatbot-migraine",
-    title: "RAG Chatbot — Literature & Memory Module",
-    tagline: "Retrieval-Augmented Generation assistant with vector search & MongoDB memory",
-    shortDescription: "A specialized RAG-powered clinical knowledge assistant featuring document ingestion, text chunking, vector embeddings, MongoDB conversational memory, and Groq LLM integration with an Express backend and React frontend.",
-    detailedDescription: "Engineered as an advanced intelligence module for MigraineGuardian, this conversational system overcomes generic LLM hallucinations. It ingests peer-reviewed clinical documents, generates dense vector embeddings, and performs similarity searches to ground responses in verified medical literature. The system incorporates persistent conversational memory in MongoDB and leverages Groq high-speed LLM inference.",
+    title: "RAG Chatbot — MigraineGuardian Module",
+    tagline: "RAG pipeline with LangChain, MongoDB Atlas vector storage & Groq / Google AI",
+    shortDescription: "A specialized clinical RAG assistant utilizing LangChain for offline document loading and chunking, MongoDB Atlas for vector storage and 6-message conversational history, and Groq LLM / Google AI API integration.",
+    detailedDescription: "Designed as an integrated knowledge module for MigraineGuardian, this conversational system grounds responses in verified medical literature. It leverages LangChain for offline document ingestion, semantic chunking, and embedding generation, uses MongoDB Atlas for vector storage and conversational memory (tracking the six most recent messages for context), and connects to Groq LLM and Google AI APIs via a Node.js/Express backend and React frontend.",
     category: "Applied AI/ML",
     status: "Completed",
     featured: true,
     year: "2025",
     accentColor: "var(--accent-coral)",
-    technologies: ["RAG Architecture", "Groq LLM", "MongoDB", "Express.js", "React.js", "Vector Embeddings"],
+    technologies: ["RAG", "LangChain", "MongoDB Atlas", "Groq LLM", "Google AI API", "Node.js/Express", "React.js"],
     github: "https://github.com/janhvibankar/Migraine-RAG-Chatbot",
     live: null,
     metrics: [
-      { label: "Latency", value: "Sub-Second Groq" },
-      { label: "Memory", value: "MongoDB State" },
-      { label: "Grounding", value: "Vector Retrieval" }
+      { label: "Vector Datastore", value: "MongoDB Atlas" },
+      { label: "Memory Window", value: "6 Recent Msgs" },
+      { label: "Inference", value: "Groq & Google AI" }
     ],
     myContribution: [
-      "Designed and developed the end-to-end RAG pipeline: document ingestion, semantic chunking, and embedding generation.",
-      "Implemented persistent conversational memory stored in MongoDB to maintain multi-turn dialogue context.",
-      "Engineered strict grounding prompts and source citation formatting for trustworthy, verifiable responses.",
-      "Built the full-stack architecture with an Express.js backend and a responsive React frontend interface."
+      "Developed a RAG pipeline with LangChain-based offline document loading, chunking, embeddings and vector retrieval.",
+      "Integrated MongoDB Atlas for vector storage and persistent conversational history, with the six most recent messages used to provide context for response generation.",
+      "Integrated Groq LLM inference and Google AI API services with a Node.js/Express backend and React frontend."
     ],
     keyFeatures: [
-      "Grounded responses with contextual source citations extracted from indexed documentation.",
-      "Conversational multi-turn history persisted in MongoDB with session management.",
-      "High-throughput, ultra-low latency response generation utilizing Groq LLM integration.",
-      "Clean, modern React chat interface with streaming message bubbles and clear reference tags."
+      "LangChain-based document ingestion, semantic chunking, and dense embedding retrieval.",
+      "MongoDB Atlas vector search and conversational memory tracking the 6 most recent dialogue turns.",
+      "Dual inference capability leveraging Groq LLM ultra-fast inference and Google AI API services.",
+      "Responsive React interface with streaming grounded citations and conversation persistence."
     ],
     challenges: [
-      "Structuring text chunks to preserve complete clinical context without fragmentation.",
-      "Ensuring the chatbot strictly refrains from diagnostic claims while offering educational literature references."
+      "Preserving semantic boundaries across complex clinical guidelines during chunking.",
+      "Maintaining stateful conversational context while keeping response latency sub-second."
     ],
     outcomes: [
-      "Eliminated ungrounded assertions through strict context-bounded prompt templates.",
-      "Achieved responsive, sub-second generation times with rich multi-turn conversational recall."
+      "Eliminated hallucinated healthcare advice through bounded retrieval contexts.",
+      "Achieved fast, conversational medical question-answering with verifiable citations."
     ],
     architecture: {
-      type: "RAG & Full-Stack Architecture",
+      type: "RAG & Conversational Memory Pipeline",
       flow: [
-        "Medical Corpus Ingestion & Semantic Chunking",
-        "Vector Embeddings Generation & Vector Index",
-        "Context Retrieval & Cosine Similarity Ranking",
-        "Groq LLM Inference with Strict Grounding Prompt",
-        "Conversational Memory Synchronization in MongoDB",
-        "Express REST Gateway & React Chat Interface"
+        "Offline Clinical Literature Ingestion",
+        "LangChain Chunking & Embeddings",
+        "MongoDB Atlas Vector Store & Index",
+        "6-Message Conversational Memory Context",
+        "Groq LLM & Google AI API Inference",
+        "Node.js/Express Backend & React Frontend"
       ]
     }
   },
   {
     id: "hospital-management-system",
     title: "Hospital Management System — MERN Stack",
-    tagline: "Full-stack enterprise application for patient records, scheduling & role-based portals",
-    shortDescription: "A comprehensive MERN-stack web application orchestrating patient registration, appointment scheduling, role-based authentication, and optimized MongoDB query operations through secure RESTful APIs.",
-    detailedDescription: "Designed to modernize hospital operations, this full-stack web application delivers reliable workflows for administrators, medical staff, and patients. It replaces manual scheduling with automated appointment booking, features role-based access control (RBAC), and manages patient records, doctor availability, and billing through optimized MongoDB queries and scalable Express REST APIs.",
+    tagline: "Full-stack healthcare operations platform with role-based auth & optimized MongoDB queries",
+    shortDescription: "A comprehensive MERN-stack full-stack application for patient registration and appointment scheduling, featuring role-based authentication, optimized MongoDB queries, and secure REST APIs.",
+    detailedDescription: "Built to streamline healthcare administrative workflows, this full-stack web application orchestrates patient registration, doctor appointment bookings, and medical records. It implements robust role-based authentication, optimized MongoDB indexing for rapid data retrieval, and modular REST APIs built with Express.js and Node.js.",
     category: "Full Stack",
     status: "Completed",
     featured: true,
     year: "2024",
     accentColor: "var(--accent-lavender)",
-    technologies: ["React.js", "Node.js", "Express.js", "MongoDB", "REST APIs", "JWT"],
+    technologies: ["React.js", "Node.js", "Express.js", "MongoDB", "REST APIs", "Role-Based Auth"],
     github: "https://github.com/janhvibankar/Hospital-Management-System",
     live: null,
     metrics: [
-      { label: "Architecture", value: "Full MERN Stack" },
-      { label: "Security", value: "Role-Based RBAC" },
-      { label: "APIs", value: "Scalable REST" }
+      { label: "Stack", value: "MERN Stack" },
+      { label: "Authentication", value: "Role-Based Auth" },
+      { label: "Query Optimization", value: "MongoDB Indexed" }
     ],
     myContribution: [
-      "Developed the full-stack application architecture from relational MongoDB data modeling to the React client.",
-      "Implemented role-based authentication and secure session middleware using JWT.",
-      "Engineered optimized MongoDB queries and indexing strategies for fast patient record retrieval.",
-      "Designed and documented RESTful API endpoints for patient registration, appointments, and doctor rosters."
+      "Developed a full-stack application for patient registration and appointment scheduling.",
+      "Implemented role-based authentication and optimized MongoDB queries to improve data retrieval performance.",
+      "Designed REST APIs for secure backend communication."
     ],
     keyFeatures: [
-      "Intuitive patient registration and appointment scheduling with conflict prevention.",
-      "Granular role-based portals for administrators, doctors, and hospital receptionists.",
-      "Secure REST APIs with token authorization and request payload validation.",
-      "Searchable medical record vault with dynamic filtering and status updating."
+      "Patient registration and conflict-free appointment scheduling interface.",
+      "Role-based authentication protecting sensitive administrative and clinical portals.",
+      "Optimized MongoDB indexing and schema design for high-throughput queries.",
+      "Modular, documented RESTful APIs powering secure client-server communication."
     ],
     challenges: [
-      "Preventing booking collisions during simultaneous appointment submissions across departments.",
-      "Enforcing strict data boundary separation between non-medical administrative staff and clinical records."
+      "Optimizing query performance across large mock patient records and scheduling collections.",
+      "Enforcing strict role-based route guards and token verification middleware."
     ],
     outcomes: [
-      "Delivered a complete, functioning healthcare management portal with zero scheduling collisions.",
-      "Optimized query response times to under 100ms across high-volume mock patient databases."
+      "Built a reliable, scalable healthcare administration application.",
+      "Demonstrated measurable retrieval latency improvements through query optimization."
     ],
     architecture: {
       type: "MERN Stack MVC Architecture",
       flow: [
-        "React.js Single Page Application Interface",
-        "Express.js REST Routing & Role-Based Auth Middleware",
-        "Business Logic & Controller Layer",
-        "MongoDB Mongoose Data Schemas & Indexed Queries",
-        "JWT Token Vault for Secure State Management"
+        "React.js Client Interface",
+        "Express REST Routing & Role-Based Auth",
+        "Controller Logic Layer",
+        "Optimized MongoDB Mongoose Schemas",
+        "Secure Token-Based API Session Vault"
       ]
     }
   }

@@ -96,23 +96,23 @@ export const achievementsData = [
   },
   {
     id: "academic-excellence",
-    title: "Academic Distinction — 8.34 CPI",
+    title: "Academic Distinction — 8.37 CPI",
     subtitle: "B.Tech Computer Science & Engineering",
     organization: "Rajarambapu Institute of Technology (RIT), Islampur",
     year: "2023 – 2027",
     date: "Ongoing",
     category: "Academic",
     featured: false,
-    badgeText: "8.34 CPI",
-    description: "Maintained a strong academic record with an 8.34 CPI in Computer Science and Engineering, excelling in Java, OOP, DBMS, Data Structures, and Computer Vision.",
+    badgeText: "8.37 CPI",
+    description: "Maintained a strong academic record with an 8.37 CPI in Computer Science and Engineering, excelling in Java, OOP, DBMS, Data Structures, and Computer Vision.",
     relatedProjectId: null,
     highlights: [
-      "Consistent academic performance in core computer science curriculum.",
+      "Consistent academic performance across computer science coursework.",
       "97.20% merit standing in SSC and 81.83% in HSC examinations."
     ],
     proofUrl: null,
     metrics: [
-      { label: "B.Tech CPI", value: "8.34 / 10" },
+      { label: "B.Tech CPI", value: "8.37 / 10" },
       { label: "SSC Score", value: "97.20%" },
       { label: "HSC Score", value: "81.83%" }
     ]

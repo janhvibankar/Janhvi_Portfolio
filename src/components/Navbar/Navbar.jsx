@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, FileText, Volume2, VolumeX, ArrowUpRight } from 'lucide-react';
+import { Menu, X, FileText, Volume2, VolumeX, ArrowUpRight, ArrowLeft } from 'lucide-react';
 import { ThemeToggle } from '../ThemeToggle/ThemeToggle';
 import { useSound } from '../../context/SoundContext';
 
@@ -14,13 +14,15 @@ const NAV_ITEMS = [
   { label: 'Contact', href: '#contact' }
 ];
 
-export const Navbar = ({ onOpenResume }) => {
+export const Navbar = ({ onOpenResume, currentView = 'home', onNavigateHome, onNavigateCertifications }) => {
   const [activeSection, setActiveSection] = useState('hero');
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { soundEnabled, toggleSound, playSound } = useSound();
 
   useEffect(() => {
+    if (currentView !== 'home') return;
+
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 40);
 
@@ -43,7 +45,7 @@ export const Navbar = ({ onOpenResume }) => {
     window.addEventListener('scroll', handleScroll, { passive: true });
     handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [currentView]);
 
   // Prevent background scrolling when mobile menu is open
   useEffect(() => {
@@ -61,9 +63,30 @@ export const Navbar = ({ onOpenResume }) => {
     e.preventDefault();
     playSound('click');
     setMobileMenuOpen(false);
+
+    if (currentView === 'certifications') {
+      if (href === '#certificates') {
+        // Already on certifications
+        return;
+      }
+      onNavigateHome(href);
+      return;
+    }
+
     const target = document.querySelector(href);
     if (target) {
       target.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  const handleLogoClick = (e) => {
+    e.preventDefault();
+    playSound('click');
+    if (currentView === 'certifications') {
+      onNavigateHome('#hero');
+    } else {
+      const heroEl = document.getElementById('hero');
+      if (heroEl) heroEl.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
@@ -107,7 +130,7 @@ export const Navbar = ({ onOpenResume }) => {
           {/* Logo / Monogram */}
           <a
             href="#hero"
-            onClick={(e) => handleNavClick(e, '#hero')}
+            onClick={handleLogoClick}
             style={{
               display: 'flex',
               alignItems: 'center',
@@ -144,43 +167,63 @@ export const Navbar = ({ onOpenResume }) => {
               gap: '0.15rem'
             }}
           >
-            {NAV_ITEMS.map((item) => {
-              const isActive = activeSection === item.href.slice(1);
-              return (
-                <a
-                  key={item.href}
-                  href={item.href}
-                  onClick={(e) => handleNavClick(e, item.href)}
-                  onMouseEnter={() => playSound('hover')}
-                  style={{
-                    position: 'relative',
-                    padding: '0.45rem 0.8rem',
-                    fontFamily: 'var(--font-sans)',
-                    fontSize: '0.86rem',
-                    fontWeight: isActive ? 600 : 500,
-                    color: isActive ? 'var(--text-primary)' : 'var(--text-secondary)',
-                    borderRadius: 'var(--radius-full)',
-                    transition: 'color var(--transition-fast)'
-                  }}
-                >
-                  {isActive && (
-                    <motion.div
-                      layoutId="nav-pill"
-                      style={{
-                        position: 'absolute',
-                        inset: 0,
-                        backgroundColor: 'var(--badge-bg)',
-                        border: '1px solid var(--border-hairline)',
-                        borderRadius: 'var(--radius-full)',
-                        zIndex: -1
-                      }}
-                      transition={{ type: 'spring', damping: 25, stiffness: 350 }}
-                    />
-                  )}
-                  {item.label}
-                </a>
-              );
-            })}
+            {currentView === 'certifications' ? (
+              <button
+                onClick={() => {
+                  playSound('click');
+                  onNavigateHome('#certificates');
+                }}
+                className="btn-ghost"
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '0.4rem',
+                  fontSize: '0.82rem',
+                  padding: '0.35rem 0.85rem'
+                }}
+              >
+                <ArrowLeft size={14} />
+                <span>Back to Homepage</span>
+              </button>
+            ) : (
+              NAV_ITEMS.map((item) => {
+                const isActive = activeSection === item.href.slice(1);
+                return (
+                  <a
+                    key={item.href}
+                    href={item.href}
+                    onClick={(e) => handleNavClick(e, item.href)}
+                    onMouseEnter={() => playSound('hover')}
+                    style={{
+                      position: 'relative',
+                      padding: '0.45rem 0.8rem',
+                      fontFamily: 'var(--font-sans)',
+                      fontSize: '0.86rem',
+                      fontWeight: isActive ? 600 : 500,
+                      color: isActive ? 'var(--text-primary)' : 'var(--text-secondary)',
+                      borderRadius: 'var(--radius-full)',
+                      transition: 'color var(--transition-fast)'
+                    }}
+                  >
+                    {isActive && (
+                      <motion.div
+                        layoutId="nav-pill"
+                        style={{
+                          position: 'absolute',
+                          inset: 0,
+                          backgroundColor: 'var(--badge-bg)',
+                          border: '1px solid var(--border-hairline)',
+                          borderRadius: 'var(--radius-full)',
+                          zIndex: -1
+                        }}
+                        transition={{ type: 'spring', damping: 25, stiffness: 350 }}
+                      />
+                    )}
+                    {item.label}
+                  </a>
+                );
+              })
+            )}
           </div>
 
           {/* Actions: Sound, Theme, Resume, Mobile Menu Toggle */}
@@ -311,6 +354,20 @@ export const Navbar = ({ onOpenResume }) => {
                   </span>
                 </motion.a>
               ))}
+
+              {currentView === 'home' && (
+                <button
+                  onClick={() => {
+                    setMobileMenuOpen(false);
+                    onNavigateCertifications();
+                  }}
+                  className="btn-ghost"
+                  style={{ justifyContent: 'flex-start', marginTop: '0.5rem' }}
+                >
+                  <span>All Certifications Gallery</span>
+                  <ArrowUpRight size={16} />
+                </button>
+              )}
             </div>
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', borderTop: '1px solid var(--border-hairline)', paddingTop: '1.5rem' }}>

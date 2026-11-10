@@ -668,7 +668,7 @@ export const Hero = ({ onOpenResume }) => {
                     Janhvi Pradip Bankar
                   </div>
                   <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.72rem', color: 'var(--accent-lime)' }}>
-                    B.Tech CSE · RIT (CPI: 8.34)
+                    B.Tech CSE · RIT (CPI: 8.37)
                   </div>
                 </div>
                 <div

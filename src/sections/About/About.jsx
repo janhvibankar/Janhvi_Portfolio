@@ -8,7 +8,7 @@ const HIGHLIGHTS = [
   {
     Icon: GraduationCap,
     label: 'Academic',
-    value: '8.34 CPI',
+    value: '8.37 CPI',
     sub: 'B.Tech CSE · RIT (2023–2027)',
     accent: 'var(--accent-coral)',
     subtle: 'var(--accent-coral-subtle)',
@@ -82,7 +82,7 @@ export const About = () => {
                 I am a Computer Science undergraduate at{' '}
                 <strong style={{ color: 'var(--text-primary)' }}>Rajarambapu Institute of Technology (RIT), Islampur</strong>{' '}
                 with an{' '}
-                <strong style={{ color: 'var(--accent-coral)' }}>8.34 CPI</strong>
+                <strong style={{ color: 'var(--accent-coral)' }}>8.37 CPI</strong>
                 . My focus lies in software engineering, full-stack application development, and practical applied AI/ML — turning real-world needs into clean, robust digital products.
               </p>
               <p style={{ marginBottom: '1.15rem' }}>
@@ -398,7 +398,7 @@ export const About = () => {
                       color: 'var(--text-muted)',
                     }}
                   >
-                    B.Tech CSE · CPI 8.34
+                    B.Tech CSE · CPI 8.37
                   </div>
                 </div>
                 <div className="status-indicator">

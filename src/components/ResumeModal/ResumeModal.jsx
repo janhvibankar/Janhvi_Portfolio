@@ -217,7 +217,7 @@ export const ResumeModal = ({ isOpen, onClose }) => {
                 Professional Summary
               </h2>
               <p style={{ fontSize: '0.9rem', lineHeight: 1.6, color: 'var(--text-secondary)' }}>
-                Computer Science undergraduate with experience in AI-based monitoring systems, backend development, and real-time data processing. Skilled in Java, MERN stack, Flutter, computer vision, and predictive analytics.
+                Computer Science undergraduate with experience in AI/ML applications, full-stack development, computer vision, predictive analytics and Retrieval-Augmented Generation (RAG) systems.
               </p>
             </div>
 
@@ -242,17 +242,17 @@ export const ResumeModal = ({ isOpen, onClose }) => {
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', flexWrap: 'wrap' }}>
                   <div>
                     <div style={{ fontFamily: 'var(--font-sans)', fontWeight: 700, color: 'var(--text-primary)', fontSize: '0.94rem' }}>
-                      B.Tech (CSE) — Rajarambapu Institute of Technology, Islampur, Maharashtra
+                      B.Tech (CSE) – Rajarambapu Institute of Technology, Islampur, Maharashtra
                     </div>
                   </div>
                   <div style={{ fontFamily: 'var(--font-mono)', fontWeight: 600, color: 'var(--accent-lavender)', fontSize: '0.88rem' }}>
-                    CPI: 8.34 — 2027
+                    CPI: 8.37 — 2027
                   </div>
                 </div>
 
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', flexWrap: 'wrap' }}>
                   <div style={{ fontSize: '0.88rem', color: 'var(--text-secondary)' }}>
-                    HSC — New English School Jr. College, Sangola, Maharashtra
+                    HSC – New English School Jr. College, Sangola, Maharashtra
                   </div>
                   <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.82rem', color: 'var(--text-muted)' }}>
                     81.83% — 2023
@@ -261,7 +261,7 @@ export const ResumeModal = ({ isOpen, onClose }) => {
 
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', flexWrap: 'wrap' }}>
                   <div style={{ fontSize: '0.88rem', color: 'var(--text-secondary)' }}>
-                    SSC — New English School, Sangola, Maharashtra
+                    SSC – New English School, Sangola, Maharashtra
                   </div>
                   <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.82rem', color: 'var(--text-muted)' }}>
                     97.20% — 2021
@@ -287,26 +287,34 @@ export const ResumeModal = ({ isOpen, onClose }) => {
               >
                 Technical Skills
               </h2>
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(210px, 1fr))', gap: '0.65rem', fontSize: '0.84rem' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '0.65rem', fontSize: '0.84rem' }}>
                 <div>
-                  <strong style={{ color: 'var(--text-primary)', display: 'block', marginBottom: '0.15rem' }}>Programming:</strong>
-                  <span style={{ color: 'var(--text-secondary)' }}>C, Java, JavaScript</span>
+                  <strong style={{ color: 'var(--text-primary)', display: 'block', marginBottom: '0.15rem' }}>Programming Languages:</strong>
+                  <span style={{ color: 'var(--text-secondary)' }}>C, Core Java, JavaScript</span>
                 </div>
                 <div>
-                  <strong style={{ color: 'var(--text-primary)', display: 'block', marginBottom: '0.15rem' }}>Frameworks:</strong>
-                  <span style={{ color: 'var(--text-secondary)' }}>Flutter, React.js, Node.js</span>
+                  <strong style={{ color: 'var(--text-primary)', display: 'block', marginBottom: '0.15rem' }}>Frontend & Mobile:</strong>
+                  <span style={{ color: 'var(--text-secondary)' }}>React.js, Flutter</span>
                 </div>
                 <div>
-                  <strong style={{ color: 'var(--text-primary)', display: 'block', marginBottom: '0.15rem' }}>AI/ML:</strong>
-                  <span style={{ color: 'var(--text-secondary)' }}>YOLO, CNN, OpenCV, MediaPipe</span>
+                  <strong style={{ color: 'var(--text-primary)', display: 'block', marginBottom: '0.15rem' }}>Backend & APIs:</strong>
+                  <span style={{ color: 'var(--text-secondary)' }}>Node.js, Express.js, FastAPI, REST APIs</span>
+                </div>
+                <div>
+                  <strong style={{ color: 'var(--text-primary)', display: 'block', marginBottom: '0.15rem' }}>AI/ML & Computer Vision:</strong>
+                  <span style={{ color: 'var(--text-secondary)' }}>Scikit-learn, YOLO, CNN, OpenCV, MediaPipe, SHAP</span>
+                </div>
+                <div>
+                  <strong style={{ color: 'var(--text-primary)', display: 'block', marginBottom: '0.15rem' }}>Generative AI:</strong>
+                  <span style={{ color: 'var(--text-secondary)' }}>RAG, LangChain, Embeddings, Vector Search</span>
                 </div>
                 <div>
                   <strong style={{ color: 'var(--text-primary)', display: 'block', marginBottom: '0.15rem' }}>Databases:</strong>
-                  <span style={{ color: 'var(--text-secondary)' }}>MySQL, MongoDB</span>
+                  <span style={{ color: 'var(--text-secondary)' }}>MySQL, MongoDB Atlas, Firebase Firestore</span>
                 </div>
                 <div>
                   <strong style={{ color: 'var(--text-primary)', display: 'block', marginBottom: '0.15rem' }}>Tools:</strong>
-                  <span style={{ color: 'var(--text-secondary)' }}>Git, VS Code, GitHub, Jupyter Notebook, Google Colab</span>
+                  <span style={{ color: 'var(--text-secondary)' }}>Git, GitHub, VS Code, Jupyter Notebook, Google Colab</span>
                 </div>
                 <div>
                   <strong style={{ color: 'var(--text-primary)', display: 'block', marginBottom: '0.15rem' }}>Core Areas:</strong>
@@ -332,7 +340,7 @@ export const ResumeModal = ({ isOpen, onClose }) => {
               >
                 Projects
               </h2>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.85rem' }}>
                 <div>
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                     <span style={{ fontWeight: 700, color: 'var(--text-primary)', fontSize: '0.92rem' }}>
@@ -342,10 +350,10 @@ export const ResumeModal = ({ isOpen, onClose }) => {
                       SIH 2025 Winner
                     </span>
                   </div>
-                  <ul style={{ paddingLeft: '1.2rem', fontSize: '0.84rem', color: 'var(--text-secondary)', marginTop: '0.2rem', lineHeight: 1.5 }}>
-                    <li>Developed a real-time gesture recognition system using YOLO and CNN.</li>
-                    <li>Built a Flutter-based application integrated with backend APIs and created a custom dataset using OpenCV and MediaPipe.</li>
-                    <li>Designed the system to evaluate dance pose accuracy in real time.</li>
+                  <ul style={{ paddingLeft: '1.2rem', fontSize: '0.84rem', color: 'var(--text-secondary)', marginTop: '0.25rem', lineHeight: 1.5 }}>
+                    <li>Developed a learning application featuring real-time Bharatanatyam mudra recognition and practice assistance.</li>
+                    <li>Implemented gesture recognition using YOLO/CNN, OpenCV and MediaPipe, with a custom dataset and Flutter application integration.</li>
+                    <li>Designed real-time feedback to assess dance gesture accuracy.</li>
                   </ul>
                 </div>
 
@@ -358,21 +366,22 @@ export const ResumeModal = ({ isOpen, onClose }) => {
                       Ongoing
                     </span>
                   </div>
-                  <ul style={{ paddingLeft: '1.2rem', fontSize: '0.84rem', color: 'var(--text-secondary)', marginTop: '0.2rem', lineHeight: 1.5 }}>
-                    <li>Building an AI-based migraine early warning system that predicts daily migraine risk levels.</li>
-                    <li>Implementing adaptive trigger weighting, ML models, and a Flutter-based interface with health data visualization.</li>
-                    <li>Integrating chatbot assistance for preventive healthcare insights.</li>
+                  <ul style={{ paddingLeft: '1.2rem', fontSize: '0.84rem', color: 'var(--text-secondary)', marginTop: '0.25rem', lineHeight: 1.5 }}>
+                    <li>Developing a daily migraine risk prediction system using lifestyle indicators, including sleep, stress, hydration, mood and screen time.</li>
+                    <li>Built a FastAPI-based ML service and evaluated experimental prediction models incorporating weather features.</li>
+                    <li>Integrated Firebase Firestore for user check-ins and weather records, with React and Node.js/Express for the application backend.</li>
+                    <li>Implemented SHAP-based explanations and integrated a RAG chatbot for document-grounded healthcare information.</li>
                   </ul>
                 </div>
 
                 <div>
                   <span style={{ fontWeight: 700, color: 'var(--text-primary)', fontSize: '0.92rem' }}>
-                    RAG Chatbot – Module of MigraineGuardian
+                    RAG Chatbot – MigraineGuardian Module
                   </span>
-                  <ul style={{ paddingLeft: '1.2rem', fontSize: '0.84rem', color: 'var(--text-secondary)', marginTop: '0.2rem', lineHeight: 1.5 }}>
-                    <li>Designed and developed a Retrieval-Augmented Generation (RAG) chatbot with document ingestion, chunking, embeddings, and vector search.</li>
-                    <li>Implemented conversational memory using MongoDB and source citations for trustworthy responses.</li>
-                    <li>Integrated Groq LLM with an Express.js backend and React frontend.</li>
+                  <ul style={{ paddingLeft: '1.2rem', fontSize: '0.84rem', color: 'var(--text-secondary)', marginTop: '0.25rem', lineHeight: 1.5 }}>
+                    <li>Developed a RAG pipeline with LangChain-based offline document loading, chunking, embeddings and vector retrieval.</li>
+                    <li>Integrated MongoDB Atlas for vector storage and persistent conversational history, with the six most recent messages used to provide context for response generation.</li>
+                    <li>Integrated Groq LLM inference and Google AI API services with a Node.js/Express backend and React frontend.</li>
                   </ul>
                 </div>
 
@@ -380,10 +389,10 @@ export const ResumeModal = ({ isOpen, onClose }) => {
                   <span style={{ fontWeight: 700, color: 'var(--text-primary)', fontSize: '0.92rem' }}>
                     Hospital Management System – MERN Stack
                   </span>
-                  <ul style={{ paddingLeft: '1.2rem', fontSize: '0.84rem', color: 'var(--text-secondary)', marginTop: '0.2rem', lineHeight: 1.5 }}>
+                  <ul style={{ paddingLeft: '1.2rem', fontSize: '0.84rem', color: 'var(--text-secondary)', marginTop: '0.25rem', lineHeight: 1.5 }}>
                     <li>Developed a full-stack application for patient registration and appointment scheduling.</li>
-                    <li>Implemented role-based authentication and optimized MongoDB queries.</li>
-                    <li>Designed scalable REST APIs for secure backend communication.</li>
+                    <li>Implemented role-based authentication and optimized MongoDB queries to improve data retrieval performance.</li>
+                    <li>Designed REST APIs for secure backend communication.</li>
                   </ul>
                 </div>
               </div>

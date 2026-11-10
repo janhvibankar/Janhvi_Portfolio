@@ -4,15 +4,17 @@ import { skillsData, marqueeTechnologies } from '../../data/skills';
 import { SectionHeader } from '../../components/SectionHeader/SectionHeader';
 import { Marquee } from '../../components/Marquee/Marquee';
 import { useSound } from '../../context/SoundContext';
-import { Cpu, Code2, Layout, Server, Database, Wrench, X, ArrowUpRight } from 'lucide-react';
+import { Cpu, Code2, Layout, Server, Database, Wrench, X, ArrowUpRight, Sparkles } from 'lucide-react';
 
 const CATEGORY_META = {
   'Programming Languages': { Icon: Code2, accent: 'var(--accent-lavender)', subtle: 'var(--accent-lavender-subtle)' },
-  'Frameworks & Libraries': { Icon: Layout, accent: 'var(--accent-coral)', subtle: 'var(--accent-coral-subtle)' },
-  'Applied AI / ML & Vision': { Icon: Cpu, accent: 'var(--accent-lavender)', subtle: 'var(--accent-lavender-subtle)' },
-  'Databases & Storage': { Icon: Database, accent: 'var(--accent-coral)', subtle: 'var(--accent-coral-subtle)' },
-  'Tools & Environments': { Icon: Wrench, accent: 'var(--text-secondary)', subtle: 'var(--badge-bg)' },
-  'Core Computer Science Areas': { Icon: Server, accent: 'var(--accent-lime-dark)', subtle: 'var(--accent-lime-subtle)' },
+  'Frontend & Mobile': { Icon: Layout, accent: 'var(--accent-coral)', subtle: 'var(--accent-coral-subtle)' },
+  'Backend & APIs': { Icon: Server, accent: 'var(--accent-lavender)', subtle: 'var(--accent-lavender-subtle)' },
+  'AI/ML & Computer Vision': { Icon: Cpu, accent: 'var(--accent-coral)', subtle: 'var(--accent-coral-subtle)' },
+  'Generative AI': { Icon: Sparkles, accent: 'var(--accent-lavender)', subtle: 'var(--accent-lavender-subtle)' },
+  'Databases': { Icon: Database, accent: 'var(--accent-coral)', subtle: 'var(--accent-coral-subtle)' },
+  'Tools': { Icon: Wrench, accent: 'var(--text-secondary)', subtle: 'var(--badge-bg)' },
+  'Core Areas': { Icon: Server, accent: 'var(--accent-lime-dark)', subtle: 'var(--accent-lime-subtle)' },
 };
 
 export const Skills = () => {

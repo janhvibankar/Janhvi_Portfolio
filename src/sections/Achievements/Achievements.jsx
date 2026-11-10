@@ -12,10 +12,10 @@ export const Achievements = ({ onSelectProjectById }) => {
   const handleCelebrate = () => {
     playSound('success');
     confetti({
-      particleCount: 80,
-      spread: 70,
-      origin: { y: 0.6 },
-      colors: ['#E66B48', '#A4A58A', '#D9CBB9', '#F5F0E8']
+      particleCount: 75,
+      spread: 65,
+      origin: { y: 0.65 },
+      colors: ['#B8D9B2', '#E98570', '#DDDCCF', '#F4F3EC']
     });
   };
 
@@ -23,66 +23,53 @@ export const Achievements = ({ onSelectProjectById }) => {
     <section id="achievements" className="section-wrapper">
       <div className="site-container">
         <SectionHeader
-          number="05"
-          label="Honors & Recognition"
-          title="Competitive Excellence & Hackathon Victories"
-          subtitle="Milestones celebrating national hackathon championships, rigorous research, and consistent academic distinction."
+          number="04"
+          label="Honors"
+          title="Competitive Milestones"
+          serifWord="& Recognition"
+          subtitle="National hackathon championships, distributed systems research, and consistent academic distinction."
         />
 
         {/* Featured Hero Achievement: SIH 2025 */}
         {achievementsData.slice(0, 1).map((ach) => (
           <motion.div
             key={ach.id}
-            initial={{ opacity: 0, y: 25 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-50px' }}
-            transition={{ duration: 0.6 }}
+            viewport={{ once: true, margin: '-40px' }}
+            transition={{ duration: 0.55 }}
             className="card-editorial card-editorial-accent"
             style={{
-              padding: 'clamp(2rem, 5vw, 3.5rem)',
+              padding: 'clamp(2rem, 5vw, 3.25rem)',
               borderRadius: 'var(--radius-xl)',
               marginBottom: '2.5rem',
               position: 'relative',
               overflow: 'hidden'
             }}
           >
-            {/* Background trophy icon watermark */}
-            <div
-              style={{
-                position: 'absolute',
-                top: '-20px',
-                right: '-20px',
-                color: 'var(--accent-primary)',
-                opacity: 0.04,
-                pointerEvents: 'none'
-              }}
-            >
-              <Trophy size={280} />
-            </div>
-
             <div style={{ position: 'relative', zIndex: 1 }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem', flexWrap: 'wrap' }}>
-                <span className="badge-tech badge-accent" style={{ fontSize: '0.82rem', padding: '0.45rem 1rem' }}>
-                  <Sparkles size={13} />
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem', marginBottom: '0.85rem', flexWrap: 'wrap' }}>
+                <span className="badge-tech badge-sage" style={{ fontSize: '0.8rem', padding: '0.4rem 0.95rem' }}>
+                  <Sparkles size={12} />
                   {ach.badgeText}
                 </span>
-                <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.78rem', color: 'var(--text-muted)' }}>
+                <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.76rem', color: 'var(--text-muted)' }}>
                   {ach.organization}
                 </span>
-                <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.78rem', color: 'var(--accent-primary)', fontWeight: 700 }}>
+                <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.76rem', color: 'var(--accent-coral)', fontWeight: 600 }}>
                   // {ach.year}
                 </span>
               </div>
 
               <h3
                 style={{
-                  fontFamily: 'var(--font-display)',
-                  fontSize: 'clamp(1.75rem, 3.5vw, 2.75rem)',
+                  fontFamily: 'var(--font-sans)',
+                  fontSize: 'clamp(1.75rem, 3.5vw, 2.65rem)',
                   fontWeight: 700,
                   color: 'var(--text-primary)',
-                  letterSpacing: '-0.02em',
-                  marginBottom: '0.5rem',
-                  lineHeight: 1.15
+                  letterSpacing: '-0.025em',
+                  marginBottom: '0.35rem',
+                  lineHeight: 1.2
                 }}
               >
                 {ach.title}
@@ -91,9 +78,10 @@ export const Achievements = ({ onSelectProjectById }) => {
               <p
                 style={{
                   fontFamily: 'var(--font-mono)',
-                  fontSize: '1rem',
-                  color: 'var(--accent-primary)',
-                  marginBottom: '1.25rem'
+                  fontSize: '0.95rem',
+                  color: 'var(--accent-coral)',
+                  marginBottom: '1.25rem',
+                  fontWeight: 500
                 }}
               >
                 {ach.subtitle}
@@ -101,10 +89,10 @@ export const Achievements = ({ onSelectProjectById }) => {
 
               <p
                 style={{
-                  fontSize: '1.05rem',
+                  fontSize: '1rem',
                   lineHeight: 1.7,
                   color: 'var(--text-secondary)',
-                  maxWidth: '780px',
+                  maxWidth: '740px',
                   marginBottom: '1.75rem'
                 }}
               >
@@ -112,21 +100,21 @@ export const Achievements = ({ onSelectProjectById }) => {
               </p>
 
               {/* Highlights */}
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.65rem', marginBottom: '2rem' }}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.6rem', marginBottom: '2rem' }}>
                 {ach.highlights.map((h, i) => (
-                  <div key={i} style={{ display: 'flex', gap: '0.65rem', alignItems: 'flex-start', fontSize: '0.92rem', color: 'var(--text-secondary)' }}>
-                    <CheckCircle2 size={16} style={{ color: 'var(--accent-primary)', flexShrink: 0, marginTop: '3px' }} />
+                  <div key={i} style={{ display: 'flex', gap: '0.6rem', alignItems: 'flex-start', fontSize: '0.92rem', color: 'var(--text-secondary)' }}>
+                    <CheckCircle2 size={16} style={{ color: 'var(--accent-sage-dark)', flexShrink: 0, marginTop: '3px' }} />
                     <span>{h}</span>
                   </div>
                 ))}
               </div>
 
-              {/* Action row with interactive celebrate button */}
-              <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', flexWrap: 'wrap' }}>
+              {/* Actions */}
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.85rem', flexWrap: 'wrap' }}>
                 <button
                   onClick={handleCelebrate}
                   className="btn-primary"
-                  style={{ fontSize: '0.88rem' }}
+                  style={{ fontSize: '0.86rem' }}
                 >
                   <Sparkles size={15} />
                   <span>Celebrate Milestone</span>
@@ -139,10 +127,10 @@ export const Achievements = ({ onSelectProjectById }) => {
                       onSelectProjectById(ach.relatedProjectId);
                     }}
                     className="btn-secondary"
-                    style={{ fontSize: '0.88rem' }}
+                    style={{ fontSize: '0.86rem' }}
                   >
                     <span>Inspect Winning Architecture</span>
-                    <ArrowUpRight size={15} />
+                    <ArrowUpRight size={14} />
                   </button>
                 )}
               </div>
@@ -161,43 +149,43 @@ export const Achievements = ({ onSelectProjectById }) => {
           {achievementsData.slice(1).map((ach, idx) => (
             <motion.div
               key={ach.id}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-50px' }}
-              transition={{ duration: 0.5, delay: idx * 0.1 }}
+              viewport={{ once: true, margin: '-40px' }}
+              transition={{ duration: 0.45, delay: idx * 0.08 }}
               className="card-editorial"
               style={{
-                padding: 'clamp(1.5rem, 3vw, 2.25rem)',
+                padding: 'clamp(1.5rem, 3vw, 2rem)',
                 display: 'flex',
                 flexDirection: 'column',
                 justifyContent: 'space-between'
               }}
             >
               <div>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
-                  <span className="badge-tech">{ach.category}</span>
-                  <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.75rem', color: 'var(--text-muted)' }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.85rem' }}>
+                  <span className="badge-tech badge-sage">{ach.category}</span>
+                  <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.74rem', color: 'var(--text-muted)' }}>
                     {ach.year}
                   </span>
                 </div>
 
                 <h4
                   style={{
-                    fontFamily: 'var(--font-display)',
-                    fontSize: '1.35rem',
+                    fontFamily: 'var(--font-sans)',
+                    fontSize: '1.25rem',
                     fontWeight: 700,
                     color: 'var(--text-primary)',
-                    marginBottom: '0.35rem'
+                    marginBottom: '0.3rem'
                   }}
                 >
                   {ach.title}
                 </h4>
 
-                <p style={{ fontFamily: 'var(--font-mono)', fontSize: '0.82rem', color: 'var(--accent-primary)', marginBottom: '0.85rem' }}>
+                <p style={{ fontFamily: 'var(--font-mono)', fontSize: '0.8rem', color: 'var(--accent-coral)', marginBottom: '0.85rem', fontWeight: 500 }}>
                   {ach.subtitle}
                 </p>
 
-                <p style={{ fontSize: '0.9rem', lineHeight: 1.6, color: 'var(--text-secondary)', marginBottom: '1.25rem' }}>
+                <p style={{ fontSize: '0.88rem', lineHeight: 1.6, color: 'var(--text-secondary)', marginBottom: '1.25rem' }}>
                   {ach.description}
                 </p>
               </div>
@@ -208,18 +196,18 @@ export const Achievements = ({ onSelectProjectById }) => {
                     display: 'grid',
                     gridTemplateColumns: 'repeat(3, 1fr)',
                     gap: '0.5rem',
-                    padding: '0.85rem',
-                    backgroundColor: 'var(--badge-bg)',
+                    padding: '0.75rem',
+                    backgroundColor: 'var(--bg-card-subtle)',
                     borderRadius: 'var(--radius-md)',
                     border: '1px solid var(--border-hairline)'
                   }}
                 >
                   {ach.metrics.map((m, mIdx) => (
                     <div key={mIdx}>
-                      <div style={{ fontFamily: 'var(--font-display)', fontSize: '1rem', fontWeight: 700, color: 'var(--text-primary)' }}>
+                      <div style={{ fontFamily: 'var(--font-sans)', fontSize: '0.98rem', fontWeight: 700, color: 'var(--text-primary)' }}>
                         {m.value}
                       </div>
-                      <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.65rem', color: 'var(--text-muted)', textTransform: 'uppercase' }}>
+                      <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.64rem', color: 'var(--text-muted)', textTransform: 'uppercase' }}>
                         {m.label}
                       </div>
                     </div>
@@ -233,4 +221,3 @@ export const Achievements = ({ onSelectProjectById }) => {
     </section>
   );
 };
-

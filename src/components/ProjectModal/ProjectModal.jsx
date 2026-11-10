@@ -48,9 +48,9 @@ export const ProjectModal = ({ project, onClose }) => {
         }}
       >
         <motion.div
-          initial={{ opacity: 0, scale: 0.95, y: 20 }}
+          initial={{ opacity: 0, scale: 0.95, y: 15 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
-          exit={{ opacity: 0, scale: 0.95, y: 20 }}
+          exit={{ opacity: 0, scale: 0.95, y: 15 }}
           transition={{ type: 'spring', damping: 25, stiffness: 300 }}
           onClick={(e) => e.stopPropagation()}
           style={{
@@ -58,12 +58,12 @@ export const ProjectModal = ({ project, onClose }) => {
             border: '1px solid var(--border-hairline)',
             borderRadius: 'var(--radius-xl)',
             width: '100%',
-            maxWidth: '860px',
+            maxWidth: '840px',
             maxHeight: '90vh',
             overflowY: 'auto',
             boxShadow: 'var(--shadow-lg)',
             position: 'relative',
-            padding: 'clamp(1.5rem, 4vw, 3rem)'
+            padding: 'clamp(1.5rem, 4vw, 2.75rem)'
           }}
         >
           {/* Close button */}
@@ -77,8 +77,8 @@ export const ProjectModal = ({ project, onClose }) => {
               position: 'absolute',
               top: '1.25rem',
               right: '1.25rem',
-              width: '40px',
-              height: '40px',
+              width: '38px',
+              height: '38px',
               borderRadius: 'var(--radius-full)',
               backgroundColor: 'var(--badge-bg)',
               border: '1px solid var(--border-hairline)',
@@ -93,25 +93,17 @@ export const ProjectModal = ({ project, onClose }) => {
           </button>
 
           {/* Header Metadata */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem', flexWrap: 'wrap' }}>
-            <span className="badge-tech badge-accent">{project.category}</span>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem', marginBottom: '0.85rem', flexWrap: 'wrap' }}>
+            <span className="badge-tech badge-sage">{project.category}</span>
             <span
-              className="badge-tech"
               style={{
-                color: project.status === 'Completed' ? '#22c55e' : 'var(--accent-primary)',
-                borderColor: project.status === 'Completed' ? 'rgba(34,197,94,0.3)' : 'var(--accent-primary-border)'
+                fontFamily: 'var(--font-mono)',
+                fontSize: '0.74rem',
+                color: project.status === 'Completed' ? 'var(--accent-sage-dark)' : 'var(--accent-coral)',
+                fontWeight: 600
               }}
             >
-              <span
-                style={{
-                  width: '6px',
-                  height: '6px',
-                  borderRadius: '50%',
-                  backgroundColor: project.status === 'Completed' ? '#22c55e' : 'var(--accent-primary)',
-                  display: 'inline-block'
-                }}
-              />
-              {project.status}
+              • {project.status}
             </span>
             <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.75rem', color: 'var(--text-muted)' }}>
               Year: {project.year}
@@ -121,12 +113,12 @@ export const ProjectModal = ({ project, onClose }) => {
           {/* Title & Tagline */}
           <h2
             style={{
-              fontFamily: 'var(--font-display)',
-              fontSize: 'clamp(1.75rem, 3.5vw, 2.5rem)',
+              fontFamily: 'var(--font-sans)',
+              fontSize: 'clamp(1.75rem, 3.5vw, 2.35rem)',
               fontWeight: 700,
               color: 'var(--text-primary)',
-              letterSpacing: '-0.02em',
-              marginBottom: '0.5rem',
+              letterSpacing: '-0.025em',
+              marginBottom: '0.35rem',
               paddingRight: '2rem'
             }}
           >
@@ -135,9 +127,10 @@ export const ProjectModal = ({ project, onClose }) => {
           <p
             style={{
               fontFamily: 'var(--font-mono)',
-              fontSize: '0.95rem',
-              color: 'var(--accent-primary)',
-              marginBottom: '1.75rem'
+              fontSize: '0.9rem',
+              color: 'var(--accent-coral)',
+              marginBottom: '1.75rem',
+              fontWeight: 500
             }}
           >
             {project.tagline}
@@ -148,11 +141,11 @@ export const ProjectModal = ({ project, onClose }) => {
             <div
               style={{
                 display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))',
-                gap: '1rem',
+                gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))',
+                gap: '0.75rem',
                 marginBottom: '2rem',
-                padding: '1.25rem',
-                backgroundColor: 'var(--badge-bg)',
+                padding: '1rem',
+                backgroundColor: 'var(--bg-card-subtle)',
                 borderRadius: 'var(--radius-md)',
                 border: '1px solid var(--border-hairline)'
               }}
@@ -161,8 +154,8 @@ export const ProjectModal = ({ project, onClose }) => {
                 <div key={idx}>
                   <div
                     style={{
-                      fontFamily: 'var(--font-display)',
-                      fontSize: '1.4rem',
+                      fontFamily: 'var(--font-sans)',
+                      fontSize: '1.35rem',
                       fontWeight: 700,
                       color: 'var(--text-primary)'
                     }}
@@ -172,10 +165,9 @@ export const ProjectModal = ({ project, onClose }) => {
                   <div
                     style={{
                       fontFamily: 'var(--font-mono)',
-                      fontSize: '0.72rem',
+                      fontSize: '0.68rem',
                       color: 'var(--text-muted)',
-                      textTransform: 'uppercase',
-                      letterSpacing: '0.05em'
+                      textTransform: 'uppercase'
                     }}
                   >
                     {m.label}
@@ -190,16 +182,16 @@ export const ProjectModal = ({ project, onClose }) => {
             <h3
               style={{
                 fontFamily: 'var(--font-mono)',
-                fontSize: '0.8rem',
-                letterSpacing: '0.1em',
+                fontSize: '0.75rem',
+                letterSpacing: '0.08em',
                 textTransform: 'uppercase',
                 color: 'var(--text-muted)',
-                marginBottom: '0.75rem'
+                marginBottom: '0.65rem'
               }}
             >
               // Architecture & Overview
             </h3>
-            <p style={{ fontSize: '1rem', lineHeight: 1.7, color: 'var(--text-secondary)' }}>
+            <p style={{ fontSize: '0.98rem', lineHeight: 1.7, color: 'var(--text-secondary)' }}>
               {project.detailedDescription}
             </p>
           </div>
@@ -209,7 +201,7 @@ export const ProjectModal = ({ project, onClose }) => {
             <div
               style={{
                 marginBottom: '2rem',
-                padding: '1.5rem',
+                padding: '1.25rem',
                 backgroundColor: 'var(--code-bg)',
                 border: '1px solid var(--code-border)',
                 borderRadius: 'var(--radius-lg)'
@@ -221,20 +213,20 @@ export const ProjectModal = ({ project, onClose }) => {
                   alignItems: 'center',
                   gap: '0.5rem',
                   fontFamily: 'var(--font-mono)',
-                  fontSize: '0.75rem',
-                  color: 'var(--accent-primary)',
-                  marginBottom: '1rem',
+                  fontSize: '0.74rem',
+                  color: 'var(--accent-coral)',
+                  marginBottom: '0.85rem',
                   fontWeight: 600
                 }}
               >
                 <Cpu size={15} />
-                <span>DATA FLOW & SYSTEM PIPELINE</span>
+                <span>DATA FLOW & PIPELINE: {project.architecture.type}</span>
               </div>
               <div
                 style={{
                   display: 'flex',
                   flexDirection: 'column',
-                  gap: '0.5rem'
+                  gap: '0.45rem'
                 }}
               >
                 {project.architecture.flow.map((step, idx) => (
@@ -243,7 +235,7 @@ export const ProjectModal = ({ project, onClose }) => {
                     style={{
                       display: 'flex',
                       alignItems: 'center',
-                      gap: '0.75rem',
+                      gap: '0.65rem',
                       fontFamily: 'var(--font-mono)',
                       fontSize: '0.82rem',
                       color: 'var(--text-primary)'
@@ -251,8 +243,8 @@ export const ProjectModal = ({ project, onClose }) => {
                   >
                     <span
                       style={{
-                        width: '24px',
-                        height: '24px',
+                        width: '22px',
+                        height: '22px',
                         borderRadius: '4px',
                         backgroundColor: 'var(--badge-bg)',
                         border: '1px solid var(--border-hairline)',
@@ -260,7 +252,7 @@ export const ProjectModal = ({ project, onClose }) => {
                         alignItems: 'center',
                         justifyContent: 'center',
                         fontSize: '0.7rem',
-                        color: 'var(--accent-primary)',
+                        color: 'var(--accent-coral)',
                         fontWeight: 700
                       }}
                     >
@@ -279,19 +271,19 @@ export const ProjectModal = ({ project, onClose }) => {
               <h3
                 style={{
                   fontFamily: 'var(--font-mono)',
-                  fontSize: '0.8rem',
-                  letterSpacing: '0.1em',
+                  fontSize: '0.75rem',
+                  letterSpacing: '0.08em',
                   textTransform: 'uppercase',
                   color: 'var(--text-muted)',
-                  marginBottom: '0.75rem'
+                  marginBottom: '0.65rem'
                 }}
               >
-                // Key Engineering Contributions
+                // Key Contributions
               </h3>
-              <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.65rem' }}>
+              <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
                 {project.myContribution.map((item, idx) => (
-                  <li key={idx} style={{ display: 'flex', gap: '0.75rem', fontSize: '0.92rem', color: 'var(--text-secondary)' }}>
-                    <CheckCircle2 size={16} style={{ color: 'var(--accent-primary)', flexShrink: 0, marginTop: '3px' }} />
+                  <li key={idx} style={{ display: 'flex', gap: '0.65rem', fontSize: '0.92rem', color: 'var(--text-secondary)' }}>
+                    <CheckCircle2 size={16} style={{ color: 'var(--accent-sage-dark)', flexShrink: 0, marginTop: '3px' }} />
                     <span>{item}</span>
                   </li>
                 ))}
@@ -308,7 +300,6 @@ export const ProjectModal = ({ project, onClose }) => {
               marginBottom: '2rem'
             }}
           >
-            {/* Features */}
             <div>
               <h4
                 style={{
@@ -317,22 +308,21 @@ export const ProjectModal = ({ project, onClose }) => {
                   letterSpacing: '0.08em',
                   textTransform: 'uppercase',
                   color: 'var(--text-muted)',
-                  marginBottom: '0.65rem'
+                  marginBottom: '0.6rem'
                 }}
               >
                 Features & Capabilities
               </h4>
-              <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+              <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.45rem' }}>
                 {project.keyFeatures.map((feat, i) => (
                   <li key={i} style={{ fontSize: '0.88rem', color: 'var(--text-secondary)', display: 'flex', gap: '0.5rem' }}>
-                    <span style={{ color: 'var(--accent-primary)' }}>•</span>
+                    <span style={{ color: 'var(--accent-coral)' }}>•</span>
                     <span>{feat}</span>
                   </li>
                 ))}
               </ul>
             </div>
 
-            {/* Challenges & Solutions */}
             <div>
               <h4
                 style={{
@@ -341,15 +331,15 @@ export const ProjectModal = ({ project, onClose }) => {
                   letterSpacing: '0.08em',
                   textTransform: 'uppercase',
                   color: 'var(--text-muted)',
-                  marginBottom: '0.65rem'
+                  marginBottom: '0.6rem'
                 }}
               >
                 Challenges Solved
               </h4>
-              <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+              <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.45rem' }}>
                 {project.challenges.map((c, i) => (
                   <li key={i} style={{ fontSize: '0.88rem', color: 'var(--text-secondary)', display: 'flex', gap: '0.5rem' }}>
-                    <AlertTriangle size={14} style={{ color: 'var(--accent-olive)', flexShrink: 0, marginTop: '3px' }} />
+                    <AlertTriangle size={14} style={{ color: 'var(--accent-coral)', flexShrink: 0, marginTop: '3px' }} />
                     <span>{c}</span>
                   </li>
                 ))}
@@ -366,14 +356,14 @@ export const ProjectModal = ({ project, onClose }) => {
                 letterSpacing: '0.08em',
                 textTransform: 'uppercase',
                 color: 'var(--text-muted)',
-                marginBottom: '0.75rem'
+                marginBottom: '0.65rem'
               }}
             >
               Technology Stack
             </h4>
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.4rem' }}>
               {project.technologies.map((t, idx) => (
-                <span key={idx} className="badge-tech">
+                <span key={idx} className="badge-tech" style={{ fontSize: '0.75rem' }}>
                   {t}
                 </span>
               ))}
@@ -389,19 +379,19 @@ export const ProjectModal = ({ project, onClose }) => {
               gap: '1rem',
               flexWrap: 'wrap',
               borderTop: '1px solid var(--border-hairline)',
-              paddingTop: '1.5rem'
+              paddingTop: '1.25rem'
             }}
           >
-            <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
+            <div style={{ display: 'flex', gap: '0.65rem', flexWrap: 'wrap' }}>
               {project.github && (
                 <a
                   href={project.github}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn-secondary"
-                  style={{ fontSize: '0.88rem', padding: '0.65rem 1.25rem' }}
+                  style={{ fontSize: '0.86rem', padding: '0.65rem 1.25rem' }}
                 >
-                  <Github size={16} />
+                  <Github size={15} />
                   <span>View Repository</span>
                 </a>
               )}
@@ -411,9 +401,9 @@ export const ProjectModal = ({ project, onClose }) => {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn-primary"
-                  style={{ fontSize: '0.88rem', padding: '0.65rem 1.25rem' }}
+                  style={{ fontSize: '0.86rem', padding: '0.65rem 1.25rem' }}
                 >
-                  <ExternalLink size={16} />
+                  <ExternalLink size={15} />
                   <span>Live Deployment</span>
                 </a>
               )}
@@ -427,7 +417,7 @@ export const ProjectModal = ({ project, onClose }) => {
               className="btn-ghost"
               style={{ fontSize: '0.85rem' }}
             >
-              Close Details
+              Close
             </button>
           </div>
         </motion.div>

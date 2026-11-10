@@ -2,32 +2,16 @@ import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 export const Preloader = ({ onComplete }) => {
-  const [progress, setProgress] = useState(0);
   const [isFinished, setIsFinished] = useState(false);
 
   useEffect(() => {
-    const duration = 1400; // 1.4 seconds total
-    const intervalTime = 25;
-    const steps = duration / intervalTime;
-    let currentStep = 0;
+    // Quick, elegant transition: ~850ms total
+    const timer = setTimeout(() => {
+      setIsFinished(true);
+      setTimeout(onComplete, 450);
+    }, 850);
 
-    const timer = setInterval(() => {
-      currentStep++;
-      const currentProgress = Math.min(Math.round((currentStep / steps) * 100), 100);
-      setProgress(currentProgress);
-
-      if (currentProgress >= 100) {
-        clearInterval(timer);
-        setTimeout(() => {
-          setIsFinished(true);
-          setTimeout(() => {
-            onComplete();
-          }, 600);
-        }, 200);
-      }
-    }, intervalTime);
-
-    return () => clearInterval(timer);
+    return () => clearTimeout(timer);
   }, [onComplete]);
 
   return (
@@ -35,7 +19,11 @@ export const Preloader = ({ onComplete }) => {
       {!isFinished && (
         <motion.div
           initial={{ opacity: 1 }}
-          exit={{ y: '-100%', transition: { duration: 0.7, ease: [0.76, 0, 0.24, 1] } }}
+          exit={{ opacity: 0, y: -25, transition: { duration: 0.45, ease: [0.16, 1, 0.3, 1] } }}
+          onClick={() => {
+            setIsFinished(true);
+            setTimeout(onComplete, 200);
+          }}
           style={{
             position: 'fixed',
             inset: 0,
@@ -47,156 +35,84 @@ export const Preloader = ({ onComplete }) => {
             padding: 'clamp(1.5rem, 4vw, 3rem)',
             cursor: 'pointer'
           }}
-          onClick={() => {
-            setIsFinished(true);
-            setTimeout(onComplete, 400);
-          }}
-          title="Click to skip"
+          title="Click to enter"
         >
-          {/* Top header line */}
+          {/* Top subtle identifier */}
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
             <span
               style={{
                 fontFamily: 'var(--font-mono)',
-                fontSize: '0.75rem',
-                letterSpacing: '0.12em',
-                color: 'var(--text-muted)',
-                textTransform: 'uppercase'
+                fontSize: '0.72rem',
+                letterSpacing: '0.08em',
+                color: 'var(--text-muted)'
               }}
             >
-              [PORTFOLIO // V2.0]
+              PORTFOLIO // V2
             </span>
             <span
               style={{
                 fontFamily: 'var(--font-mono)',
-                fontSize: '0.75rem',
-                letterSpacing: '0.12em',
-                color: 'var(--accent-primary)',
-                textTransform: 'uppercase'
+                fontSize: '0.72rem',
+                letterSpacing: '0.08em',
+                color: 'var(--accent-coral)'
               }}
             >
-              INITIALIZING
+              2025–2026
             </span>
           </div>
 
-          {/* Center Initials & Typography Reveal */}
+          {/* Center: Expressive Serif Initials & Title */}
           <div style={{ textAlign: 'center' }}>
             <motion.div
-              initial={{ scale: 0.8, opacity: 0 }}
+              initial={{ scale: 0.85, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
-              transition={{ duration: 0.5, ease: 'easeOut' }}
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                width: '84px',
-                height: '84px',
-                borderRadius: 'var(--radius-lg)',
-                border: '1px solid var(--accent-primary-border)',
-                backgroundColor: 'var(--bg-card)',
-                marginBottom: '1.5rem',
-                boxShadow: 'var(--shadow-md)'
-              }}
+              transition={{ duration: 0.4, ease: 'easeOut' }}
+              style={{ marginBottom: '1rem' }}
             >
               <span
                 style={{
-                  fontFamily: 'var(--font-display)',
-                  fontSize: '2.25rem',
-                  fontWeight: 700,
-                  color: 'var(--accent-primary)',
-                  letterSpacing: '-0.03em'
+                  fontFamily: 'var(--font-serif)',
+                  fontSize: 'clamp(3.5rem, 8vw, 6rem)',
+                  fontStyle: 'italic',
+                  color: 'var(--text-primary)',
+                  lineHeight: 1
                 }}
               >
-                JB
+                Janhvi Bankar
               </span>
             </motion.div>
 
-            <motion.h1
-              initial={{ y: 20, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 0.2, duration: 0.5 }}
-              style={{
-                fontFamily: 'var(--font-display)',
-                fontSize: 'clamp(1.5rem, 4vw, 2.75rem)',
-                fontWeight: 700,
-                letterSpacing: '-0.02em',
-                color: 'var(--text-primary)',
-                marginBottom: '0.5rem'
-              }}
-            >
-              JANHVI BANKAR
-            </motion.h1>
-
             <motion.p
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.35, duration: 0.5 }}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2, duration: 0.4 }}
               style={{
-                fontFamily: 'var(--font-mono)',
-                fontSize: '0.85rem',
+                fontFamily: 'var(--font-sans)',
+                fontSize: '0.9rem',
+                fontWeight: 500,
                 color: 'var(--text-secondary)',
-                letterSpacing: '0.05em'
+                letterSpacing: '-0.01em'
               }}
             >
-              Computer Science Engineer · Systems & AI/ML
+              Computer Science Engineer & Creative Developer
             </motion.p>
           </div>
 
-          {/* Bottom Progress Bar & Coordinates */}
-          <div>
-            <div
+          {/* Bottom hint */}
+          <div style={{ textAlign: 'center' }}>
+            <span
               style={{
-                display: 'flex',
-                justifyContent: 'space-between',
-                alignItems: 'baseline',
-                marginBottom: '0.75rem',
                 fontFamily: 'var(--font-mono)',
-                fontSize: '0.75rem',
-                color: 'var(--text-muted)'
+                fontSize: '0.68rem',
+                color: 'var(--text-muted)',
+                opacity: 0.7
               }}
             >
-              <span>17°04'N 75°19'E // SANGOLA, IN</span>
-              <span style={{ fontSize: '1.1rem', fontWeight: 700, color: 'var(--text-primary)' }}>
-                {progress}%
-              </span>
-            </div>
-
-            {/* Progress track */}
-            <div
-              style={{
-                width: '100%',
-                height: '3px',
-                backgroundColor: 'var(--border-hairline)',
-                borderRadius: 'var(--radius-full)',
-                overflow: 'hidden'
-              }}
-            >
-              <motion.div
-                style={{
-                  height: '100%',
-                  width: `${progress}%`,
-                  backgroundColor: 'var(--accent-primary)',
-                  transition: 'width 0.05s ease-out'
-                }}
-              />
-            </div>
-
-            <div style={{ textAlign: 'center', marginTop: '0.5rem' }}>
-              <span
-                style={{
-                  fontFamily: 'var(--font-mono)',
-                  fontSize: '0.68rem',
-                  color: 'var(--text-muted)',
-                  opacity: 0.7
-                }}
-              >
-                click anywhere to bypass
-              </span>
-            </div>
+              click to bypass
+            </span>
           </div>
         </motion.div>
       )}
     </AnimatePresence>
   );
 };
-

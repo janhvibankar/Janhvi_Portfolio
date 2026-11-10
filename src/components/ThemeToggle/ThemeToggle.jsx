@@ -45,12 +45,11 @@ export const ThemeToggle = () => {
         style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}
       >
         {isDark ? (
-          <Sun size={17} style={{ color: 'var(--accent-primary)' }} />
+          <Sun size={17} style={{ color: 'var(--accent-sage)' }} />
         ) : (
-          <Moon size={17} style={{ color: 'var(--accent-primary)' }} />
+          <Moon size={17} style={{ color: 'var(--accent-coral)' }} />
         )}
       </motion.div>
     </button>
   );
 };
-

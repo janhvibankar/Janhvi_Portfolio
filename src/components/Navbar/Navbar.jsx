@@ -72,7 +72,7 @@ export const Navbar = ({ onOpenResume }) => {
       <header
         style={{
           position: 'fixed',
-          top: 'clamp(0.75rem, 2vw, 1.5rem)',
+          top: 'clamp(0.75rem, 2vw, 1.35rem)',
           left: 0,
           right: 0,
           zIndex: 100,
@@ -83,16 +83,16 @@ export const Navbar = ({ onOpenResume }) => {
         }}
       >
         <motion.nav
-          initial={{ y: -40, opacity: 0 }}
+          initial={{ y: -30, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.5, ease: 'easeOut' }}
+          transition={{ duration: 0.45, ease: 'easeOut' }}
           style={{
             pointerEvents: 'auto',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
-            gap: '1.25rem',
-            padding: '0.5rem 0.75rem 0.5rem 1.25rem',
+            gap: '1rem',
+            padding: '0.45rem 0.65rem 0.45rem 1.15rem',
             borderRadius: 'var(--radius-full)',
             backgroundColor: 'var(--nav-bg)',
             backdropFilter: 'blur(20px)',
@@ -100,7 +100,7 @@ export const Navbar = ({ onOpenResume }) => {
             border: '1px solid var(--border-hairline)',
             boxShadow: isScrolled ? 'var(--shadow-md)' : 'var(--shadow-sm)',
             width: '100%',
-            maxWidth: '1080px',
+            maxWidth: '1020px',
             transition: 'box-shadow var(--transition-fast), border-color var(--transition-fast)'
           }}
         >
@@ -112,31 +112,25 @@ export const Navbar = ({ onOpenResume }) => {
               display: 'flex',
               alignItems: 'center',
               gap: '0.6rem',
-              fontWeight: 700,
-              fontFamily: 'var(--font-display)',
-              fontSize: '1rem',
+              fontWeight: 600,
+              fontFamily: 'var(--font-sans)',
+              fontSize: '0.95rem',
               color: 'var(--text-primary)',
-              letterSpacing: '-0.02em'
+              letterSpacing: '-0.01em'
             }}
           >
             <span
               style={{
-                width: '32px',
-                height: '32px',
-                borderRadius: '8px',
-                backgroundColor: 'var(--accent-primary)',
-                color: '#FFFFFF',
-                display: 'inline-flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                fontFamily: 'var(--font-mono)',
-                fontSize: '0.85rem',
-                fontWeight: 700
+                fontFamily: 'var(--font-serif)',
+                fontStyle: 'italic',
+                fontSize: '1.25rem',
+                color: 'var(--accent-coral)',
+                lineHeight: 1
               }}
             >
               JB
             </span>
-            <span className="nav-title-desktop" style={{ display: 'none' }}>
+            <span className="nav-title-desktop" style={{ display: 'none', fontWeight: 600 }}>
               Janhvi Bankar
             </span>
           </a>
@@ -147,7 +141,7 @@ export const Navbar = ({ onOpenResume }) => {
             style={{
               display: 'flex',
               alignItems: 'center',
-              gap: '0.25rem'
+              gap: '0.15rem'
             }}
           >
             {NAV_ITEMS.map((item) => {
@@ -160,9 +154,9 @@ export const Navbar = ({ onOpenResume }) => {
                   onMouseEnter={() => playSound('hover')}
                   style={{
                     position: 'relative',
-                    padding: '0.45rem 0.85rem',
+                    padding: '0.45rem 0.8rem',
                     fontFamily: 'var(--font-sans)',
-                    fontSize: '0.85rem',
+                    fontSize: '0.86rem',
                     fontWeight: isActive ? 600 : 500,
                     color: isActive ? 'var(--text-primary)' : 'var(--text-secondary)',
                     borderRadius: 'var(--radius-full)',
@@ -199,19 +193,19 @@ export const Navbar = ({ onOpenResume }) => {
               title={soundEnabled ? 'Mute audio' : 'Enable sound effects'}
               aria-label={soundEnabled ? 'Mute audio' : 'Enable sound effects'}
               style={{
-                width: '38px',
-                height: '38px',
+                width: '36px',
+                height: '36px',
                 borderRadius: 'var(--radius-full)',
                 display: 'inline-flex',
                 alignItems: 'center',
                 justifyContent: 'center',
                 backgroundColor: 'var(--badge-bg)',
                 border: '1px solid var(--border-hairline)',
-                color: soundEnabled ? 'var(--accent-primary)' : 'var(--text-muted)',
+                color: soundEnabled ? 'var(--accent-sage)' : 'var(--text-muted)',
                 transition: 'all var(--transition-fast)'
               }}
             >
-              {soundEnabled ? <Volume2 size={16} /> : <VolumeX size={16} />}
+              {soundEnabled ? <Volume2 size={15} /> : <VolumeX size={15} />}
             </button>
 
             {/* Theme Toggle */}
@@ -225,9 +219,9 @@ export const Navbar = ({ onOpenResume }) => {
               }}
               className="btn-primary resume-desktop-btn"
               style={{
-                padding: '0.45rem 1rem',
+                padding: '0.45rem 0.95rem',
                 fontSize: '0.82rem',
-                gap: '0.4rem',
+                gap: '0.35rem',
                 marginLeft: '0.2rem'
               }}
             >
@@ -244,8 +238,8 @@ export const Navbar = ({ onOpenResume }) => {
               }}
               aria-label="Toggle menu"
               style={{
-                width: '38px',
-                height: '38px',
+                width: '36px',
+                height: '36px',
                 borderRadius: 'var(--radius-full)',
                 display: 'none',
                 alignItems: 'center',
@@ -255,7 +249,7 @@ export const Navbar = ({ onOpenResume }) => {
                 color: 'var(--text-primary)'
               }}
             >
-              {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
+              {mobileMenuOpen ? <X size={19} /> : <Menu size={19} />}
             </button>
           </div>
         </motion.nav>
@@ -265,10 +259,10 @@ export const Navbar = ({ onOpenResume }) => {
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
+            initial={{ opacity: 0, y: -15 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.3 }}
+            exit={{ opacity: 0, y: -15 }}
+            transition={{ duration: 0.28 }}
             style={{
               position: 'fixed',
               inset: 0,
@@ -280,17 +274,17 @@ export const Navbar = ({ onOpenResume }) => {
               padding: '6rem 2rem 3rem 2rem'
             }}
           >
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.15rem' }}>
               <span
                 style={{
                   fontFamily: 'var(--font-mono)',
-                  fontSize: '0.75rem',
-                  letterSpacing: '0.12em',
+                  fontSize: '0.72rem',
+                  letterSpacing: '0.08em',
                   color: 'var(--text-muted)',
                   textTransform: 'uppercase'
                 }}
               >
-                // NAVIGATION
+                // Navigation
               </span>
 
               {NAV_ITEMS.map((item, idx) => (
@@ -298,22 +292,21 @@ export const Navbar = ({ onOpenResume }) => {
                   key={item.href}
                   href={item.href}
                   onClick={(e) => handleNavClick(e, item.href)}
-                  initial={{ opacity: 0, x: -20 }}
+                  initial={{ opacity: 0, x: -15 }}
                   animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: idx * 0.05 }}
+                  transition={{ delay: idx * 0.04 }}
                   style={{
-                    fontFamily: 'var(--font-display)',
-                    fontSize: '1.85rem',
-                    fontWeight: 700,
-                    letterSpacing: '-0.02em',
-                    color: activeSection === item.href.slice(1) ? 'var(--accent-primary)' : 'var(--text-primary)',
+                    fontFamily: 'var(--font-serif)',
+                    fontStyle: 'italic',
+                    fontSize: '2rem',
+                    color: activeSection === item.href.slice(1) ? 'var(--accent-coral)' : 'var(--text-primary)',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'space-between'
                   }}
                 >
                   <span>{item.label}</span>
-                  <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.85rem', color: 'var(--text-muted)' }}>
+                  <span style={{ fontFamily: 'var(--font-mono)', fontStyle: 'normal', fontSize: '0.8rem', color: 'var(--text-muted)' }}>
                     0{idx + 1}
                   </span>
                 </motion.a>
@@ -333,20 +326,13 @@ export const Navbar = ({ onOpenResume }) => {
                 <span>View Full Resume</span>
                 <ArrowUpRight size={16} />
               </button>
-
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.75rem', color: 'var(--text-muted)' }}>
-                  Sangola, India (UTC +5:30)
-                </span>
-                <span className="pulse-dot" />
-              </div>
             </div>
           </motion.div>
         )}
       </AnimatePresence>
 
       <style>{`
-        @media (min-width: 992px) {
+        @media (min-width: 960px) {
           .nav-title-desktop { display: inline !important; }
         }
         @media (max-width: 860px) {
@@ -358,4 +344,3 @@ export const Navbar = ({ onOpenResume }) => {
     </>
   );
 };
-

@@ -4,7 +4,7 @@ import { skillsData, marqueeTechnologies } from '../../data/skills';
 import { SectionHeader } from '../../components/SectionHeader/SectionHeader';
 import { Marquee } from '../../components/Marquee/Marquee';
 import { useSound } from '../../context/SoundContext';
-import { Sparkles, Cpu, Code2, Layout, Server, Database, Wrench } from 'lucide-react';
+import { Cpu, Code2, Layout, Server, Database, Wrench } from 'lucide-react';
 
 const CATEGORY_ICONS = {
   "AI & Machine Learning": Cpu,
@@ -27,27 +27,28 @@ export const Skills = () => {
     : skillsData.filter(s => s.category === activeCategory);
 
   return (
-    <section id="skills" className="section-wrapper">
+    <section id="skills" className="section-wrapper" style={{ paddingTop: '2rem' }}>
       <div className="site-container">
         <SectionHeader
           number="02"
-          label="Technical Repertoire"
-          title="Engineered Tooling & Production Technologies"
-          subtitle="A specialized engineering stack tested in high-stakes hackathons, computer vision research, and full-stack enterprise deployments."
+          label="Tooling & Stack"
+          title="Technical Repertoire"
+          serifWord="& Technologies"
+          subtitle="A specialized toolkit tested across computer vision pipelines, full-stack backends, and national hackathon architectures."
         />
 
-        {/* Animated Marquee Ticker */}
+        {/* Marquee Technology Strip */}
         <div style={{ marginBottom: '2.5rem' }}>
-          <Marquee items={marqueeTechnologies} speed={32} />
+          <Marquee items={marqueeTechnologies} speed={28} />
         </div>
 
-        {/* Category Filter Pills */}
+        {/* Category Pills */}
         <div
           style={{
             display: 'flex',
             flexWrap: 'wrap',
-            gap: '0.5rem',
-            marginBottom: '3rem'
+            gap: '0.45rem',
+            marginBottom: '2.5rem'
           }}
         >
           {categories.map((cat) => {
@@ -59,13 +60,13 @@ export const Skills = () => {
                   playSound('click');
                   setActiveCategory(cat);
                 }}
-                className={`badge-tech ${isActive ? 'badge-accent' : ''}`}
+                className={`badge-tech ${isActive ? 'badge-sage' : ''}`}
                 style={{
-                  padding: '0.5rem 1rem',
+                  padding: '0.45rem 1rem',
                   fontSize: '0.8rem',
-                  fontWeight: isActive ? 700 : 500,
-                  backgroundColor: isActive ? 'var(--accent-primary-subtle)' : 'var(--badge-bg)',
-                  borderColor: isActive ? 'var(--accent-primary)' : 'var(--border-hairline)'
+                  fontWeight: isActive ? 600 : 500,
+                  backgroundColor: isActive ? 'var(--accent-sage-subtle)' : 'var(--badge-bg)',
+                  borderColor: isActive ? 'var(--accent-sage)' : 'var(--border-hairline)'
                 }}
               >
                 {cat}
@@ -74,12 +75,12 @@ export const Skills = () => {
           })}
         </div>
 
-        {/* Skill Groups Grid */}
+        {/* Skill Cards Grid */}
         <div
           style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(340px, 1fr))',
-            gap: '1.75rem'
+            gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
+            gap: '1.5rem'
           }}
         >
           <AnimatePresence mode="popLayout">
@@ -88,13 +89,13 @@ export const Skills = () => {
               return (
                 <motion.div
                   key={group.category}
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 0, y: 15 }}
                   animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, scale: 0.95 }}
-                  transition={{ duration: 0.4, delay: groupIdx * 0.05 }}
+                  exit={{ opacity: 0, scale: 0.96 }}
+                  transition={{ duration: 0.35, delay: groupIdx * 0.04 }}
                   className="card-editorial"
                   style={{
-                    padding: 'clamp(1.5rem, 3vw, 2rem)',
+                    padding: 'clamp(1.5rem, 3vw, 1.85rem)',
                     display: 'flex',
                     flexDirection: 'column',
                     justifyContent: 'space-between'
@@ -102,25 +103,25 @@ export const Skills = () => {
                 >
                   <div>
                     {/* Header */}
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '0.5rem' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem', marginBottom: '0.35rem' }}>
                       <div
                         style={{
-                          width: '36px',
-                          height: '36px',
+                          width: '32px',
+                          height: '32px',
                           borderRadius: '8px',
-                          backgroundColor: 'var(--accent-primary-subtle)',
-                          color: 'var(--accent-primary)',
+                          backgroundColor: 'var(--accent-sage-subtle)',
+                          color: 'var(--accent-sage-dark)',
                           display: 'flex',
                           alignItems: 'center',
                           justifyContent: 'center'
                         }}
                       >
-                        <IconComponent size={18} />
+                        <IconComponent size={16} />
                       </div>
                       <h3
                         style={{
-                          fontFamily: 'var(--font-display)',
-                          fontSize: '1.25rem',
+                          fontFamily: 'var(--font-sans)',
+                          fontSize: '1.15rem',
                           fontWeight: 700,
                           color: 'var(--text-primary)'
                         }}
@@ -132,17 +133,17 @@ export const Skills = () => {
                     <p
                       style={{
                         fontFamily: 'var(--font-mono)',
-                        fontSize: '0.75rem',
+                        fontSize: '0.74rem',
                         color: 'var(--text-muted)',
-                        marginBottom: '1.5rem',
+                        marginBottom: '1.25rem',
                         lineHeight: 1.5
                       }}
                     >
                       {group.description}
                     </p>
 
-                    {/* Skill Badges List */}
-                    <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+                    {/* Skill List */}
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '0.65rem' }}>
                       {group.skills.map((skill, sIdx) => (
                         <div
                           key={sIdx}
@@ -152,26 +153,25 @@ export const Skills = () => {
                           }}
                           onMouseLeave={() => setSelectedSkill(null)}
                           style={{
-                            padding: '0.75rem 1rem',
-                            backgroundColor: selectedSkill === skill.name ? 'var(--accent-primary-subtle)' : 'var(--badge-bg)',
-                            border: `1px solid ${selectedSkill === skill.name ? 'var(--accent-primary-border)' : 'var(--border-hairline)'}`,
-                            borderRadius: 'var(--radius-md)',
+                            padding: '0.65rem 0.85rem',
+                            backgroundColor: selectedSkill === skill.name ? 'var(--accent-sage-subtle)' : 'var(--badge-bg)',
+                            border: `1px solid ${selectedSkill === skill.name ? 'var(--accent-sage-border)' : 'var(--border-hairline)'}`,
+                            borderRadius: 'var(--radius-sm)',
                             transition: 'all var(--transition-fast)',
                             cursor: 'default'
                           }}
                         >
-                          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.25rem' }}>
-                            <span style={{ fontFamily: 'var(--font-display)', fontWeight: 600, color: 'var(--text-primary)', fontSize: '0.95rem' }}>
+                          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.2rem' }}>
+                            <span style={{ fontFamily: 'var(--font-sans)', fontWeight: 600, color: 'var(--text-primary)', fontSize: '0.9rem' }}>
                               {skill.name}
                             </span>
                             <span
                               style={{
                                 fontFamily: 'var(--font-mono)',
                                 fontSize: '0.68rem',
-                                color: 'var(--accent-primary)',
+                                color: 'var(--accent-coral)',
                                 textTransform: 'uppercase',
-                                letterSpacing: '0.05em',
-                                fontWeight: 700
+                                fontWeight: 600
                               }}
                             >
                               {skill.level}
@@ -193,4 +193,3 @@ export const Skills = () => {
     </section>
   );
 };
-

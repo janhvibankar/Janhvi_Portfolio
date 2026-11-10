@@ -1,18 +1,19 @@
 /* ==========================================================================
-   DESIGN TOKENS & THEME SYSTEM — JANHVI BANKAR PORTFOLIO
-   Awwwards-Level Editorial & Creative Technologist Visual Direction
-   Two bespoke themes: Light (Warm Ivory & Terracotta) & Dark (Deep Charcoal & Burnt Orange)
+   DESIGN TOKENS & REFINED PALETTE — JANHVI BANKAR PORTFOLIO V2
+   Creative Editorial + Experimental Developer + Modern Personal Brand
+   Three-Font System: Instrument Serif, Plus Jakarta Sans, DM Mono
    ========================================================================== */
 
 :root {
-  /* Common System Values */
-  --font-display: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-mono: 'JetBrains Mono', 'Space Mono', monospace;
+  /* Three-Font System */
+  --font-serif: 'Instrument Serif', Georgia, serif;
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'DM Mono', monospace;
 
+  /* Common Motion & Layout Values */
   --transition-fast: 0.18s cubic-bezier(0.16, 1, 0.3, 1);
-  --transition-normal: 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-  --transition-slow: 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-normal: 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-slow: 0.6s cubic-bezier(0.16, 1, 0.3, 1);
   --transition-theme: background-color 0.4s cubic-bezier(0.16, 1, 0.3, 1),
                       color 0.4s cubic-bezier(0.16, 1, 0.3, 1),
                       border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1),
@@ -21,122 +22,113 @@
   --radius-xs: 4px;
   --radius-sm: 8px;
   --radius-md: 14px;
-  --radius-lg: 24px;
-  --radius-xl: 36px;
+  --radius-lg: 22px;
+  --radius-xl: 32px;
   --radius-full: 9999px;
 
-  --container-max: 1360px;
+  --container-max: 1280px;
   --container-pad: clamp(1.25rem, 4vw, 3.5rem);
 }
 
 /* ==========================================================================
-   LIGHT MODE: Warm Ivory, Architectural Deep Charcoal & Terracotta
+   LIGHT MODE: Porcelain, Forest Ink, Fresh Sage, Soft Coral & Pale Sand
    ========================================================================== */
 :root[data-theme="light"] {
-  --bg-primary: #F5F0E8;
-  --bg-secondary: #EBE5DB;
+  --bg-primary: #F4F3EC;           /* Porcelain */
+  --bg-secondary: #EBE9DF;
   --bg-card: #FFFFFF;
-  --bg-card-hover: #FCFBF8;
-  --bg-card-muted: #EFE8DC;
-  --bg-card-subtle: #F9F6F0;
-  --bg-overlay: rgba(245, 240, 232, 0.88);
+  --bg-card-hover: #F8F7F0;
+  --bg-card-muted: #DDDCCF;         /* Pale Sand */
+  --bg-card-subtle: #FAF9F3;
+  --bg-overlay: rgba(244, 243, 236, 0.9);
 
-  --text-primary: #20201E;
-  --text-secondary: #52514B;
-  --text-muted: #828075;
-  --text-dim: #A8A69C;
-  --text-inverse: #F5F0E8;
+  --text-primary: #202923;          /* Forest Ink */
+  --text-secondary: #48544B;
+  --text-muted: #7A857D;
+  --text-dim: #9FAAA2;
+  --text-inverse: #F4F3EC;
 
-  --accent-primary: #E66B48;          /* Terracotta */
-  --accent-primary-hover: #D65A37;
-  --accent-primary-subtle: rgba(230, 107, 72, 0.12);
-  --accent-primary-border: rgba(230, 107, 72, 0.32);
-  --accent-primary-glow: rgba(230, 107, 72, 0.18);
+  --accent-sage: #B8D9B2;           /* Fresh Sage Primary */
+  --accent-sage-dark: #3F683A;      /* High contrast sage for text on light bg */
+  --accent-sage-subtle: rgba(184, 217, 178, 0.32);
+  --accent-sage-border: rgba(63, 104, 58, 0.25);
 
-  --accent-olive: #8A8D6E;            /* Muted Architectural Olive */
-  --accent-olive-subtle: rgba(138, 141, 110, 0.16);
+  --accent-coral: #E98570;          /* Soft Coral Highlight */
+  --accent-coral-subtle: rgba(233, 133, 112, 0.16);
+  --accent-coral-border: rgba(233, 133, 112, 0.4);
 
-  --accent-sand: #D9CBB9;             /* Soft Sand */
-  --accent-sand-subtle: rgba(217, 203, 185, 0.35);
+  --accent-sand: #DDDCCF;           /* Pale Sand */
+  --accent-sand-subtle: rgba(221, 220, 207, 0.5);
 
-  --border-hairline: rgba(32, 32, 30, 0.09);
-  --border-strong: rgba(32, 32, 30, 0.22);
-  --border-accent: rgba(230, 107, 72, 0.4);
+  --border-hairline: rgba(32, 41, 35, 0.08);
+  --border-strong: rgba(32, 41, 35, 0.2);
+  --border-accent: rgba(63, 104, 58, 0.3);
 
-  --shadow-sm: 0 2px 10px rgba(32, 32, 30, 0.04);
-  --shadow-md: 0 10px 32px rgba(32, 32, 30, 0.06);
-  --shadow-lg: 0 24px 60px rgba(32, 32, 30, 0.09);
-  --shadow-accent: 0 14px 36px rgba(230, 107, 72, 0.22);
+  --shadow-sm: 0 2px 8px rgba(32, 41, 35, 0.03);
+  --shadow-md: 0 8px 24px rgba(32, 41, 35, 0.05);
+  --shadow-lg: 0 20px 48px rgba(32, 41, 35, 0.08);
+  --shadow-accent: 0 10px 30px rgba(184, 217, 178, 0.35);
 
-  --glass-bg: rgba(255, 255, 255, 0.82);
-  --glass-border: rgba(32, 32, 30, 0.08);
-  --nav-bg: rgba(245, 240, 232, 0.86);
+  --glass-bg: rgba(255, 255, 255, 0.85);
+  --glass-border: rgba(32, 41, 35, 0.08);
+  --nav-bg: rgba(244, 243, 236, 0.88);
 
-  --grid-line: rgba(32, 32, 30, 0.045);
-  --grain-opacity: 0.038;
+  --badge-bg: rgba(32, 41, 35, 0.05);
+  --badge-text: #202923;
 
-  --badge-bg: rgba(32, 32, 30, 0.05);
-  --badge-text: #20201E;
-
-  --code-bg: #EAE3D6;
-  --code-border: rgba(32, 32, 30, 0.12);
-  --syntax-keyword: #D65A37;
-  --syntax-string: #637852;
-  --syntax-comment: #828075;
+  --code-bg: #EAE8DC;
+  --code-border: rgba(32, 41, 35, 0.1);
+  --grain-opacity: 0.03;
 }
 
 /* ==========================================================================
-   DARK MODE: Deep Charcoal, Warm Off-White & Burnt Orange
+   DARK MODE: Deep Evergreen, Dark Surface, Pale Mist, Fresh Sage, Soft Coral
+   Rich green undertone, not a generic black dashboard!
    ========================================================================== */
 :root[data-theme="dark"] {
-  --bg-primary: #171715;
-  --bg-secondary: #1F1F1C;
-  --bg-card: #252521;
-  --bg-card-hover: #2C2C27;
-  --bg-card-muted: #1B1B18;
-  --bg-card-subtle: #21211D;
-  --bg-overlay: rgba(23, 23, 21, 0.9);
+  --bg-primary: #15251F;           /* Deep Evergreen */
+  --bg-secondary: #1A2E26;
+  --bg-card: #202D26;              /* Dark Surface */
+  --bg-card-hover: #273830;
+  --bg-card-muted: #1A2721;
+  --bg-card-subtle: #23332B;
+  --bg-overlay: rgba(21, 37, 31, 0.92);
 
-  --text-primary: #F5F0E8;
-  --text-secondary: #A8A79E;
-  --text-muted: #727168;
-  --text-dim: #54534D;
-  --text-inverse: #171715;
+  --text-primary: #E6E9DD;          /* Pale Mist */
+  --text-secondary: #A8B5AC;
+  --text-muted: #748378;
+  --text-dim: #546258;
+  --text-inverse: #15251F;
 
-  --accent-primary: #E66B48;          /* Burnt Orange / Terracotta */
-  --accent-primary-hover: #F27B59;
-  --accent-primary-subtle: rgba(230, 107, 72, 0.18);
-  --accent-primary-border: rgba(230, 107, 72, 0.42);
-  --accent-primary-glow: rgba(230, 107, 72, 0.25);
+  --accent-sage: #B8D9B2;           /* Fresh Sage */
+  --accent-sage-dark: #B8D9B2;
+  --accent-sage-subtle: rgba(184, 217, 178, 0.18);
+  --accent-sage-border: rgba(184, 217, 178, 0.35);
 
-  --accent-olive: #92977B;            /* Muted Olive Dark */
-  --accent-olive-subtle: rgba(146, 151, 123, 0.2);
+  --accent-coral: #E98570;          /* Soft Coral */
+  --accent-coral-subtle: rgba(233, 133, 112, 0.18);
+  --accent-coral-border: rgba(233, 133, 112, 0.4);
 
-  --accent-sand: #D9CBB9;             /* Soft Sand */
-  --accent-sand-subtle: rgba(217, 203, 185, 0.14);
+  --accent-sand: #DDDCCF;           /* Pale Sand */
+  --accent-sand-subtle: rgba(221, 220, 207, 0.12);
 
-  --border-hairline: rgba(245, 240, 232, 0.09);
-  --border-strong: rgba(245, 240, 232, 0.2);
-  --border-accent: rgba(230, 107, 72, 0.45);
+  --border-hairline: rgba(230, 233, 221, 0.08);
+  --border-strong: rgba(230, 233, 221, 0.18);
+  --border-accent: rgba(184, 217, 178, 0.4);
 
-  --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.35);
-  --shadow-md: 0 10px 32px rgba(0, 0, 0, 0.5);
-  --shadow-lg: 0 24px 64px rgba(0, 0, 0, 0.65);
-  --shadow-accent: 0 14px 40px rgba(230, 107, 72, 0.28);
+  --shadow-sm: 0 2px 10px rgba(10, 20, 16, 0.35);
+  --shadow-md: 0 10px 28px rgba(10, 20, 16, 0.5);
+  --shadow-lg: 0 24px 56px rgba(10, 20, 16, 0.65);
+  --shadow-accent: 0 10px 32px rgba(184, 217, 178, 0.22);
 
-  --glass-bg: rgba(37, 37, 33, 0.82);
-  --glass-border: rgba(245, 240, 232, 0.09);
-  --nav-bg: rgba(23, 23, 21, 0.86);
+  --glass-bg: rgba(32, 45, 38, 0.85);
+  --glass-border: rgba(230, 233, 221, 0.08);
+  --nav-bg: rgba(21, 37, 31, 0.88);
 
-  --grid-line: rgba(245, 240, 232, 0.04);
-  --grain-opacity: 0.048;
+  --badge-bg: rgba(230, 233, 221, 0.065);
+  --badge-text: #E6E9DD;
 
-  --badge-bg: rgba(245, 240, 232, 0.065);
-  --badge-text: #F5F0E8;
-
-  --code-bg: #121210;
-  --code-border: rgba(245, 240, 232, 0.1);
-  --syntax-keyword: #F27B59;
-  --syntax-string: #A4B792;
-  --syntax-comment: #727168;
+  --code-bg: #121E19;
+  --code-border: rgba(230, 233, 221, 0.1);
+  --grain-opacity: 0.04;
 }

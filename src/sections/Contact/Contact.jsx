@@ -4,7 +4,6 @@ import { Mail, MapPin, Send, ArrowUp, FileText, CheckCircle2, AlertCircle, Copy,
 import { Github, Linkedin } from '../../components/Icons';
 import { profileData } from '../../data/profile';
 import { SectionHeader } from '../../components/SectionHeader/SectionHeader';
-import { MagneticButton } from '../../components/MagneticButton/MagneticButton';
 import { useSound } from '../../context/SoundContext';
 import confetti from 'canvas-confetti';
 
@@ -13,7 +12,7 @@ export const Contact = ({ onOpenResume }) => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    subject: 'Collaboration Opportunity',
+    subject: 'Project Discussion',
     message: ''
   });
   const [formStatus, setFormStatus] = useState('idle'); // 'idle' | 'submitting' | 'success' | 'error'
@@ -35,10 +34,9 @@ export const Contact = ({ onOpenResume }) => {
     e.preventDefault();
     playSound('click');
 
-    // Validation
     if (!formData.name.trim() || !formData.email.trim() || !formData.message.trim()) {
       setFormStatus('error');
-      setErrorMessage('Please fill in all required fields before transmitting.');
+      setErrorMessage('Please fill in all required fields.');
       return;
     }
 
@@ -50,39 +48,42 @@ export const Contact = ({ onOpenResume }) => {
 
     setFormStatus('submitting');
 
-    // Here we provide a transparent, robust transmission handler:
-    // If a Formspree ID is configured (VITE_FORMSPREE_ID or default), post to it.
-    // Otherwise, generate a direct mailto link so the user never loses their drafted transmission!
     try {
-      // Simulate network transmission delay for polish
-      await new Promise(res => setTimeout(res, 800));
-
-      // Construct mailto url as reliable protocol
-      const mailtoSubject = encodeURIComponent(`[Portfolio Inquiry] ${formData.subject} - from ${formData.name}`);
-      const mailtoBody = encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\nSubject: ${formData.subject}\n\nMessage:\n${formData.message}`);
-      const mailtoUrl = `mailto:${profileData.contact.email}?subject=${mailtoSubject}&body=${mailtoBody}`;
-
-      // Open mailto client in case user wants immediate email dispatch
-      window.open(mailtoUrl, '_blank');
+      // Check if Formspree endpoint is configured via environment variable
+      const formspreeId = import.meta.env.VITE_FORMSPREE_ID;
+      if (formspreeId) {
+        const res = await fetch(`https://formspree.io/f/${formspreeId}`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(formData)
+        });
+        if (!res.ok) throw new Error('Formspree dispatch failed');
+      } else {
+        // Transparent polished fallback: construct and open direct mailto protocol
+        await new Promise(res => setTimeout(res, 600));
+        const subjectEncoded = encodeURIComponent(`[Portfolio] ${formData.subject} - from ${formData.name}`);
+        const bodyEncoded = encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\nSubject: ${formData.subject}\n\nMessage:\n${formData.message}`);
+        window.open(`mailto:${profileData.contact.email}?subject=${subjectEncoded}&body=${bodyEncoded}`, '_blank');
+      }
 
       setFormStatus('success');
       playSound('success');
       confetti({
-        particleCount: 50,
+        particleCount: 65,
         spread: 60,
-        origin: { y: 0.8 },
-        colors: ['#E66B48', '#A4A58A', '#F5F0E8']
+        origin: { y: 0.75 },
+        colors: ['#B8D9B2', '#E98570', '#DDDCCF', '#F4F3EC']
       });
 
       setFormData({
         name: '',
         email: '',
-        subject: 'Collaboration Opportunity',
+        subject: 'Project Discussion',
         message: ''
       });
-    } catch (err) {
+    } catch {
       setFormStatus('error');
-      setErrorMessage('An unexpected error occurred. Please reach out directly via email.');
+      setErrorMessage('Failed to send. Please write directly to ' + profileData.contact.email);
     }
   };
 
@@ -92,64 +93,66 @@ export const Contact = ({ onOpenResume }) => {
   };
 
   return (
-    <section id="contact" className="section-wrapper" style={{ paddingBottom: '2rem' }}>
+    <section id="contact" className="section-wrapper" style={{ paddingBottom: '2.5rem' }}>
       <div className="site-container">
         <SectionHeader
-          number="09"
-          label="Direct Interface"
-          title="Have an idea? Let's build something meaningful."
-          subtitle="Open for Software Engineering internships, full-time AI/Full-Stack developer roles, research collaborations, and ambitious technical projects."
+          number="07"
+          label="Contact"
+          title="Have an idea?"
+          serifWord="Let's build something meaningful."
+          subtitle="Open for Software Engineering internships, full-time AI/Full-Stack roles, research collaborations, and ambitious technical projects."
         />
 
         <div
           style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
+            gridTemplateColumns: 'minmax(0, 1fr) minmax(0, 1.25fr)',
             gap: 'clamp(2rem, 5vw, 4rem)',
             alignItems: 'start',
-            marginBottom: 'clamp(4rem, 8vw, 6rem)'
+            marginBottom: 'clamp(3.5rem, 6vw, 5rem)'
           }}
+          className="contact-grid"
         >
-          {/* Left Column: Direct Communication Channels & Status Cards */}
+          {/* Left Column: Direct Communication Channels */}
           <div>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem', marginBottom: '2.5rem' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', marginBottom: '2rem' }}>
               {/* Email Card */}
               <div
                 className="card-editorial card-editorial-accent"
                 style={{
-                  padding: '1.5rem',
+                  padding: '1.35rem 1.5rem',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'space-between',
                   gap: '1rem'
                 }}
               >
-                <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.85rem' }}>
                   <div
                     style={{
-                      width: '44px',
-                      height: '44px',
+                      width: '40px',
+                      height: '40px',
                       borderRadius: 'var(--radius-md)',
-                      backgroundColor: 'var(--accent-primary-subtle)',
-                      color: 'var(--accent-primary)',
+                      backgroundColor: 'var(--accent-sage-subtle)',
+                      color: 'var(--accent-sage-dark)',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
                       flexShrink: 0
                     }}
                   >
-                    <Mail size={20} />
+                    <Mail size={18} />
                   </div>
                   <div>
                     <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.72rem', color: 'var(--text-muted)', textTransform: 'uppercase' }}>
-                      Primary Email Protocol
+                      Direct Email
                     </div>
                     <a
                       href={`mailto:${profileData.contact.email}`}
                       style={{
-                        fontFamily: 'var(--font-display)',
-                        fontWeight: 700,
-                        fontSize: '1rem',
+                        fontFamily: 'var(--font-sans)',
+                        fontWeight: 600,
+                        fontSize: '0.96rem',
                         color: 'var(--text-primary)'
                       }}
                     >
@@ -161,7 +164,7 @@ export const Contact = ({ onOpenResume }) => {
                 <button
                   onClick={handleCopyEmail}
                   className="badge-tech"
-                  style={{ padding: '0.4rem 0.75rem', fontSize: '0.75rem' }}
+                  style={{ padding: '0.35rem 0.7rem', fontSize: '0.74rem' }}
                   title="Copy email to clipboard"
                 >
                   {emailCopied ? <Check size={12} /> : <Copy size={12} />}
@@ -169,73 +172,73 @@ export const Contact = ({ onOpenResume }) => {
                 </button>
               </div>
 
-              {/* Location & Timezone Card */}
+              {/* Location Card */}
               <div
                 className="card-editorial"
                 style={{
-                  padding: '1.5rem',
+                  padding: '1.35rem 1.5rem',
                   display: 'flex',
                   alignItems: 'center',
-                  gap: '1rem'
+                  gap: '0.85rem'
                 }}
               >
                 <div
                   style={{
-                    width: '44px',
-                    height: '44px',
+                    width: '40px',
+                    height: '40px',
                     borderRadius: 'var(--radius-md)',
-                    backgroundColor: 'var(--accent-olive-subtle)',
-                    color: 'var(--accent-olive)',
+                    backgroundColor: 'var(--accent-coral-subtle)',
+                    color: 'var(--accent-coral)',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
                     flexShrink: 0
                   }}
                 >
-                  <MapPin size={20} />
+                  <MapPin size={18} />
                 </div>
                 <div>
                   <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.72rem', color: 'var(--text-muted)', textTransform: 'uppercase' }}>
-                    Physical Base & Timezone
+                    Location
                   </div>
-                  <div style={{ fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: '1rem', color: 'var(--text-primary)' }}>
-                    {profileData.location.city}, {profileData.location.state}, India ({profileData.location.utcOffset})
+                  <div style={{ fontFamily: 'var(--font-sans)', fontWeight: 600, fontSize: '0.96rem', color: 'var(--text-primary)' }}>
+                    {profileData.location.city}, {profileData.location.state}, India
                   </div>
                 </div>
               </div>
 
-              {/* Live Status Card */}
+              {/* Status Card */}
               <div
                 className="card-editorial"
                 style={{
-                  padding: '1.5rem',
+                  padding: '1.35rem 1.5rem',
                   display: 'flex',
                   alignItems: 'center',
-                  gap: '1rem'
+                  gap: '0.85rem'
                 }}
               >
-                <div style={{ padding: '0.5rem' }}>
+                <div style={{ padding: '0.4rem' }}>
                   <span className="pulse-dot" />
                 </div>
                 <div>
                   <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.72rem', color: 'var(--text-muted)', textTransform: 'uppercase' }}>
-                    Engineering Status
+                    Current Status
                   </div>
-                  <div style={{ fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: '0.95rem', color: 'var(--text-primary)' }}>
+                  <div style={{ fontFamily: 'var(--font-sans)', fontWeight: 600, fontSize: '0.92rem', color: 'var(--text-primary)' }}>
                     {profileData.availability.note}
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* Quick Link Buttons */}
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem' }}>
+            {/* Quick Action Links */}
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.65rem' }}>
               <a
                 href={profileData.contact.github}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-secondary"
-                style={{ fontSize: '0.85rem' }}
+                style={{ fontSize: '0.85rem', padding: '0.65rem 1.25rem' }}
                 onClick={() => playSound('click')}
               >
                 <Github size={15} />
@@ -247,7 +250,7 @@ export const Contact = ({ onOpenResume }) => {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-secondary"
-                style={{ fontSize: '0.85rem' }}
+                style={{ fontSize: '0.85rem', padding: '0.65rem 1.25rem' }}
                 onClick={() => playSound('click')}
               >
                 <Linkedin size={15} />
@@ -260,7 +263,7 @@ export const Contact = ({ onOpenResume }) => {
                   onOpenResume();
                 }}
                 className="btn-secondary"
-                style={{ fontSize: '0.85rem' }}
+                style={{ fontSize: '0.85rem', padding: '0.65rem 1.25rem' }}
               >
                 <FileText size={15} />
                 <span>Inspect Resume</span>
@@ -274,75 +277,76 @@ export const Contact = ({ onOpenResume }) => {
               onSubmit={handleSubmit}
               className="card-editorial card-editorial-accent"
               style={{
-                padding: 'clamp(1.75rem, 4vw, 2.75rem)',
+                padding: 'clamp(1.75rem, 4vw, 2.5rem)',
                 borderRadius: 'var(--radius-xl)'
               }}
             >
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.25rem' }}>
                 <span
                   style={{
                     fontFamily: 'var(--font-mono)',
-                    fontSize: '0.75rem',
-                    letterSpacing: '0.12em',
-                    color: 'var(--accent-primary)',
-                    textTransform: 'uppercase'
+                    fontSize: '0.74rem',
+                    letterSpacing: '0.08em',
+                    color: 'var(--accent-coral)',
+                    textTransform: 'uppercase',
+                    fontWeight: 500
                   }}
                 >
-                  // Send Transmission Payload
+                  // Send a Message
                 </span>
                 <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.72rem', color: 'var(--text-muted)' }}>
-                  Direct Dispatch
+                  Direct Transmission
                 </span>
               </div>
 
-              {/* Form Status Messages */}
+              {/* Status alerts */}
               {formStatus === 'success' && (
                 <div
                   style={{
-                    padding: '1rem',
-                    backgroundColor: 'rgba(34,197,94,0.1)',
-                    border: '1px solid rgba(34,197,94,0.3)',
+                    padding: '0.85rem 1rem',
+                    backgroundColor: 'var(--accent-sage-subtle)',
+                    border: '1px solid var(--accent-sage-border)',
                     borderRadius: 'var(--radius-md)',
-                    marginBottom: '1.5rem',
+                    marginBottom: '1.25rem',
                     display: 'flex',
                     alignItems: 'center',
-                    gap: '0.75rem',
-                    color: '#22c55e',
+                    gap: '0.65rem',
+                    color: 'var(--accent-sage-dark)',
                     fontSize: '0.88rem'
                   }}
                 >
-                  <CheckCircle2 size={18} style={{ flexShrink: 0 }} />
-                  <span>Your message transmission has been generated! Check your email client or send directly to {profileData.contact.email}.</span>
+                  <CheckCircle2 size={16} style={{ flexShrink: 0 }} />
+                  <span>Message dispatched successfully! I will get back to you shortly.</span>
                 </div>
               )}
 
               {formStatus === 'error' && (
                 <div
                   style={{
-                    padding: '1rem',
-                    backgroundColor: 'rgba(239,68,68,0.1)',
-                    border: '1px solid rgba(239,68,68,0.3)',
+                    padding: '0.85rem 1rem',
+                    backgroundColor: 'rgba(233,133,112,0.15)',
+                    border: '1px solid rgba(233,133,112,0.4)',
                     borderRadius: 'var(--radius-md)',
-                    marginBottom: '1.5rem',
+                    marginBottom: '1.25rem',
                     display: 'flex',
                     alignItems: 'center',
-                    gap: '0.75rem',
-                    color: '#ef4444',
+                    gap: '0.65rem',
+                    color: 'var(--accent-coral)',
                     fontSize: '0.88rem'
                   }}
                 >
-                  <AlertCircle size={18} style={{ flexShrink: 0 }} />
+                  <AlertCircle size={16} style={{ flexShrink: 0 }} />
                   <span>{errorMessage}</span>
                 </div>
               )}
 
-              {/* Name & Email */}
+              {/* Name & Email inputs */}
               <div
                 style={{
                   display: 'grid',
                   gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-                  gap: '1.25rem',
-                  marginBottom: '1.25rem'
+                  gap: '1rem',
+                  marginBottom: '1rem'
                 }}
               >
                 <div>
@@ -350,11 +354,9 @@ export const Contact = ({ onOpenResume }) => {
                     style={{
                       display: 'block',
                       fontFamily: 'var(--font-mono)',
-                      fontSize: '0.75rem',
+                      fontSize: '0.74rem',
                       color: 'var(--text-muted)',
-                      textTransform: 'uppercase',
-                      marginBottom: '0.4rem',
-                      letterSpacing: '0.05em'
+                      marginBottom: '0.35rem'
                     }}
                   >
                     Your Name *
@@ -364,18 +366,17 @@ export const Contact = ({ onOpenResume }) => {
                     name="name"
                     value={formData.name}
                     onChange={handleChange}
-                    placeholder="Ada Lovelace"
+                    placeholder="Jane Doe"
                     required
                     style={{
                       width: '100%',
-                      padding: '0.85rem 1rem',
+                      padding: '0.8rem 0.95rem',
                       borderRadius: 'var(--radius-md)',
                       backgroundColor: 'var(--bg-secondary)',
                       border: '1px solid var(--border-hairline)',
                       color: 'var(--text-primary)',
                       fontFamily: 'var(--font-sans)',
-                      fontSize: '0.92rem',
-                      transition: 'border-color var(--transition-fast)'
+                      fontSize: '0.92rem'
                     }}
                   />
                 </div>
@@ -385,11 +386,9 @@ export const Contact = ({ onOpenResume }) => {
                     style={{
                       display: 'block',
                       fontFamily: 'var(--font-mono)',
-                      fontSize: '0.75rem',
+                      fontSize: '0.74rem',
                       color: 'var(--text-muted)',
-                      textTransform: 'uppercase',
-                      marginBottom: '0.4rem',
-                      letterSpacing: '0.05em'
+                      marginBottom: '0.35rem'
                     }}
                   >
                     Your Email *
@@ -399,37 +398,34 @@ export const Contact = ({ onOpenResume }) => {
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
-                    placeholder="ada@domain.com"
+                    placeholder="jane@example.com"
                     required
                     style={{
                       width: '100%',
-                      padding: '0.85rem 1rem',
+                      padding: '0.8rem 0.95rem',
                       borderRadius: 'var(--radius-md)',
                       backgroundColor: 'var(--bg-secondary)',
                       border: '1px solid var(--border-hairline)',
                       color: 'var(--text-primary)',
                       fontFamily: 'var(--font-sans)',
-                      fontSize: '0.92rem',
-                      transition: 'border-color var(--transition-fast)'
+                      fontSize: '0.92rem'
                     }}
                   />
                 </div>
               </div>
 
               {/* Subject */}
-              <div style={{ marginBottom: '1.25rem' }}>
+              <div style={{ marginBottom: '1rem' }}>
                 <label
                   style={{
                     display: 'block',
                     fontFamily: 'var(--font-mono)',
-                    fontSize: '0.75rem',
+                    fontSize: '0.74rem',
                     color: 'var(--text-muted)',
-                    textTransform: 'uppercase',
-                    marginBottom: '0.4rem',
-                    letterSpacing: '0.05em'
+                    marginBottom: '0.35rem'
                   }}
                 >
-                  Transmission Subject
+                  Topic
                 </label>
                 <select
                   name="subject"
@@ -437,7 +433,7 @@ export const Contact = ({ onOpenResume }) => {
                   onChange={handleChange}
                   style={{
                     width: '100%',
-                    padding: '0.85rem 1rem',
+                    padding: '0.8rem 0.95rem',
                     borderRadius: 'var(--radius-md)',
                     backgroundColor: 'var(--bg-secondary)',
                     border: '1px solid var(--border-hairline)',
@@ -447,38 +443,36 @@ export const Contact = ({ onOpenResume }) => {
                     cursor: 'pointer'
                   }}
                 >
-                  <option value="Collaboration Opportunity">Software Engineering / Internship Opportunity</option>
-                  <option value="AI / Research Discussion">AI / Research Discussion</option>
-                  <option value="Hackathon / Project Inquiry">Hackathon / Project Inquiry</option>
-                  <option value="General Technical Exchange">General Technical Exchange</option>
+                  <option value="Project Discussion">Engineering / Internship Opportunity</option>
+                  <option value="AI / Research Collaboration">AI / Research Collaboration</option>
+                  <option value="Hackathon / Project">Hackathon / Technical Project</option>
+                  <option value="General Conversation">General Conversation</option>
                 </select>
               </div>
 
               {/* Message */}
-              <div style={{ marginBottom: '1.75rem' }}>
+              <div style={{ marginBottom: '1.5rem' }}>
                 <label
                   style={{
                     display: 'block',
                     fontFamily: 'var(--font-mono)',
-                    fontSize: '0.75rem',
+                    fontSize: '0.74rem',
                     color: 'var(--text-muted)',
-                    textTransform: 'uppercase',
-                    marginBottom: '0.4rem',
-                    letterSpacing: '0.05em'
+                    marginBottom: '0.35rem'
                   }}
                 >
-                  Message Payload *
+                  Message *
                 </label>
                 <textarea
                   name="message"
                   value={formData.message}
                   onChange={handleChange}
-                  placeholder="Share details regarding your team, problem space, or collaboration idea..."
-                  rows={5}
+                  placeholder="Share details regarding your idea, role, or question..."
+                  rows={4}
                   required
                   style={{
                     width: '100%',
-                    padding: '0.85rem 1rem',
+                    padding: '0.8rem 0.95rem',
                     borderRadius: 'var(--radius-md)',
                     backgroundColor: 'var(--bg-secondary)',
                     border: '1px solid var(--border-hairline)',
@@ -498,20 +492,20 @@ export const Contact = ({ onOpenResume }) => {
                 className="btn-primary"
                 style={{
                   width: '100%',
-                  padding: '1rem',
-                  fontSize: '0.95rem',
+                  padding: '0.9rem',
+                  fontSize: '0.94rem',
                   opacity: formStatus === 'submitting' ? 0.7 : 1
                 }}
               >
-                <Send size={16} />
-                <span>{formStatus === 'submitting' ? 'Preparing Transmission...' : 'Transmit Message'}</span>
+                <Send size={15} />
+                <span>{formStatus === 'submitting' ? 'Transmitting...' : 'Send Message'}</span>
               </button>
             </form>
           </div>
         </div>
 
         {/* Hairline Divider */}
-        <div className="hairline-divider" style={{ marginBottom: '2.5rem' }} />
+        <div className="hairline-divider" style={{ marginBottom: '2rem' }} />
 
         {/* Editorial Footer */}
         <footer
@@ -520,42 +514,57 @@ export const Contact = ({ onOpenResume }) => {
             justifyContent: 'space-between',
             alignItems: 'center',
             flexWrap: 'wrap',
-            gap: '1.5rem',
+            gap: '1.25rem',
             fontFamily: 'var(--font-mono)',
-            fontSize: '0.78rem',
+            fontSize: '0.76rem',
             color: 'var(--text-muted)'
           }}
         >
           <div>
-            <div style={{ fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: '0.95rem', color: 'var(--text-primary)', marginBottom: '0.2rem' }}>
-              JANHVI BANKAR
-            </div>
-            <div>
-              © 2024–2026. Handcrafted with React, Vite & Motion. All rights reserved.
-            </div>
+            <span
+              style={{
+                fontFamily: 'var(--font-serif)',
+                fontStyle: 'italic',
+                fontSize: '1.15rem',
+                color: 'var(--text-primary)',
+                display: 'block',
+                marginBottom: '0.15rem'
+              }}
+            >
+              Janhvi Bankar
+            </span>
+            <span>
+              © 2025–2026. Handcrafted with React & Vite. All rights reserved.
+            </span>
           </div>
 
           <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
-            <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', color: '#22c55e' }}>
+            <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.45rem', color: 'var(--accent-sage-dark)' }}>
               <span className="pulse-dot" />
-              <span>System: Online</span>
+              <span>Available for opportunities</span>
             </span>
 
-            <span>Latency: 12ms</span>
-
-            {/* Back to Top */}
+            {/* Back to top */}
             <button
               onClick={scrollToTop}
               className="badge-tech"
-              style={{ padding: '0.45rem 0.85rem', color: 'var(--text-primary)' }}
-              title="Return to summit"
+              style={{ padding: '0.4rem 0.8rem', color: 'var(--text-primary)' }}
+              title="Return to top"
             >
               <span>Back to Top</span>
-              <ArrowUp size={13} />
+              <ArrowUp size={12} />
             </button>
           </div>
         </footer>
       </div>
+
+      <style>{`
+        @media (max-width: 860px) {
+          .contact-grid {
+            grid-template-columns: 1fr !important;
+          }
+        }
+      `}</style>
     </section>
   );
 };

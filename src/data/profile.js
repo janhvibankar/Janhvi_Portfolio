@@ -3,9 +3,9 @@ export const profileData = {
   fullName: "Janhvi Pradip Bankar",
   initials: "JB",
   role: "Computer Science Engineer",
-  tagline: "Developer · AI/ML Enthusiast · Problem Solver",
-  headline: "I build digital experiences and intelligent solutions that turn ideas into meaningful products.",
-  aboutBrief: "Computer Science undergraduate specializing in high-performance automation, predictive distributed systems, and real-world Edge AI. Winner of Smart India Hackathon 2025.",
+  tagline: "Curious mind. Creative builder. Engineer at heart.",
+  headline: "I turn ideas into digital experiences and intelligent solutions.",
+  aboutBrief: "Computer Science undergraduate specializing in full-stack engineering, distributed systems, and real-world Edge AI. Winner of Smart India Hackathon 2025.",
   education: {
     institution: "Rajarambapu Institute of Technology (RIT)",
     degree: "B.Tech in Computer Science and Engineering",

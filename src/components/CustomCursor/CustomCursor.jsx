@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, useSpring } from 'framer-motion';
 
 export const CustomCursor = () => {
   const [mousePosition, setMousePosition] = useState({ x: -100, y: -100 });
@@ -7,8 +7,11 @@ export const CustomCursor = () => {
   const [cursorText, setCursorText] = useState('');
   const [isTouchDevice, setIsTouchDevice] = useState(true);
 
+  // Smooth spring physics for trailing effect
+  const springX = useSpring(-100, { damping: 28, stiffness: 350 });
+  const springY = useSpring(-100, { damping: 28, stiffness: 350 });
+
   useEffect(() => {
-    // Detect if device has fine pointer (mouse)
     const hasFinePointer = window.matchMedia('(pointer: fine)').matches;
     setIsTouchDevice(!hasFinePointer);
 
@@ -16,6 +19,8 @@ export const CustomCursor = () => {
 
     const handleMouseMove = (e) => {
       setMousePosition({ x: e.clientX, y: e.clientY });
+      springX.set(e.clientX);
+      springY.set(e.clientY);
     };
 
     const handleMouseOver = (e) => {
@@ -60,9 +65,11 @@ export const CustomCursor = () => {
       document.removeEventListener('mouseleave', handleMouseLeave);
       document.removeEventListener('mouseenter', handleMouseEnter);
     };
-  }, []);
+  }, [springX, springY]);
 
   if (isTouchDevice || cursorState === 'hidden') return null;
+
+  const isPill = cursorState === 'project' || cursorState === 'explore';
 
   return (
     <div
@@ -75,50 +82,50 @@ export const CustomCursor = () => {
         willChange: 'transform'
       }}
     >
-      {/* Center dot */}
+      {/* Center pinpoint */}
       <motion.div
         animate={{
-          x: mousePosition.x - (cursorState === 'default' ? 4 : 0),
-          y: mousePosition.y - (cursorState === 'default' ? 4 : 0),
-          scale: cursorState === 'pointer' ? 0 : (cursorState === 'project' || cursorState === 'explore' ? 0 : 1),
+          x: mousePosition.x - 3,
+          y: mousePosition.y - 3,
+          scale: cursorState === 'default' ? 1 : 0,
           opacity: cursorState === 'default' ? 1 : 0
         }}
-        transition={{ type: 'spring', damping: 30, stiffness: 400, mass: 0.1 }}
+        transition={{ duration: 0.1 }}
         style={{
-          width: 8,
-          height: 8,
+          width: 6,
+          height: 6,
           borderRadius: '50%',
-          backgroundColor: 'var(--accent-primary)',
+          backgroundColor: 'var(--accent-coral)',
           position: 'absolute'
         }}
       />
 
-      {/* Outer context ring / pill */}
+      {/* Trailing context ring / capsule */}
       <motion.div
         animate={{
-          x: mousePosition.x - (cursorState === 'project' || cursorState === 'explore' ? 60 : cursorState === 'pointer' ? 24 : 18),
-          y: mousePosition.y - (cursorState === 'project' || cursorState === 'explore' ? 20 : cursorState === 'pointer' ? 24 : 18),
-          width: cursorState === 'project' || cursorState === 'explore' ? 120 : cursorState === 'pointer' ? 48 : 36,
-          height: cursorState === 'project' || cursorState === 'explore' ? 40 : cursorState === 'pointer' ? 48 : 36,
-          borderRadius: cursorState === 'project' || cursorState === 'explore' ? 20 : 999,
-          backgroundColor: cursorState === 'project' || cursorState === 'explore' ? 'var(--accent-primary)' : 'transparent',
-          borderColor: cursorState === 'project' || cursorState === 'explore' ? 'transparent' : 'var(--accent-primary)',
-          borderWidth: cursorState === 'project' || cursorState === 'explore' ? 0 : 1.5,
+          x: mousePosition.x - (isPill ? 58 : cursorState === 'pointer' ? 22 : 16),
+          y: mousePosition.y - (isPill ? 18 : cursorState === 'pointer' ? 22 : 16),
+          width: isPill ? 116 : cursorState === 'pointer' ? 44 : 32,
+          height: isPill ? 36 : cursorState === 'pointer' ? 44 : 32,
+          borderRadius: isPill ? 18 : 999,
+          backgroundColor: isPill ? 'var(--accent-sage)' : 'transparent',
+          borderColor: isPill ? 'transparent' : 'var(--accent-sage)',
+          borderWidth: isPill ? 0 : 1.5,
           scale: cursorState === 'pointer' ? 1.15 : 1
         }}
-        transition={{ type: 'spring', damping: 25, stiffness: 250, mass: 0.15 }}
+        transition={{ type: 'spring', damping: 25, stiffness: 280, mass: 0.12 }}
         style={{
           borderStyle: 'solid',
           position: 'absolute',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          color: '#FFFFFF',
-          fontSize: '10px',
+          color: '#15251F',
+          fontSize: '9.5px',
           fontFamily: 'var(--font-mono)',
           fontWeight: 700,
           letterSpacing: '0.08em',
-          boxShadow: cursorState === 'project' || cursorState === 'explore' ? '0 8px 24px rgba(230,107,72,0.35)' : 'none'
+          boxShadow: isPill ? '0 8px 24px rgba(184, 217, 178, 0.4)' : 'none'
         }}
       >
         {cursorText && (
@@ -135,4 +142,3 @@ export const CustomCursor = () => {
     </div>
   );
 };
-

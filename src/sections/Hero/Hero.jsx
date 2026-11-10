@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
-import { ArrowDown, ArrowUpRight, Mail, Sparkles, Terminal } from 'lucide-react';
+import React, { useRef } from 'react';
+import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
+import { ArrowDown, ArrowUpRight, Mail, Sparkles } from 'lucide-react';
 import { Github, Linkedin } from '../../components/Icons';
 import { profileData } from '../../data/profile';
 import { MagneticButton } from '../../components/MagneticButton/MagneticButton';
@@ -8,25 +8,29 @@ import { useSound } from '../../context/SoundContext';
 
 export const Hero = ({ onOpenResume }) => {
   const { playSound } = useSound();
-  const [currentTime, setCurrentTime] = useState('');
+  const containerRef = useRef(null);
 
-  useEffect(() => {
-    const updateTime = () => {
-      const now = new Date();
-      const options = {
-        timeZone: 'Asia/Kolkata',
-        hour: '2-digit',
-        minute: '2-digit',
-        second: '2-digit',
-        hour12: false
-      };
-      setCurrentTime(new Intl.DateTimeFormat('en-GB', options).format(now));
-    };
+  // Subtle interactive parallax for generative sculpture
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+  const springX = useSpring(mouseX, { damping: 30, stiffness: 100 });
+  const springY = useSpring(mouseY, { damping: 30, stiffness: 100 });
+  const rotateX = useTransform(springY, [-250, 250], [8, -8]);
+  const rotateY = useTransform(springX, [-250, 250], [-8, 8]);
 
-    updateTime();
-    const interval = setInterval(updateTime, 1000);
-    return () => clearInterval(interval);
-  }, []);
+  const handleMouseMove = (e) => {
+    if (!containerRef.current) return;
+    const rect = containerRef.current.getBoundingClientRect();
+    const centerX = rect.left + rect.width / 2;
+    const centerY = rect.top + rect.height / 2;
+    mouseX.set(e.clientX - centerX);
+    mouseY.set(e.clientY - centerY);
+  };
+
+  const handleMouseLeave = () => {
+    mouseX.set(0);
+    mouseY.set(0);
+  };
 
   const scrollToSection = (id) => {
     playSound('click');
@@ -37,179 +41,162 @@ export const Hero = ({ onOpenResume }) => {
   return (
     <section
       id="hero"
+      ref={containerRef}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
       className="section-wrapper"
       style={{
-        minHeight: '100vh',
+        minHeight: '92vh',
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
-        paddingTop: 'clamp(7rem, 12vw, 10rem)',
+        paddingTop: 'clamp(6.5rem, 10vw, 8.5rem)',
+        paddingBottom: 'clamp(3rem, 5vw, 4.5rem)',
         position: 'relative'
       }}
     >
       <div className="site-container">
-        {/* Top Status & Telemetry Row */}
+        {/* Subtle status row */}
         <motion.div
-          initial={{ opacity: 0, y: 15 }}
+          initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.5 }}
           style={{
             display: 'flex',
-            justifyContent: 'space-between',
             alignItems: 'center',
+            justifyContent: 'space-between',
             flexWrap: 'wrap',
             gap: '1rem',
-            marginBottom: 'clamp(2rem, 4vw, 3.5rem)',
-            borderBottom: '1px solid var(--border-hairline)',
-            paddingBottom: '1.25rem'
+            marginBottom: 'clamp(2rem, 3.5vw, 3rem)'
           }}
         >
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', flexWrap: 'wrap' }}>
-            {/* Live Availability Badge */}
             <div className="status-indicator">
               <span className="pulse-dot" />
-              <span style={{ color: 'var(--text-primary)', fontWeight: 600 }}>
+              <span style={{ color: 'var(--text-primary)', fontWeight: 500 }}>
                 {profileData.availability.status}
               </span>
             </div>
 
-            <span className="badge-tech badge-accent">
+            <span className="badge-tech badge-sage">
               <Sparkles size={12} />
               SIH '25 Winner
             </span>
-
-            <span className="badge-tech" style={{ display: 'none' }} id="cpi-badge">
-              CPI: {profileData.education.cpi}
-            </span>
           </div>
 
-          {/* Timezone & Location telemetry */}
-          <div
+          <span
             style={{
               fontFamily: 'var(--font-mono)',
-              fontSize: '0.78rem',
-              color: 'var(--text-muted)',
-              display: 'flex',
-              alignItems: 'center',
-              gap: '1rem'
+              fontSize: '0.74rem',
+              color: 'var(--text-muted)'
             }}
           >
-            <span>{profileData.location.city}, IN [{currentTime || '14:30:00'} IST]</span>
-            <span style={{ color: 'var(--accent-primary)' }}>// LAT 17.4°N</span>
-          </div>
+            Sangola, Maharashtra, India
+          </span>
         </motion.div>
 
         {/* Hero Asymmetric Composition */}
         <div
           style={{
             display: 'grid',
-            gridTemplateColumns: '1fr',
-            gap: 'clamp(2rem, 5vw, 4rem)',
-            alignItems: 'start'
+            gridTemplateColumns: 'minmax(0, 1.3fr) minmax(0, 1fr)',
+            gap: 'clamp(2rem, 5vw, 4.5rem)',
+            alignItems: 'center',
+            marginBottom: 'clamp(2.5rem, 5vw, 4rem)'
           }}
-          className="hero-grid"
+          className="hero-main-grid"
         >
-          {/* Main Title & Editorial Headline */}
+          {/* Left Column: Typographic Lockup */}
           <div>
             <motion.div
-              initial={{ opacity: 0, x: -20 }}
+              initial={{ opacity: 0, x: -15 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
               style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '0.5rem',
                 fontFamily: 'var(--font-mono)',
-                fontSize: '0.85rem',
-                letterSpacing: '0.12em',
-                textTransform: 'uppercase',
-                color: 'var(--accent-primary)',
-                marginBottom: '1rem'
+                fontSize: '0.8rem',
+                letterSpacing: '0.06em',
+                color: 'var(--accent-coral)',
+                marginBottom: '0.85rem',
+                fontWeight: 500
               }}
             >
-              <Terminal size={14} />
-              <span>{profileData.role}</span>
+              Computer Science Engineer · Full-Stack & AI/ML
             </motion.div>
 
-            <motion.h1
-              initial={{ opacity: 0, y: 30 }}
+            {/* Editorial Name Treatment: Sans + Italic Serif interplay */}
+            <motion.div
+              initial={{ opacity: 0, y: 25 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.2 }}
-              style={{
-                fontFamily: 'var(--font-display)',
-                fontSize: 'clamp(3rem, 8.5vw, 6.75rem)',
-                fontWeight: 700,
-                lineHeight: 0.95,
-                letterSpacing: '-0.04em',
-                color: 'var(--text-primary)',
-                textTransform: 'uppercase',
-                marginBottom: '1.5rem'
-              }}
+              transition={{ duration: 0.65, delay: 0.2 }}
+              style={{ marginBottom: '1.25rem' }}
             >
-              JANHVI<br />
-              <span
+              <h1
                 style={{
-                  color: 'transparent',
-                  WebkitTextStroke: '2px var(--accent-primary)',
-                  letterSpacing: '-0.03em'
+                  fontSize: 'clamp(2.75rem, 7.5vw, 5.75rem)',
+                  lineHeight: 1.02,
+                  letterSpacing: '-0.035em',
+                  color: 'var(--text-primary)',
+                  margin: 0
                 }}
               >
-                BANKAR
-              </span>
-            </motion.h1>
+                <span style={{ fontFamily: 'var(--font-sans)', fontWeight: 800, display: 'block' }}>
+                  Janhvi
+                </span>
+                <span
+                  style={{
+                    fontFamily: 'var(--font-serif)',
+                    fontStyle: 'italic',
+                    fontWeight: 400,
+                    color: 'var(--text-primary)',
+                    display: 'block',
+                    marginTop: '-0.08em'
+                  }}
+                >
+                  Bankar
+                </span>
+              </h1>
+            </motion.div>
 
+            {/* Concise Human Introduction */}
             <motion.p
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              style={{
-                fontFamily: 'var(--font-display)',
-                fontSize: 'clamp(1.15rem, 2vw, 1.5rem)',
-                color: 'var(--accent-primary)',
-                fontWeight: 600,
-                letterSpacing: '-0.01em',
-                marginBottom: '1.25rem'
-              }}
-            >
-              {profileData.tagline}
-            </motion.p>
-
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
+              transition={{ duration: 0.55, delay: 0.35 }}
               style={{
                 fontFamily: 'var(--font-sans)',
                 fontSize: 'clamp(1.05rem, 1.4vw, 1.25rem)',
                 color: 'var(--text-secondary)',
                 lineHeight: 1.6,
-                maxWidth: '680px',
-                marginBottom: '2.5rem'
+                maxWidth: '580px',
+                marginBottom: '2.25rem'
               }}
             >
-              "{profileData.headline}"
+              "I turn ideas into digital experiences and intelligent solutions."
+              <span style={{ display: 'block', marginTop: '0.4rem', fontSize: '0.98rem', color: 'var(--text-muted)' }}>
+                Blending distributed systems engineering, computer vision, and thoughtful interface craft.
+              </span>
             </motion.p>
 
             {/* CTAs */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.5 }}
+              transition={{ duration: 0.55, delay: 0.45 }}
               style={{
                 display: 'flex',
                 alignItems: 'center',
                 flexWrap: 'wrap',
-                gap: '1rem',
-                marginBottom: '3rem'
+                gap: '0.85rem',
+                marginBottom: '2.25rem'
               }}
             >
               <MagneticButton
                 onClick={() => scrollToSection('projects')}
                 className="btn-primary"
-                style={{ padding: '0.95rem 2rem', fontSize: '1rem' }}
               >
-                <span>Explore My Work</span>
-                <ArrowDown size={17} />
+                <span>Explore Projects</span>
+                <ArrowDown size={16} />
               </MagneticButton>
 
               <MagneticButton
@@ -218,46 +205,33 @@ export const Hero = ({ onOpenResume }) => {
                   onOpenResume();
                 }}
                 className="btn-secondary"
-                style={{ padding: '0.95rem 1.85rem', fontSize: '1rem' }}
               >
                 <span>Download Resume</span>
-                <ArrowUpRight size={17} />
+                <ArrowUpRight size={16} />
               </MagneticButton>
 
               <MagneticButton
                 onClick={() => scrollToSection('contact')}
                 className="btn-ghost"
-                style={{ padding: '0.95rem 1.5rem', fontSize: '1rem' }}
               >
-                <span>Let's Connect</span>
+                <span>Contact Me</span>
               </MagneticButton>
             </motion.div>
 
-            {/* Social Links Row */}
+            {/* Clean Social Links */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ duration: 0.6, delay: 0.6 }}
+              transition={{ duration: 0.55, delay: 0.55 }}
               style={{
                 display: 'flex',
                 alignItems: 'center',
                 gap: '1.25rem',
                 borderTop: '1px solid var(--border-hairline)',
-                paddingTop: '1.5rem'
+                paddingTop: '1.25rem',
+                flexWrap: 'wrap'
               }}
             >
-              <span
-                style={{
-                  fontFamily: 'var(--font-mono)',
-                  fontSize: '0.75rem',
-                  textTransform: 'uppercase',
-                  letterSpacing: '0.1em',
-                  color: 'var(--text-muted)'
-                }}
-              >
-                Networks:
-              </span>
-
               <a
                 href={profileData.contact.github}
                 target="_blank"
@@ -266,14 +240,14 @@ export const Hero = ({ onOpenResume }) => {
                 style={{
                   display: 'flex',
                   alignItems: 'center',
-                  gap: '0.35rem',
-                  fontSize: '0.88rem',
+                  gap: '0.4rem',
+                  fontSize: '0.86rem',
                   color: 'var(--text-primary)',
                   fontWeight: 500,
                   transition: 'color var(--transition-fast)'
                 }}
               >
-                <Github size={16} />
+                <Github size={15} />
                 <span>GitHub</span>
               </a>
 
@@ -285,14 +259,14 @@ export const Hero = ({ onOpenResume }) => {
                 style={{
                   display: 'flex',
                   alignItems: 'center',
-                  gap: '0.35rem',
-                  fontSize: '0.88rem',
+                  gap: '0.4rem',
+                  fontSize: '0.86rem',
                   color: 'var(--text-primary)',
                   fontWeight: 500,
                   transition: 'color var(--transition-fast)'
                 }}
               >
-                <Linkedin size={16} />
+                <Linkedin size={15} />
                 <span>LinkedIn</span>
               </a>
 
@@ -302,68 +276,196 @@ export const Hero = ({ onOpenResume }) => {
                 style={{
                   display: 'flex',
                   alignItems: 'center',
-                  gap: '0.35rem',
-                  fontSize: '0.88rem',
+                  gap: '0.4rem',
+                  fontSize: '0.86rem',
                   color: 'var(--text-primary)',
                   fontWeight: 500,
                   transition: 'color var(--transition-fast)'
                 }}
               >
-                <Mail size={16} />
+                <Mail size={15} />
                 <span>{profileData.contact.email}</span>
               </a>
             </motion.div>
           </div>
-        </div>
 
-        {/* Scroll Indicator */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.8, duration: 0.8 }}
-          onClick={() => scrollToSection('about')}
-          style={{
-            marginTop: 'clamp(3rem, 6vw, 5rem)',
-            display: 'inline-flex',
-            alignItems: 'center',
-            gap: '0.75rem',
-            cursor: 'pointer',
-            color: 'var(--text-muted)',
-            fontFamily: 'var(--font-mono)',
-            fontSize: '0.72rem',
-            letterSpacing: '0.12em',
-            textTransform: 'uppercase'
-          }}
-        >
-          <div
+          {/* Right Column: Organic Geometric Sculpture */}
+          <motion.div
             style={{
-              width: '24px',
-              height: '38px',
-              borderRadius: '12px',
-              border: '1.5px solid var(--border-strong)',
+              rotateX,
+              rotateY,
+              transformStyle: 'preserve-3d',
               display: 'flex',
               justifyContent: 'center',
-              paddingTop: '6px'
+              alignItems: 'center'
             }}
+            initial={{ opacity: 0, scale: 0.92 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.7, delay: 0.3 }}
+            className="hero-visual-col"
           >
-            <motion.div
-              animate={{ y: [0, 10, 0] }}
-              transition={{ repeat: Infinity, duration: 1.8, ease: 'easeInOut' }}
+            <div
               style={{
-                width: '4px',
-                height: '8px',
-                borderRadius: '2px',
-                backgroundColor: 'var(--accent-primary)'
+                width: '100%',
+                maxWidth: '420px',
+                aspectRatio: '1 / 1',
+                borderRadius: 'var(--radius-xl)',
+                backgroundColor: 'var(--bg-card)',
+                border: '1px solid var(--border-hairline)',
+                boxShadow: 'var(--shadow-md)',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'space-between',
+                padding: 'clamp(1.75rem, 4vw, 2.5rem)',
+                position: 'relative',
+                overflow: 'hidden'
               }}
-            />
-          </div>
-          <span>Scroll to Explore Narrative</span>
-        </motion.div>
+            >
+              {/* Organic geometric background shapes */}
+              <div
+                style={{
+                  position: 'absolute',
+                  top: '-20%',
+                  right: '-15%',
+                  width: '260px',
+                  height: '260px',
+                  borderRadius: '50%',
+                  backgroundColor: 'var(--accent-sage-subtle)',
+                  filter: 'blur(40px)',
+                  pointerEvents: 'none'
+                }}
+              />
+              <div
+                style={{
+                  position: 'absolute',
+                  bottom: '-15%',
+                  left: '-10%',
+                  width: '220px',
+                  height: '220px',
+                  borderRadius: '50%',
+                  backgroundColor: 'var(--accent-coral-subtle)',
+                  filter: 'blur(40px)',
+                  pointerEvents: 'none'
+                }}
+              />
+
+              {/* Card top row */}
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', position: 'relative', zIndex: 1 }}>
+                <span
+                  style={{
+                    fontFamily: 'var(--font-mono)',
+                    fontSize: '0.72rem',
+                    color: 'var(--text-muted)',
+                    letterSpacing: '0.04em'
+                  }}
+                >
+                  DIGITAL IDENTITY
+                </span>
+                <span
+                  style={{
+                    fontFamily: 'var(--font-mono)',
+                    fontSize: '0.72rem',
+                    color: 'var(--accent-coral)',
+                    fontWeight: 500
+                  }}
+                >
+                  B.TECH CSE · 8.37
+                </span>
+              </div>
+
+              {/* Center Medallion: Monogram in Instrument Serif */}
+              <div
+                style={{
+                  position: 'relative',
+                  zIndex: 1,
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  margin: 'auto 0'
+                }}
+              >
+                <div
+                  style={{
+                    width: '100px',
+                    height: '100px',
+                    borderRadius: '50%',
+                    border: '1.5px solid var(--border-strong)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    backgroundColor: 'var(--bg-primary)',
+                    boxShadow: 'var(--shadow-sm)',
+                    marginBottom: '1rem'
+                  }}
+                >
+                  <span
+                    style={{
+                      fontFamily: 'var(--font-serif)',
+                      fontStyle: 'italic',
+                      fontSize: '3rem',
+                      color: 'var(--text-primary)',
+                      lineHeight: 1
+                    }}
+                  >
+                    JB
+                  </span>
+                </div>
+
+                <div
+                  style={{
+                    fontFamily: 'var(--font-sans)',
+                    fontSize: '1rem',
+                    fontWeight: 600,
+                    color: 'var(--text-primary)',
+                    letterSpacing: '-0.01em'
+                  }}
+                >
+                  Janhvi Bankar
+                </div>
+                <div
+                  style={{
+                    fontFamily: 'var(--font-mono)',
+                    fontSize: '0.75rem',
+                    color: 'var(--text-muted)',
+                    marginTop: '0.2rem'
+                  }}
+                >
+                  Rajarambapu Institute of Technology
+                </div>
+              </div>
+
+              {/* Card Bottom: Core focus tags */}
+              <div
+                style={{
+                  position: 'relative',
+                  zIndex: 1,
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  alignItems: 'center',
+                  borderTop: '1px solid var(--border-hairline)',
+                  paddingTop: '1rem',
+                  fontFamily: 'var(--font-mono)',
+                  fontSize: '0.72rem',
+                  color: 'var(--text-muted)'
+                }}
+              >
+                <span>Focus: Full-Stack & AI</span>
+                <span style={{ color: 'var(--accent-sage-dark)', fontWeight: 600 }}>SIH '25 Champion</span>
+              </div>
+            </div>
+          </motion.div>
+        </div>
       </div>
 
       <style>{`
-        @media (min-width: 640px) {
-          #cpi-badge { display: inline-flex !important; }
+        @media (max-width: 900px) {
+          .hero-main-grid {
+            grid-template-columns: 1fr !important;
+          }
+          .hero-visual-col {
+            margin-top: 1rem;
+          }
         }
       `}</style>
     </section>

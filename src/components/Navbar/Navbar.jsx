@@ -131,7 +131,7 @@ export const Navbar = ({ onOpenResume }) => {
               JB
             </span>
             <span className="nav-title-desktop" style={{ display: 'none', fontWeight: 600 }}>
-              Janhvi Bankar
+              Janhvi Pradip Bankar
             </span>
           </a>
 

@@ -13,10 +13,10 @@ export const Achievements = ({ onSelectProjectById }) => {
   const handleCelebrate = () => {
     playSound('success');
     confetti({
-      particleCount: 100,
-      spread: 70,
+      particleCount: 110,
+      spread: 75,
       origin: { y: 0.6 },
-      colors: ['#D9F36A', '#6258E8', '#FF785E', '#F7F3EA'],
+      colors: ['#818CF8', '#FF6B6B', '#D9F36A', '#0A1128', '#FAF8F5'],
     });
   };
 
@@ -28,10 +28,10 @@ export const Achievements = ({ onSelectProjectById }) => {
       <div className="site-container">
         <SectionHeader
           number="04"
-          label="Honors"
-          title="Competitive Milestones"
-          serifWord="& Recognition"
-          subtitle="National hackathon championships, distributed systems research, and consistent academic distinction."
+          label="Achievements & Leadership"
+          title="National Honors"
+          serifWord="& Leadership"
+          subtitle="Winner of Smart India Hackathon 2025, technical club leadership, and verified academic merit."
         />
 
         {/* SIH 2025 Hero Achievement */}

@@ -47,17 +47,17 @@ export const Preloader = ({ onComplete }) => {
                 color: 'var(--text-muted)'
               }}
             >
-              ELECTRIC ATELIER // V3
+              PORTFOLIO // 2025–2026
             </span>
             <span
               style={{
                 fontFamily: 'var(--font-mono)',
                 fontSize: '0.72rem',
                 letterSpacing: '0.08em',
-                color: 'var(--accent-lime)'
+                color: 'var(--accent-coral)'
               }}
             >
-              2025–2026
+              SIH '25 WINNER
             </span>
           </div>
 
@@ -72,13 +72,13 @@ export const Preloader = ({ onComplete }) => {
               <span
                 style={{
                   fontFamily: 'var(--font-serif)',
-                  fontSize: 'clamp(3.5rem, 8vw, 6rem)',
+                  fontSize: 'clamp(3rem, 7.5vw, 5.5rem)',
                   fontStyle: 'italic',
                   color: 'var(--text-primary)',
                   lineHeight: 1
                 }}
               >
-                Janhvi Bankar
+                Janhvi Pradip Bankar
               </span>
             </motion.div>
 
@@ -87,14 +87,14 @@ export const Preloader = ({ onComplete }) => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.15, duration: 0.3 }}
               style={{
-                fontFamily: 'var(--font-sans)',
-                fontSize: '0.88rem',
+                fontFamily: 'var(--font-mono)',
+                fontSize: '0.84rem',
                 fontWeight: 600,
-                color: 'var(--accent-cobalt)',
-                letterSpacing: '0.02em'
+                color: 'var(--accent-lavender)',
+                letterSpacing: '0.04em'
               }}
             >
-              Computer Science Engineer · Creative Developer
+              Software Developer · Full-Stack & Applied AI/ML
             </motion.p>
           </div>
 

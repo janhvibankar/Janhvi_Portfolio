@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Download, Printer, ExternalLink, Mail, MapPin, Award, CheckCircle2 } from 'lucide-react';
-import { Github } from '../Icons';
+import { X, Download, Printer, ExternalLink, Mail, MapPin, Award, CheckCircle2, Phone } from 'lucide-react';
+import { Github, Linkedin } from '../Icons';
 import { profileData } from '../../data/profile';
 import { useSound } from '../../context/SoundContext';
 
@@ -61,10 +61,10 @@ export const ResumeModal = ({ isOpen, onClose }) => {
           onClick={(e) => e.stopPropagation()}
           style={{
             backgroundColor: 'var(--bg-card)',
-            border: '1px solid var(--border-hairline)',
+            border: '1.5px solid var(--border-strong)',
             borderRadius: 'var(--radius-xl)',
             width: '100%',
-            maxWidth: '800px',
+            maxWidth: '820px',
             maxHeight: '92vh',
             overflowY: 'auto',
             boxShadow: 'var(--shadow-lg)',
@@ -85,9 +85,9 @@ export const ResumeModal = ({ isOpen, onClose }) => {
             }}
           >
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-              <span className="badge-tech badge-cobalt">Curriculum Vitae</span>
+              <span className="badge-tech badge-lavender">Curriculum Vitae</span>
               <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.74rem', color: 'var(--text-muted)' }}>
-                2025–2026
+                Official Resume
               </span>
             </div>
 
@@ -143,13 +143,13 @@ export const ResumeModal = ({ isOpen, onClose }) => {
             <div style={{ marginBottom: '1.5rem' }}>
               <h1
                 style={{
-                  fontFamily: 'var(--font-serif)',
-                  fontStyle: 'italic',
-                  fontSize: '2.5rem',
+                  fontFamily: 'var(--font-sans)',
+                  fontWeight: 800,
+                  fontSize: '2.25rem',
                   color: 'var(--text-primary)',
-                  letterSpacing: '-0.02em',
+                  letterSpacing: '-0.025em',
                   marginBottom: '0.2rem',
-                  lineHeight: 1.1
+                  lineHeight: 1.15
                 }}
               >
                 {profileData.fullName}
@@ -160,10 +160,10 @@ export const ResumeModal = ({ isOpen, onClose }) => {
                   fontSize: '0.86rem',
                   color: 'var(--accent-coral)',
                   marginBottom: '0.65rem',
-                  fontWeight: 500
+                  fontWeight: 600
                 }}
               >
-                Computer Science Engineer · Full-Stack & AI/ML
+                Software Developer · Full-Stack & Applied AI/ML
               </p>
 
               <div
@@ -177,21 +177,29 @@ export const ResumeModal = ({ isOpen, onClose }) => {
                 }}
               >
                 <span style={{ display: 'flex', alignItems: 'center', gap: '0.35rem' }}>
-                  <Mail size={13} style={{ color: 'var(--accent-cobalt)' }} />
+                  <Mail size={13} style={{ color: 'var(--accent-lavender)' }} />
                   {profileData.contact.email}
                 </span>
                 <span style={{ display: 'flex', alignItems: 'center', gap: '0.35rem' }}>
-                  <MapPin size={13} style={{ color: 'var(--accent-cobalt)' }} />
+                  <Phone size={13} style={{ color: 'var(--accent-lavender)' }} />
+                  {profileData.contact.phone}
+                </span>
+                <span style={{ display: 'flex', alignItems: 'center', gap: '0.35rem' }}>
+                  <MapPin size={13} style={{ color: 'var(--accent-lavender)' }} />
                   {profileData.location.city}, {profileData.location.state}, India
                 </span>
                 <span style={{ display: 'flex', alignItems: 'center', gap: '0.35rem' }}>
-                  <Github size={13} style={{ color: 'var(--accent-cobalt)' }} />
+                  <Github size={13} style={{ color: 'var(--accent-lavender)' }} />
                   github.com/janhvibankar
+                </span>
+                <span style={{ display: 'flex', alignItems: 'center', gap: '0.35rem' }}>
+                  <Linkedin size={13} style={{ color: 'var(--accent-lavender)' }} />
+                  linkedin.com/in/janhvi-bankar
                 </span>
               </div>
             </div>
 
-            {/* Profile Summary */}
+            {/* Professional Summary */}
             <div style={{ marginBottom: '1.5rem' }}>
               <h2
                 style={{
@@ -202,13 +210,14 @@ export const ResumeModal = ({ isOpen, onClose }) => {
                   color: 'var(--accent-coral)',
                   marginBottom: '0.45rem',
                   borderBottom: '1px solid var(--border-hairline)',
-                  paddingBottom: '0.2rem'
+                  paddingBottom: '0.2rem',
+                  fontWeight: 700
                 }}
               >
-                Summary
+                Professional Summary
               </h2>
-              <p style={{ fontSize: '0.92rem', lineHeight: 1.6, color: 'var(--text-secondary)' }}>
-                Computer Science undergraduate with an 8.37 CPI and 1st-place victory in Smart India Hackathon 2025. Proven experience developing scalable full-stack applications with React, Node.js, and FastAPI, combined with applied AI/ML architectures in computer vision (PyTorch, YOLOv8) and retrieval-augmented systems. Passionate about solving real-world problems with clean, resilient code.
+              <p style={{ fontSize: '0.9rem', lineHeight: 1.6, color: 'var(--text-secondary)' }}>
+                Computer Science undergraduate with experience in AI-based monitoring systems, backend development, and real-time data processing. Skilled in Java, MERN stack, Flutter, computer vision, and predictive analytics.
               </p>
             </div>
 
@@ -223,32 +232,45 @@ export const ResumeModal = ({ isOpen, onClose }) => {
                   color: 'var(--accent-coral)',
                   marginBottom: '0.65rem',
                   borderBottom: '1px solid var(--border-hairline)',
-                  paddingBottom: '0.2rem'
+                  paddingBottom: '0.2rem',
+                  fontWeight: 700
                 }}
               >
                 Education
               </h2>
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', flexWrap: 'wrap' }}>
-                <div>
-                  <div style={{ fontFamily: 'var(--font-sans)', fontWeight: 700, color: 'var(--text-primary)', fontSize: '0.96rem' }}>
-                    {profileData.education.institution}
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', flexWrap: 'wrap' }}>
+                  <div>
+                    <div style={{ fontFamily: 'var(--font-sans)', fontWeight: 700, color: 'var(--text-primary)', fontSize: '0.94rem' }}>
+                      B.Tech (CSE) — Rajarambapu Institute of Technology, Islampur, Maharashtra
+                    </div>
                   </div>
-                  <div style={{ fontSize: '0.86rem', color: 'var(--text-secondary)' }}>
-                    {profileData.education.degree}
+                  <div style={{ fontFamily: 'var(--font-mono)', fontWeight: 600, color: 'var(--accent-lavender)', fontSize: '0.88rem' }}>
+                    CPI: 8.34 — 2027
                   </div>
                 </div>
-                <div style={{ textAlign: 'right' }}>
-                  <div style={{ fontFamily: 'var(--font-mono)', fontWeight: 600, color: 'var(--accent-cobalt)', fontSize: '0.92rem' }}>
-                    CPI: {profileData.education.cpi} / 10.0
+
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', flexWrap: 'wrap' }}>
+                  <div style={{ fontSize: '0.88rem', color: 'var(--text-secondary)' }}>
+                    HSC — New English School Jr. College, Sangola, Maharashtra
                   </div>
-                  <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.74rem', color: 'var(--text-muted)' }}>
-                    Expected 2026
+                  <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.82rem', color: 'var(--text-muted)' }}>
+                    81.83% — 2023
+                  </div>
+                </div>
+
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', flexWrap: 'wrap' }}>
+                  <div style={{ fontSize: '0.88rem', color: 'var(--text-secondary)' }}>
+                    SSC — New English School, Sangola, Maharashtra
+                  </div>
+                  <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.82rem', color: 'var(--text-muted)' }}>
+                    97.20% — 2021
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* Honors */}
+            {/* Technical Skills */}
             <div style={{ marginBottom: '1.5rem' }}>
               <h2
                 style={{
@@ -259,69 +281,152 @@ export const ResumeModal = ({ isOpen, onClose }) => {
                   color: 'var(--accent-coral)',
                   marginBottom: '0.65rem',
                   borderBottom: '1px solid var(--border-hairline)',
-                  paddingBottom: '0.2rem'
+                  paddingBottom: '0.2rem',
+                  fontWeight: 700
                 }}
               >
-                Key Honors
-              </h2>
-              <div style={{ display: 'flex', gap: '0.65rem', marginBottom: '0.45rem' }}>
-                <Award size={16} style={{ color: 'var(--accent-cobalt)', flexShrink: 0, marginTop: '2px' }} />
-                <div>
-                  <div style={{ fontFamily: 'var(--font-sans)', fontWeight: 700, color: 'var(--text-primary)', fontSize: '0.92rem' }}>
-                    Smart India Hackathon 2025 — Grand Winner (1st Place)
-                  </div>
-                  <div style={{ fontSize: '0.84rem', color: 'var(--text-secondary)' }}>
-                    Ministry of Education & Innovation Cell, Govt. of India. Team Lead for the AI Grid Failure Early Warning System.
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Technical Proficiencies */}
-            <div style={{ marginBottom: '1.5rem' }}>
-              <h2
-                style={{
-                  fontFamily: 'var(--font-mono)',
-                  fontSize: '0.74rem',
-                  letterSpacing: '0.08em',
-                  textTransform: 'uppercase',
-                  color: 'var(--accent-coral)',
-                  marginBottom: '0.65rem',
-                  borderBottom: '1px solid var(--border-hairline)',
-                  paddingBottom: '0.2rem'
-                }}
-              >
-                Technical Proficiencies
+                Technical Skills
               </h2>
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(210px, 1fr))', gap: '0.65rem', fontSize: '0.84rem' }}>
                 <div>
-                  <strong style={{ color: 'var(--text-primary)', display: 'block', marginBottom: '0.15rem' }}>Languages:</strong>
-                  <span style={{ color: 'var(--text-secondary)' }}>Python, Java, JavaScript (ES6+), TypeScript, C/C++, SQL</span>
+                  <strong style={{ color: 'var(--text-primary)', display: 'block', marginBottom: '0.15rem' }}>Programming:</strong>
+                  <span style={{ color: 'var(--text-secondary)' }}>C, Java, JavaScript</span>
                 </div>
                 <div>
-                  <strong style={{ color: 'var(--text-primary)', display: 'block', marginBottom: '0.15rem' }}>Frontend:</strong>
-                  <span style={{ color: 'var(--text-secondary)' }}>React, Flutter, HTML5, CSS3, Tailwind CSS, Motion</span>
+                  <strong style={{ color: 'var(--text-primary)', display: 'block', marginBottom: '0.15rem' }}>Frameworks:</strong>
+                  <span style={{ color: 'var(--text-secondary)' }}>Flutter, React.js, Node.js</span>
                 </div>
                 <div>
-                  <strong style={{ color: 'var(--text-primary)', display: 'block', marginBottom: '0.15rem' }}>Backend:</strong>
-                  <span style={{ color: 'var(--text-secondary)' }}>Node.js, Express.js, FastAPI, REST APIs, WebSockets</span>
+                  <strong style={{ color: 'var(--text-primary)', display: 'block', marginBottom: '0.15rem' }}>AI/ML:</strong>
+                  <span style={{ color: 'var(--text-secondary)' }}>YOLO, CNN, OpenCV, MediaPipe</span>
                 </div>
                 <div>
-                  <strong style={{ color: 'var(--text-primary)', display: 'block', marginBottom: '0.15rem' }}>AI/ML & Vision:</strong>
-                  <span style={{ color: 'var(--text-secondary)' }}>PyTorch, Scikit-learn, OpenCV, YOLOv8, RAG, SHAP</span>
-                </div>
-                <div>
-                  <strong style={{ color: 'var(--text-primary)', display: 'block', marginBottom: '0.15rem' }}>Databases & Cloud:</strong>
-                  <span style={{ color: 'var(--text-secondary)' }}>MongoDB, MySQL, Pinecone, Redis, AWS, Firebase</span>
+                  <strong style={{ color: 'var(--text-primary)', display: 'block', marginBottom: '0.15rem' }}>Databases:</strong>
+                  <span style={{ color: 'var(--text-secondary)' }}>MySQL, MongoDB</span>
                 </div>
                 <div>
                   <strong style={{ color: 'var(--text-primary)', display: 'block', marginBottom: '0.15rem' }}>Tools:</strong>
-                  <span style={{ color: 'var(--text-secondary)' }}>Git, GitHub, Docker, Postman, Linux, VS Code</span>
+                  <span style={{ color: 'var(--text-secondary)' }}>Git, VS Code, GitHub, Jupyter Notebook, Google Colab</span>
+                </div>
+                <div>
+                  <strong style={{ color: 'var(--text-primary)', display: 'block', marginBottom: '0.15rem' }}>Core Areas:</strong>
+                  <span style={{ color: 'var(--text-secondary)' }}>OOP, DBMS</span>
                 </div>
               </div>
             </div>
 
-            {/* Experience */}
+            {/* Projects */}
+            <div style={{ marginBottom: '1.5rem' }}>
+              <h2
+                style={{
+                  fontFamily: 'var(--font-mono)',
+                  fontSize: '0.74rem',
+                  letterSpacing: '0.08em',
+                  textTransform: 'uppercase',
+                  color: 'var(--accent-coral)',
+                  marginBottom: '0.65rem',
+                  borderBottom: '1px solid var(--border-hairline)',
+                  paddingBottom: '0.2rem',
+                  fontWeight: 700
+                }}
+              >
+                Projects
+              </h2>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+                <div>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                    <span style={{ fontWeight: 700, color: 'var(--text-primary)', fontSize: '0.92rem' }}>
+                      AI-Based Bharatanatyam Learning App
+                    </span>
+                    <span className="badge-tech badge-lime" style={{ fontSize: '0.64rem', padding: '0.1rem 0.45rem' }}>
+                      SIH 2025 Winner
+                    </span>
+                  </div>
+                  <ul style={{ paddingLeft: '1.2rem', fontSize: '0.84rem', color: 'var(--text-secondary)', marginTop: '0.2rem', lineHeight: 1.5 }}>
+                    <li>Developed a real-time gesture recognition system using YOLO and CNN.</li>
+                    <li>Built a Flutter-based application integrated with backend APIs and created a custom dataset using OpenCV and MediaPipe.</li>
+                    <li>Designed the system to evaluate dance pose accuracy in real time.</li>
+                  </ul>
+                </div>
+
+                <div>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                    <span style={{ fontWeight: 700, color: 'var(--text-primary)', fontSize: '0.92rem' }}>
+                      MigraineGuardian – AI Migraine Risk Prediction System
+                    </span>
+                    <span className="badge-tech badge-coral" style={{ fontSize: '0.64rem', padding: '0.1rem 0.45rem' }}>
+                      Ongoing
+                    </span>
+                  </div>
+                  <ul style={{ paddingLeft: '1.2rem', fontSize: '0.84rem', color: 'var(--text-secondary)', marginTop: '0.2rem', lineHeight: 1.5 }}>
+                    <li>Building an AI-based migraine early warning system that predicts daily migraine risk levels.</li>
+                    <li>Implementing adaptive trigger weighting, ML models, and a Flutter-based interface with health data visualization.</li>
+                    <li>Integrating chatbot assistance for preventive healthcare insights.</li>
+                  </ul>
+                </div>
+
+                <div>
+                  <span style={{ fontWeight: 700, color: 'var(--text-primary)', fontSize: '0.92rem' }}>
+                    RAG Chatbot – Module of MigraineGuardian
+                  </span>
+                  <ul style={{ paddingLeft: '1.2rem', fontSize: '0.84rem', color: 'var(--text-secondary)', marginTop: '0.2rem', lineHeight: 1.5 }}>
+                    <li>Designed and developed a Retrieval-Augmented Generation (RAG) chatbot with document ingestion, chunking, embeddings, and vector search.</li>
+                    <li>Implemented conversational memory using MongoDB and source citations for trustworthy responses.</li>
+                    <li>Integrated Groq LLM with an Express.js backend and React frontend.</li>
+                  </ul>
+                </div>
+
+                <div>
+                  <span style={{ fontWeight: 700, color: 'var(--text-primary)', fontSize: '0.92rem' }}>
+                    Hospital Management System – MERN Stack
+                  </span>
+                  <ul style={{ paddingLeft: '1.2rem', fontSize: '0.84rem', color: 'var(--text-secondary)', marginTop: '0.2rem', lineHeight: 1.5 }}>
+                    <li>Developed a full-stack application for patient registration and appointment scheduling.</li>
+                    <li>Implemented role-based authentication and optimized MongoDB queries.</li>
+                    <li>Designed scalable REST APIs for secure backend communication.</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            {/* Achievements & Responsibilities */}
+            <div style={{ marginBottom: '1.5rem' }}>
+              <h2
+                style={{
+                  fontFamily: 'var(--font-mono)',
+                  fontSize: '0.74rem',
+                  letterSpacing: '0.08em',
+                  textTransform: 'uppercase',
+                  color: 'var(--accent-coral)',
+                  marginBottom: '0.65rem',
+                  borderBottom: '1px solid var(--border-hairline)',
+                  paddingBottom: '0.2rem',
+                  fontWeight: 700
+                }}
+              >
+                Achievements & Responsibilities
+              </h2>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '0.5rem', fontSize: '0.86rem' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem', color: 'var(--text-primary)' }}>
+                  <Award size={14} style={{ color: 'var(--accent-lime-dark)' }} />
+                  <span><strong>Winner</strong> – Smart India Hackathon (SIH) 2025</span>
+                </div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem', color: 'var(--text-primary)' }}>
+                  <CheckCircle2 size={14} style={{ color: 'var(--accent-lavender)' }} />
+                  <span><strong>UI/UX Head</strong> – OysterCode Club</span>
+                </div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem', color: 'var(--text-primary)' }}>
+                  <CheckCircle2 size={14} style={{ color: 'var(--accent-lavender)' }} />
+                  <span><strong>Social Media Head</strong> – Cryptex Club</span>
+                </div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem', color: 'var(--text-primary)' }}>
+                  <CheckCircle2 size={14} style={{ color: 'var(--accent-lavender)' }} />
+                  <span><strong>Contributor</strong> – Social Shuffle Initiative</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Certifications */}
             <div>
               <h2
                 style={{
@@ -332,31 +437,20 @@ export const ResumeModal = ({ isOpen, onClose }) => {
                   color: 'var(--accent-coral)',
                   marginBottom: '0.65rem',
                   borderBottom: '1px solid var(--border-hairline)',
-                  paddingBottom: '0.2rem'
+                  paddingBottom: '0.2rem',
+                  fontWeight: 700
                 }}
               >
-                Leadership
+                Certifications
               </h2>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.65rem' }}>
-                <div>
-                  <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                    <span style={{ fontWeight: 600, color: 'var(--text-primary)', fontSize: '0.9rem' }}>UI/UX Head — OysterCode Club</span>
-                    <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.74rem', color: 'var(--text-muted)' }}>2024 – Present</span>
-                  </div>
-                  <p style={{ fontSize: '0.84rem', color: 'var(--text-secondary)', margin: '0.15rem 0 0 0' }}>
-                    Directed design systems and conducted frontend workshops for 100+ students.
-                  </p>
-                </div>
-                <div>
-                  <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                    <span style={{ fontWeight: 600, color: 'var(--text-primary)', fontSize: '0.9rem' }}>Social Media & Outreach Head — Cryptex Club</span>
-                    <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.74rem', color: 'var(--text-muted)' }}>2023 – 2024</span>
-                  </div>
-                  <p style={{ fontSize: '0.84rem', color: 'var(--text-secondary)', margin: '0.15rem 0 0 0' }}>
-                    Organized campus coding marathons and managed technical community engagement.
-                  </p>
-                </div>
-              </div>
+              <ul style={{ paddingLeft: '1.2rem', fontSize: '0.84rem', color: 'var(--text-secondary)', lineHeight: 1.6 }}>
+                <li>NPTEL – Machine Learning (IIT Madras, 12 Weeks)</li>
+                <li>NPTEL – Java Programming (IIT Kharagpur, 12 Weeks)</li>
+                <li>NPTEL – Database Management Systems (IIT Kharagpur, 8 Weeks)</li>
+                <li>Google – iOS App Development Certification</li>
+                <li>Infosys Springboard – Theory of Computation</li>
+                <li>Infosys Springboard – Advanced HTML5 & CSS3</li>
+              </ul>
             </div>
           </div>
         </motion.div>
@@ -364,4 +458,3 @@ export const ResumeModal = ({ isOpen, onClose }) => {
     </AnimatePresence>
   );
 };
-

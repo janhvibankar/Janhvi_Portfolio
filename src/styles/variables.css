@@ -1,15 +1,15 @@
 /* ==========================================================================
-   ELECTRIC ATELIER — JANHVI BANKAR PORTFOLIO V3
-   Bold, Energetic, Editorial & Interactive Creative Developer Theme
-   Light: Porcelain (#F7F3EA), Forest Ink (#151827), Electric Cobalt (#6258E8), Acid Lime (#D9F36A), Tangerine Coral (#FF785E)
-   Dark:  Midnight (#151827), Surface (#202438), Pale (#F7F3EA), Cobalt (#8178FF), Lime (#D9F36A), Coral (#FF785E)
+   JANHVI PRADIP BANKAR — MODERN EDITORIAL DEVELOPER PORTFOLIO
+   Design System: Deep Navy, Warm Off-White, Muted Lavender, Soft Coral
+   Typography: Space Grotesk (Headings) + Inter (Body) + DM Mono (Technical)
    ========================================================================== */
 
 :root {
   /* Typography System */
-  --font-serif: 'Instrument Serif', Georgia, serif;
-  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-sans: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-mono: 'DM Mono', monospace;
+  --font-serif: 'Instrument Serif', Georgia, serif;
 
   /* Transitions */
   --transition-fast: 0.18s cubic-bezier(0.16, 1, 0.3, 1);
@@ -24,137 +24,149 @@
   --radius-sm: 10px;
   --radius-md: 16px;
   --radius-lg: 24px;
-  --radius-xl: 36px;
+  --radius-xl: 32px;
   --radius-full: 9999px;
 
-  --container-max: 1320px;
+  --container-max: 1280px;
   --container-pad: clamp(1.25rem, 4vw, 3.5rem);
 }
 
 /* ==========================================================================
-   LIGHT MODE: Warm Porcelain, Cobalt, Acid Lime & Tangerine Coral
+   LIGHT MODE: Warm Off-White (#FAF8F5), Deep Navy (#0A1128), Lavender & Coral
    ========================================================================== */
 :root[data-theme="light"] {
-  --bg-primary: #F7F3EA;             /* Warm Editorial Porcelain */
-  --bg-secondary: #EFE9DC;
+  --bg-primary: #FAF8F5;             /* Warm Editorial Off-White */
+  --bg-secondary: #F2EFE9;
   --bg-card: #FFFFFF;
-  --bg-card-hover: #FCFBF7;
-  --bg-card-subtle: #F3EFE4;
-  --bg-overlay: rgba(247, 243, 234, 0.92);
+  --bg-card-hover: #FCFAF7;
+  --bg-card-subtle: #F6F3ED;
+  --bg-overlay: rgba(250, 248, 245, 0.94);
 
-  --text-primary: #151827;            /* Deep Forest Ink / Midnight */
-  --text-secondary: #626779;          /* Refined Slate */
-  --text-muted: #8E93A4;
-  --text-dim: #BAC0CE;
-  --text-inverse: #F7F3EA;
+  --text-primary: #0A1128;            /* Deep Navy */
+  --text-secondary: #5A677E;          /* Muted Slate Navy */
+  --text-muted: #8492A6;
+  --text-dim: #BAC3D2;
+  --text-inverse: #FAF8F5;
 
-  /* Electric Atelier Accents */
-  --accent-cobalt: #6258E8;           /* Electric Cobalt */
-  --accent-cobalt-hover: #5044DC;
-  --accent-cobalt-subtle: rgba(98, 88, 232, 0.12);
-  --accent-cobalt-border: rgba(98, 88, 232, 0.3);
+  /* Accents */
+  --accent-lavender: #6366F1;         /* Deep Muted Lavender */
+  --accent-lavender-hover: #4F46E5;
+  --accent-lavender-subtle: rgba(99, 102, 241, 0.12);
+  --accent-lavender-border: rgba(99, 102, 241, 0.28);
 
-  --accent-lime: #D9F36A;             /* Acid Lime Highlight */
-  --accent-lime-dark: #6D8500;        /* Readable lime for text */
-  --accent-lime-subtle: rgba(217, 243, 106, 0.32);
-  --accent-lime-border: rgba(109, 133, 0, 0.28);
+  --accent-coral: #FF6B6B;            /* Soft Coral */
+  --accent-coral-subtle: rgba(255, 107, 107, 0.14);
+  --accent-coral-border: rgba(255, 107, 107, 0.32);
 
-  --accent-coral: #FF785E;            /* Tangerine Coral */
-  --accent-coral-subtle: rgba(255, 120, 94, 0.14);
-  --accent-coral-border: rgba(255, 120, 94, 0.35);
+  --accent-lime: #D9F36A;
+  --accent-lime-dark: #4D7C0F;
+  --accent-lime-subtle: rgba(163, 230, 53, 0.2);
+  --accent-lime-border: rgba(77, 124, 15, 0.25);
 
-  --border-hairline: rgba(21, 24, 39, 0.08);
-  --border-strong: rgba(21, 24, 39, 0.18);
-  --border-accent: rgba(98, 88, 232, 0.35);
+  /* Semantic Mappings */
+  --accent-cobalt: var(--accent-lavender);
+  --accent-cobalt-hover: var(--accent-lavender-hover);
+  --accent-cobalt-subtle: var(--accent-lavender-subtle);
+  --accent-cobalt-border: var(--accent-lavender-border);
+  --accent-primary: var(--accent-lavender);
+  --accent-primary-subtle: var(--accent-lavender-subtle);
 
-  --shadow-sm: 0 2px 8px rgba(21, 24, 39, 0.04);
-  --shadow-md: 0 10px 30px rgba(21, 24, 39, 0.07);
-  --shadow-lg: 0 24px 60px rgba(21, 24, 39, 0.1);
-  --shadow-cobalt: 0 12px 36px rgba(98, 88, 232, 0.25);
-  --shadow-lime: 0 10px 30px rgba(217, 243, 106, 0.4);
+  --border-hairline: rgba(10, 17, 40, 0.08);
+  --border-strong: rgba(10, 17, 40, 0.16);
+  --border-accent: rgba(99, 102, 241, 0.32);
 
-  --glass-bg: rgba(255, 255, 255, 0.88);
-  --glass-border: rgba(21, 24, 39, 0.08);
-  --nav-bg: rgba(247, 243, 234, 0.88);
+  --shadow-sm: 0 2px 8px rgba(10, 17, 40, 0.04);
+  --shadow-md: 0 10px 30px rgba(10, 17, 40, 0.07);
+  --shadow-lg: 0 24px 60px rgba(10, 17, 40, 0.1);
+  --shadow-cobalt: 0 12px 36px rgba(99, 102, 241, 0.2);
+  --shadow-lime: 0 10px 30px rgba(163, 230, 53, 0.3);
 
-  --badge-bg: rgba(21, 24, 39, 0.05);
-  --badge-text: #151827;
+  --glass-bg: rgba(255, 255, 255, 0.9);
+  --glass-border: rgba(10, 17, 40, 0.08);
+  --nav-bg: rgba(250, 248, 245, 0.88);
 
-  --code-bg: #EAE4D5;
-  --code-border: rgba(21, 24, 39, 0.1);
-  --grain-opacity: 0.025;
+  --badge-bg: rgba(10, 17, 40, 0.05);
+  --badge-text: #0A1128;
 
-  /* Legacy sage aliases → mapped to cobalt for backward compat */
-  --accent-sage: var(--accent-cobalt);
-  --accent-sage-dark: var(--accent-cobalt);
-  --accent-sage-border: var(--accent-cobalt-border);
-  --accent-sage-subtle: var(--accent-cobalt-subtle);
-  --accent-primary: var(--accent-cobalt);
-  --accent-primary-subtle: var(--accent-cobalt-subtle);
+  --code-bg: #EFECE4;
+  --code-border: rgba(10, 17, 40, 0.09);
+  --grain-opacity: 0.02;
+
+  /* Aliases */
+  --accent-sage: var(--accent-lavender);
+  --accent-sage-dark: var(--accent-lavender);
+  --accent-sage-border: var(--accent-lavender-border);
+  --accent-sage-subtle: var(--accent-lavender-subtle);
   --bg-card-muted: var(--bg-card-subtle);
-  --font-display: var(--font-serif);
+  --font-display: var(--font-sans);
 }
 
 /* ==========================================================================
-   DARK MODE: Midnight, Electric Cobalt, Acid Lime & Tangerine Coral
+   DARK MODE: Deep Navy (#0A1128), Midnight Surface (#111C44), Lavender & Coral
    ========================================================================== */
 :root[data-theme="dark"] {
-  --bg-primary: #151827;             /* Rich Midnight / Deep Ink */
-  --bg-secondary: #1B2033;
-  --bg-card: #202438;                /* Electric Atelier Dark Surface */
-  --bg-card-hover: #272C44;
-  --bg-card-subtle: #1C2032;
-  --bg-overlay: rgba(21, 24, 39, 0.94);
+  --bg-primary: #0A1128;             /* Deep Navy */
+  --bg-secondary: #0E1736;
+  --bg-card: #111C44;                /* Midnight Surface */
+  --bg-card-hover: #172456;
+  --bg-card-subtle: #0D1635;
+  --bg-overlay: rgba(10, 17, 40, 0.95);
 
-  --text-primary: #F7F3EA;            /* Crisp Warm Pale */
-  --text-secondary: #B3B7C7;          /* Soft Pale Slate */
-  --text-muted: #7A8196;
-  --text-dim: #545B70;
-  --text-inverse: #151827;
+  --text-primary: #F8F9FA;            /* Crisp Warm Off-White */
+  --text-secondary: #A5B4CB;          /* Soft Slate */
+  --text-muted: #72829E;
+  --text-dim: #4B5872;
+  --text-inverse: #0A1128;
 
-  /* Electric Atelier Accents */
-  --accent-cobalt: #8178FF;           /* Luminous Cobalt */
-  --accent-cobalt-hover: #968EFF;
-  --accent-cobalt-subtle: rgba(129, 120, 255, 0.18);
-  --accent-cobalt-border: rgba(129, 120, 255, 0.38);
+  /* Accents */
+  --accent-lavender: #818CF8;         /* Luminous Muted Lavender */
+  --accent-lavender-hover: #9BA4FB;
+  --accent-lavender-subtle: rgba(129, 140, 248, 0.16);
+  --accent-lavender-border: rgba(129, 140, 248, 0.35);
 
-  --accent-lime: #D9F36A;             /* Acid Lime Highlight */
+  --accent-coral: #FF7556;            /* Soft Coral */
+  --accent-coral-subtle: rgba(255, 117, 86, 0.16);
+  --accent-coral-border: rgba(255, 117, 86, 0.38);
+
+  --accent-lime: #D9F36A;
   --accent-lime-dark: #D9F36A;
-  --accent-lime-subtle: rgba(217, 243, 106, 0.18);
-  --accent-lime-border: rgba(217, 243, 106, 0.42);
+  --accent-lime-subtle: rgba(217, 243, 106, 0.16);
+  --accent-lime-border: rgba(217, 243, 106, 0.38);
 
-  --accent-coral: #FF785E;            /* Tangerine Coral */
-  --accent-coral-subtle: rgba(255, 120, 94, 0.18);
-  --accent-coral-border: rgba(255, 120, 94, 0.42);
+  /* Semantic Mappings */
+  --accent-cobalt: var(--accent-lavender);
+  --accent-cobalt-hover: var(--accent-lavender-hover);
+  --accent-cobalt-subtle: var(--accent-lavender-subtle);
+  --accent-cobalt-border: var(--accent-lavender-border);
+  --accent-primary: var(--accent-lavender);
+  --accent-primary-subtle: var(--accent-lavender-subtle);
 
-  --border-hairline: rgba(247, 243, 234, 0.08);
-  --border-strong: rgba(247, 243, 234, 0.18);
-  --border-accent: rgba(129, 120, 255, 0.45);
+  --border-hairline: rgba(248, 249, 250, 0.08);
+  --border-strong: rgba(248, 249, 250, 0.16);
+  --border-accent: rgba(129, 140, 248, 0.38);
 
-  --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.4);
-  --shadow-md: 0 10px 32px rgba(0, 0, 0, 0.55);
-  --shadow-lg: 0 24px 64px rgba(0, 0, 0, 0.7);
-  --shadow-cobalt: 0 12px 40px rgba(129, 120, 255, 0.3);
-  --shadow-lime: 0 12px 36px rgba(217, 243, 106, 0.25);
+  --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.45);
+  --shadow-md: 0 10px 32px rgba(0, 0, 0, 0.6);
+  --shadow-lg: 0 24px 64px rgba(0, 0, 0, 0.75);
+  --shadow-cobalt: 0 12px 40px rgba(129, 140, 248, 0.28);
+  --shadow-lime: 0 12px 36px rgba(217, 243, 106, 0.22);
 
-  --glass-bg: rgba(32, 36, 56, 0.88);
-  --glass-border: rgba(247, 243, 234, 0.09);
-  --nav-bg: rgba(21, 24, 39, 0.88);
+  --glass-bg: rgba(17, 28, 68, 0.9);
+  --glass-border: rgba(248, 249, 250, 0.09);
+  --nav-bg: rgba(10, 17, 40, 0.9);
 
-  --badge-bg: rgba(247, 243, 234, 0.065);
-  --badge-text: #F7F3EA;
+  --badge-bg: rgba(248, 249, 250, 0.065);
+  --badge-text: #F8F9FA;
 
-  --code-bg: #111422;
-  --code-border: rgba(247, 243, 234, 0.1);
-  --grain-opacity: 0.035;
+  --code-bg: #070B1B;
+  --code-border: rgba(248, 249, 250, 0.09);
+  --grain-opacity: 0.03;
 
-  /* Legacy sage aliases → mapped to cobalt for backward compat */
-  --accent-sage: var(--accent-cobalt);
-  --accent-sage-dark: var(--accent-cobalt);
-  --accent-sage-border: var(--accent-cobalt-border);
-  --accent-sage-subtle: var(--accent-cobalt-subtle);
-  --accent-primary: var(--accent-cobalt);
-  --accent-primary-subtle: var(--accent-cobalt-subtle);
+  /* Aliases */
+  --accent-sage: var(--accent-lavender);
+  --accent-sage-dark: var(--accent-lavender);
+  --accent-sage-border: var(--accent-lavender-border);
+  --accent-sage-subtle: var(--accent-lavender-subtle);
   --bg-card-muted: var(--bg-card-subtle);
-  --font-display: var(--font-serif);
+  --font-display: var(--font-sans);
 }

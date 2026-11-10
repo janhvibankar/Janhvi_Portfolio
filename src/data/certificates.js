@@ -1,76 +1,75 @@
 export const certificateCategories = [
   "All",
-  "AI & ML",
+  "NPTEL / IIT",
   "Software Engineering",
   "Web & Mobile"
 ];
 
 export const certificatesData = [
   {
-    id: "cert-sih-2025",
-    title: "Smart India Hackathon 2025 Winner Certificate",
-    issuer: "Ministry of Education & Innovation Cell, Govt. of India",
-    date: "2025",
-    category: "Software Engineering",
-    credentialId: "SIH-2025-GF-0842",
-    verifyUrl: "https://www.sih.gov.in/",
-    description: "Certificate of First Place Winner awarded for developing the AI Grid Failure Early Warning System at the SIH 2025 National Grand Finale.",
-    badge: "Winner"
-  },
-  {
     id: "cert-nptel-ml",
-    title: "Machine Learning with Python",
-    issuer: "NPTEL & IIT Madras",
-    date: "2024",
-    category: "AI & ML",
-    credentialId: "NPTEL24CS78S412",
+    title: "Machine Learning (12 Weeks)",
+    issuer: "NPTEL — IIT Madras",
+    date: "12 Weeks Course",
+    category: "NPTEL / IIT",
+    credentialId: "NPTEL-IITM-ML",
     verifyUrl: "https://nptel.ac.in/",
-    description: "Comprehensive certification covering linear regression, SVMs, neural networks, decision trees, clustering, and ensemble learning algorithms.",
-    badge: "Elite"
+    description: "In-depth machine learning curriculum covering supervised and unsupervised learning, regression, decision trees, support vector machines, neural networks, and clustering methodologies.",
+    badge: "IIT Madras"
   },
   {
     id: "cert-nptel-java",
-    title: "Programming in Java",
-    issuer: "NPTEL & IIT Kharagpur",
-    date: "2023",
-    category: "Software Engineering",
-    credentialId: "NPTEL23CS42S301",
+    title: "Programming in Java (12 Weeks)",
+    issuer: "NPTEL — IIT Kharagpur",
+    date: "12 Weeks Course",
+    category: "NPTEL / IIT",
+    credentialId: "NPTEL-IITKGP-JAVA",
     verifyUrl: "https://nptel.ac.in/",
-    description: "In-depth coursework on object-oriented programming, exception handling, multithreading, JDBC, collections framework, and clean code practices.",
-    badge: "Elite"
+    description: "Rigorous coursework on object-oriented programming, inheritance, multithreading, exception handling, Java collections framework, and robust application development.",
+    badge: "IIT Kharagpur"
   },
   {
     id: "cert-nptel-dbms",
-    title: "Database Management Systems",
-    issuer: "NPTEL & IIT Kharagpur",
-    date: "2023",
-    category: "Software Engineering",
-    credentialId: "NPTEL23CS61S198",
+    title: "Database Management Systems (8 Weeks)",
+    issuer: "NPTEL — IIT Kharagpur",
+    date: "8 Weeks Course",
+    category: "NPTEL / IIT",
+    credentialId: "NPTEL-IITKGP-DBMS",
     verifyUrl: "https://nptel.ac.in/",
-    description: "Relational algebra, normalization (1NF-BCNF), ACID transaction schedules, concurrency control, B+ tree indexing, and SQL optimization.",
-    badge: "Elite"
+    description: "Foundational database theory: relational algebra, SQL optimization, schema normalization (1NF–BCNF), transactions, concurrency control, and indexing architectures.",
+    badge: "IIT Kharagpur"
   },
   {
-    id: "cert-infosys-web",
-    title: "Modern Web Development (HTML5, CSS3, ES6+)",
-    issuer: "Infosys Springboard",
-    date: "2023",
+    id: "cert-google-ios",
+    title: "iOS App Development Certification",
+    issuer: "Google",
+    date: "Certified",
     category: "Web & Mobile",
-    credentialId: "INF-SB-892410",
-    verifyUrl: "https://infyspringboard.onwingspan.com/",
-    description: "Industry-standard full-stack web foundations, responsive layout engineering, DOM manipulation, asynchronous JavaScript, and REST APIs.",
-    badge: "Certified"
-  },
-  {
-    id: "cert-google-mobile",
-    title: "Mobile App Development Foundations",
-    issuer: "Google Developers Program",
-    date: "2024",
-    category: "Web & Mobile",
-    credentialId: "GOOG-DEV-MOB-5421",
+    credentialId: "GOOGLE-IOS-DEV",
     verifyUrl: "https://developers.google.com/",
-    description: "Mobile application architecture, state management, lifecycle handling, device hardware integration, and cross-platform UI patterns.",
-    badge: "Completed"
+    description: "Mobile application development certification focusing on app lifecycles, user interface design, mobile APIs, and cross-device responsive application engineering.",
+    badge: "Google"
+  },
+  {
+    id: "cert-infosys-toc",
+    title: "Theory of Computation",
+    issuer: "Infosys Springboard",
+    date: "Completed",
+    category: "Software Engineering",
+    credentialId: "INFOSYS-SB-TOC",
+    verifyUrl: "https://infyspringboard.onwingspan.com/",
+    description: "Core computer science theoretical foundations: automata theory, regular expressions, context-free grammars, Turing machines, decidability, and computational complexity.",
+    badge: "Infosys"
+  },
+  {
+    id: "cert-infosys-html-css",
+    title: "Advanced HTML5 & CSS3",
+    issuer: "Infosys Springboard",
+    date: "Completed",
+    category: "Web & Mobile",
+    credentialId: "INFOSYS-SB-WEB",
+    verifyUrl: "https://infyspringboard.onwingspan.com/",
+    description: "Modern semantic web development, responsive CSS Grid, Flexbox, media queries, CSS variables, accessible UI principles, and web layout optimization.",
+    badge: "Infosys"
   }
 ];
-

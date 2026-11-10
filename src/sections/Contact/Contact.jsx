@@ -270,6 +270,57 @@ export const Contact = ({ onOpenResume }) => {
               </div>
             </motion.div>
 
+            {/* Phone */}
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.05, duration: 0.45 }}
+              className="card-editorial"
+              style={{ padding: '1.1rem 1.5rem', marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '0.85rem' }}
+            >
+              <div
+                style={{
+                  width: '36px',
+                  height: '36px',
+                  borderRadius: 'var(--radius-md)',
+                  backgroundColor: 'var(--accent-lavender-subtle)',
+                  color: 'var(--accent-lavender)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  flexShrink: 0,
+                }}
+              >
+                <span style={{ fontSize: '1rem', lineHeight: 1 }}>📞</span>
+              </div>
+              <div>
+                <div
+                  style={{
+                    fontFamily: 'var(--font-mono)',
+                    fontSize: '0.68rem',
+                    color: 'var(--text-muted)',
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.06em',
+                    marginBottom: '0.15rem',
+                  }}
+                >
+                  Phone / WhatsApp
+                </div>
+                <a
+                  href={`tel:${profileData.contact.phone}`}
+                  style={{
+                    fontFamily: 'var(--font-sans)',
+                    fontWeight: 600,
+                    fontSize: '0.92rem',
+                    color: 'var(--text-primary)',
+                  }}
+                >
+                  {profileData.contact.phone}
+                </a>
+              </div>
+            </motion.div>
+
             {/* Location */}
             <motion.div
               initial={{ opacity: 0, y: 15 }}
@@ -591,13 +642,13 @@ export const Contact = ({ onOpenResume }) => {
               style={{
                 fontFamily: 'var(--font-serif)',
                 fontStyle: 'italic',
-                fontSize: '1.2rem',
+                fontSize: '1.25rem',
                 color: 'var(--text-primary)',
                 display: 'block',
                 marginBottom: '0.1rem',
               }}
             >
-              Janhvi Bankar
+              Janhvi Pradip Bankar
             </span>
             <span>© 2025–2026. Handcrafted with React & Vite. All rights reserved.</span>
           </div>

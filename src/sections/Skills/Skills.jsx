@@ -7,12 +7,12 @@ import { useSound } from '../../context/SoundContext';
 import { Cpu, Code2, Layout, Server, Database, Wrench, X, ArrowUpRight } from 'lucide-react';
 
 const CATEGORY_META = {
-  'AI & Machine Learning': { Icon: Cpu, accent: 'var(--accent-coral)', subtle: 'var(--accent-coral-subtle)' },
-  'Programming Languages': { Icon: Code2, accent: 'var(--accent-cobalt)', subtle: 'var(--accent-cobalt-subtle)' },
-  'Frontend Architecture': { Icon: Layout, accent: 'var(--accent-lime-dark)', subtle: 'var(--accent-lime-subtle)' },
-  'Backend & Systems': { Icon: Server, accent: 'var(--accent-coral)', subtle: 'var(--accent-coral-subtle)' },
-  'Database & Cloud': { Icon: Database, accent: 'var(--accent-cobalt)', subtle: 'var(--accent-cobalt-subtle)' },
-  'Developer Tools & DevOps': { Icon: Wrench, accent: 'var(--text-secondary)', subtle: 'var(--badge-bg)' },
+  'Programming Languages': { Icon: Code2, accent: 'var(--accent-lavender)', subtle: 'var(--accent-lavender-subtle)' },
+  'Frameworks & Libraries': { Icon: Layout, accent: 'var(--accent-coral)', subtle: 'var(--accent-coral-subtle)' },
+  'Applied AI / ML & Vision': { Icon: Cpu, accent: 'var(--accent-lavender)', subtle: 'var(--accent-lavender-subtle)' },
+  'Databases & Storage': { Icon: Database, accent: 'var(--accent-coral)', subtle: 'var(--accent-coral-subtle)' },
+  'Tools & Environments': { Icon: Wrench, accent: 'var(--text-secondary)', subtle: 'var(--badge-bg)' },
+  'Core Computer Science Areas': { Icon: Server, accent: 'var(--accent-lime-dark)', subtle: 'var(--accent-lime-subtle)' },
 };
 
 export const Skills = () => {
@@ -44,10 +44,10 @@ export const Skills = () => {
       <div className="site-container">
         <SectionHeader
           number="02"
-          label="Tooling & Stack"
-          title="Technical Repertoire"
-          serifWord="& Technologies"
-          subtitle="A specialized toolkit tested across computer vision pipelines, full-stack backends, and national hackathon architectures."
+          label="Technical Skills"
+          title="Core Stack &"
+          serifWord="Technical Repertoire"
+          subtitle="Structured competencies across programming languages, full-stack frameworks, applied AI/ML, and core computer science fundamentals."
         />
 
         {/* Marquee Technology Strip */}

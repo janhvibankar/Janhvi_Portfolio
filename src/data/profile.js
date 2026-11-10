@@ -1,17 +1,29 @@
 export const profileData = {
-  name: "Janhvi Bankar",
+  name: "Janhvi Pradip Bankar",
+  shortName: "Janhvi Bankar",
   fullName: "Janhvi Pradip Bankar",
   initials: "JB",
-  role: "Computer Science Engineer",
-  tagline: "Curious mind. Creative builder. Engineer at heart.",
-  headline: "I turn ideas into digital experiences and intelligent solutions.",
-  aboutBrief: "Computer Science undergraduate specializing in full-stack engineering, distributed systems, and real-world Edge AI. Winner of Smart India Hackathon 2025.",
+  role: "Software Developer · Full-Stack & Applied AI/ML",
+  tagline: "Software Developer · Full-Stack & Applied AI/ML",
+  headline: "Building meaningful software applications, full-stack solutions, and applied AI systems.",
+  aboutBrief: "Computer Science undergraduate passionate about building meaningful software applications, full-stack solutions, and AI-powered systems.",
   education: {
-    institution: "Rajarambapu Institute of Technology (RIT)",
+    institution: "Rajarambapu Institute of Technology (RIT), Islampur",
     degree: "B.Tech in Computer Science and Engineering",
-    cpi: "8.37",
-    status: "Undergraduate (Final Year)",
-    location: "Maharashtra, India"
+    cpi: "8.34",
+    period: "2023 – 2027",
+    status: "Undergraduate (B.Tech CSE)",
+    location: "Sangola / Islampur, Maharashtra, India",
+    hsc: {
+      school: "New English School Jr. College, Sangola",
+      percentage: "81.83%",
+      year: "2023"
+    },
+    ssc: {
+      school: "New English School, Sangola",
+      percentage: "97.20%",
+      year: "2021"
+    }
   },
   location: {
     city: "Sangola",
@@ -22,31 +34,30 @@ export const profileData = {
   },
   availability: {
     status: "Available for Opportunities",
-    note: "Open for Software Engineering Internships & Full-Time AI/Full-Stack Roles",
+    note: "Open for Software Developer Internships & Full-Stack / Applied AI Roles",
     active: true
   },
   contact: {
-    email: "janhvi.bankar@rit.edu",
+    email: "janhvibankar2@gmail.com",
+    phone: "+91-9421894793",
     github: "https://github.com/janhvibankar",
-    linkedin: "https://linkedin.com/in/janhvi-bankar",
-    twitter: "https://twitter.com/janhvibankar"
+    linkedin: "https://linkedin.com/in/janhvi-bankar"
   },
   stats: [
-    { label: "Current CPI", value: "8.37", note: "B.Tech CSE" },
-    { label: "SIH '25 Winner", value: "01", note: "National Grand Final" },
-    { label: "Engineered Projects", value: "10+", note: "AI, Full-Stack & IoT" },
-    { label: "Core Domains", value: "04", note: "AI/ML, Systems, Web, Cloud" }
+    { label: "B.Tech CPI", value: "8.34", note: "RIT (2023–2027)" },
+    { label: "SIH '25 Winner", value: "01", note: "Smart India Hackathon" },
+    { label: "Core Projects", value: "04", note: "Full-Stack & Applied AI" },
+    { label: "SSC Distinction", value: "97.2%", note: "Merit Standing" }
   ],
   identityJson: {
     developer: "Janhvi Pradip Bankar",
     focus: [
-      "Edge AI & Computer Vision",
-      "Full-Stack Distributed Systems",
-      "Predictive Healthcare & Monitoring",
-      "Post-Quantum Cryptography Architectures"
+      "Full-Stack Web & Mobile Engineering",
+      "Applied AI/ML & Computer Vision",
+      "RAG & Retrieval Architectures",
+      "Human-Centered UI/UX Design"
     ],
-    tools_of_choice: ["React", "PyTorch", "Node.js", "Python", "Docker", "FastAPI"],
-    philosophy: "Turn complex engineering constraints into reliable, elegant systems."
+    tools_of_choice: ["React", "Flutter", "Node.js", "Express.js", "MongoDB", "YOLO", "OpenCV"],
+    philosophy: "Build reliable code that solves real problems and empowers people."
   }
 };
-

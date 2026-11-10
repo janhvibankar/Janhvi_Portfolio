@@ -19,7 +19,7 @@ html {
 }
 
 body {
-  font-family: var(--font-sans);
+  font-family: var(--font-body);
   background-color: var(--bg-primary);
   color: var(--text-primary);
   line-height: 1.65;
@@ -194,6 +194,7 @@ button {
 }
 
 .badge-cobalt,
+.badge-lavender,
 .badge-sage {
   background-color: var(--accent-cobalt-subtle);
   color: var(--accent-cobalt);

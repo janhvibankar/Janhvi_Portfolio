@@ -26,10 +26,10 @@ export const Certificates = ({ onSelectCertificate }) => {
       <div className="site-container">
         <SectionHeader
           number="06"
-          label="Credentials"
-          title="Verified Certifications"
-          serifWord="& Qualifications"
-          subtitle="Accredited technical credentials from premier institutions including IIT Madras, IIT Kharagpur (NPTEL), and Infosys Springboard."
+          label="Certifications"
+          title="Verified Technical"
+          serifWord="Certifications"
+          subtitle="Accredited technical credentials from NPTEL (IIT Madras & IIT Kharagpur), Google, and Infosys Springboard."
         />
 
         {/* Category Filters */}

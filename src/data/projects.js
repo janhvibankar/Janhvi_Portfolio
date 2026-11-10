@@ -1,506 +1,212 @@
 export const projectCategories = [
   "All",
-  "AI/ML",
+  "Applied AI/ML",
   "Full Stack",
-  "Mobile Applications",
-  "Systems & IoT"
+  "Mobile Apps"
 ];
 
 export const projectsData = [
   {
-    id: "bharatanatyam-mudra-detector",
-    title: "Bharatanatyam Mudra Detector",
-    tagline: "Real-time posture & classical gesture classification with computer vision",
-    shortDescription: "An AI-powered computer vision platform tracking hand gestures (Asamyutta and Samyutta Hastas) with real-time pose estimation and kinematic feedback.",
-    detailedDescription: "Bharatanatyam Mudra Detector bridges classical Indian performing arts with deep learning. Utilizing YOLOv8 and lightweight convolutional architectures, it extracts hand landmarks from video streams, classifies subtle hand mudras in real-time, and computes joint angle deviations to provide immediate corrective guidance for students and practitioners.",
-    category: "AI/ML",
-    status: "Completed",
+    id: "bharatanatyam-learning-app",
+    title: "AI-Based Bharatanatyam Learning App",
+    tagline: "Real-time gesture recognition & classical dance pose accuracy evaluation",
+    shortDescription: "An AI-powered classical dance learning platform that evaluates hand mudras and posture accuracy in real time using YOLO, CNNs, and MediaPipe landmark tracking inside a cross-platform Flutter app.",
+    detailedDescription: "Developed as the winning project for Smart India Hackathon 2025, this platform bridges classical Indian cultural art with modern computer vision. Using a custom dataset curated with OpenCV and MediaPipe, the application tracks 21-point hand telemetry from mobile camera streams and runs lightweight YOLO and CNN classifiers to evaluate posture accuracy in real time, delivering immediate corrective visual cues for dance students.",
+    category: "Applied AI/ML",
+    status: "Completed (SIH '25 Winner)",
     featured: true,
-    year: "2024",
-    accentColor: "#E66B48",
-    technologies: ["PyTorch", "YOLOv8", "OpenCV", "Flutter", "Python", "MediaPipe"],
+    year: "2024 – 2025",
+    accentColor: "var(--accent-coral)",
+    technologies: ["Flutter", "YOLO", "CNN", "OpenCV", "MediaPipe", "Python"],
     github: "https://github.com/janhvibankar/Bharatanatyam-Mudra-Detector",
     live: null,
     metrics: [
-      { label: "Classification Accuracy", value: "94.2%" },
-      { label: "Inference Latency", value: "< 24ms" },
-      { label: "Tracked Gestures", value: "28+ Mudras" }
+      { label: "Classification", value: "Real-Time Mudras" },
+      { label: "Telemetry", value: "21-Pt Landmarks" },
+      { label: "Hackathon Standing", value: "SIH '25 Winner" }
     ],
     myContribution: [
+      "Built the real-time gesture recognition system combining YOLO object detection and CNN feature extractors.",
       "Engineered the spatial-temporal landmark extraction pipeline utilizing OpenCV and MediaPipe.",
-      "Trained and fine-tuned custom YOLOv8 and CNN classifiers on an annotated dataset of 5,000+ hand poses.",
-      "Integrated edge inference into a cross-platform Flutter application for smooth 30 FPS mobile evaluation."
+      "Created a custom annotated dataset of classical single and double-hand mudras (Asamyutta and Samyutta Hastas).",
+      "Developed the responsive cross-platform Flutter application integrated with backend APIs for real-time visual feedback."
     ],
     keyFeatures: [
-      "Real-time 21-point hand landmark telemetry overlay.",
-      "Dual classification for single-hand (Asamyutta) and combined (Samyutta) hastas.",
-      "Immediate audio-visual deviation cues for incorrect finger placement.",
-      "Historical progress tracker logging practice sessions and accuracy scores."
+      "Real-time 21-point hand landmark telemetry overlay on mobile camera feeds.",
+      "Dual classification for single-hand (Asamyutta) and combined (Samyutta) mudras.",
+      "Real-time pose deviation math engine calculating angular finger alignment.",
+      "Practice mode with accuracy score logging and corrective visual indicators."
     ],
     challenges: [
-      "Handling severe self-occlusion and rapid rotational wrist movement during fast Bharatanatyam adavus.",
-      "Maintaining high frame rates on standard mobile hardware without thermal throttling."
+      "Managing occlusions and rapid rotational hand transitions during fast adavu sequences.",
+      "Optimizing mobile inference latency to maintain smooth frame rates on consumer smartphones."
     ],
     outcomes: [
-      "Achieved 94.2% top-1 accuracy across 28 classical mudras under varied lighting conditions.",
-      "Deployed lightweight ONNX runtime model decreasing model footprint by 65%."
+      "Awarded 1st Place National Champion at Smart India Hackathon 2025.",
+      "Built a functional Flutter application enabling dancers to self-evaluate without specialized sensors."
     ],
     architecture: {
-      type: "Edge Computer Vision Pipeline",
+      type: "Edge Computer Vision & Mobile Pipeline",
       flow: [
-        "Camera Stream (30 FPS)",
+        "Live Mobile Camera Stream",
         "OpenCV Preprocessing & Normalization",
         "MediaPipe Hand Mesh Landmark Extraction",
-        "YOLOv8 Gesture Classifier (ONNX)",
-        "Angle Deviation Math Engine",
-        "Interactive Flutter UI & Audio Cues"
+        "YOLO & CNN Gesture Classification",
+        "Pose Accuracy Angle Evaluation Engine",
+        "Flutter Interface with Corrective Visual Cues"
       ]
     }
   },
   {
     id: "migraine-guardian",
-    title: "MigraineGuardian AI",
-    tagline: "Predictive multimodal healthcare system forecasting migraine onset",
-    shortDescription: "A clinical predictive health platform integrating biometric telemetry, atmospheric conditions, and lifestyle inputs to predict migraine attacks hours before symptoms manifest.",
-    detailedDescription: "MigraineGuardian is a proactive healthcare intelligence suite designed to shift migraine management from reactive treatment to proactive prevention. By analyzing time-series physiological data (heart rate variability, sleep patterns) coupled with barometric pressure and user-reported triggers, the model forecasts risk likelihood with transparent explainability.",
-    category: "AI/ML",
-    status: "Completed",
+    title: "MigraineGuardian — AI Risk Prediction System",
+    tagline: "Multimodal healthcare platform forecasting migraine risk before symptoms manifest",
+    shortDescription: "An AI-based early warning system that predicts daily migraine risk levels by synthesizing lifestyle patterns, weather conditions, adaptive trigger weighting, and health data visualization with chatbot assistance.",
+    detailedDescription: "MigraineGuardian is an ongoing proactive healthcare platform designed to shift migraine care from reactive treatment to timely prevention. By processing time-series lifestyle logs alongside localized atmospheric factors (barometric pressure, temperature, humidity), the machine learning models calculate personalized risk likelihood with adaptive trigger weighting and preventive recommendations.",
+    category: "Applied AI/ML",
+    status: "Ongoing",
     featured: true,
-    year: "2024",
-    accentColor: "#92977B",
-    technologies: ["Scikit-learn", "FastAPI", "React", "D3.js", "SHAP", "Docker"],
+    year: "2024 – 2025",
+    accentColor: "var(--accent-lavender)",
+    technologies: ["Machine Learning", "Python", "Flutter", "Adaptive Weighting", "Predictive Analytics"],
     github: "https://github.com/janhvibankar/MigraineGuardian",
     live: null,
     metrics: [
-      { label: "Prediction Window", value: "4-6 Hours" },
-      { label: "ROC-AUC Score", value: "0.89" },
-      { label: "Explainability", value: "SHAP Values" }
+      { label: "Project State", value: "Active Development" },
+      { label: "Inputs", value: "Lifestyle + Weather" },
+      { label: "Analytics", value: "Adaptive Weighting" }
     ],
     myContribution: [
-      "Designed the machine learning pipeline utilizing gradient boosting (XGBoost) and SHAP value explainability.",
-      "Developed high-throughput REST APIs in FastAPI with automated sensor data ingestion pipelines.",
-      "Built interactive clinical risk dashboards with D3.js and React visualizing trigger correlations."
+      "Constructing the machine learning risk prediction model incorporating adaptive trigger weighting.",
+      "Designing the cross-platform Flutter mobile interface featuring intuitive health data visualizers.",
+      "Integrating localized weather and barometric telemetry APIs into the daily risk computation pipeline.",
+      "Developing an interactive preventive chatbot assistant for lifestyle trigger guidance."
     ],
     keyFeatures: [
-      "Early warning alert dispatch via Push Notifications 4-6 hours prior to estimated onset.",
-      "SHAP-powered 'Why This Alert?' modal highlighting prominent contributing triggers.",
-      "Environmental correlation tracker interfacing with local barometric APIs.",
-      "Privacy-first encrypted local biometric storage."
+      "Daily personalized migraine risk score forecasting acute risk windows.",
+      "Adaptive trigger weighting that tunes sensitivity based on individual user history.",
+      "Flutter-based health telemetry dashboard visualizing longitudinal trigger trends.",
+      "Integrated chatbot assistance providing preventive recommendations and symptom logging."
     ],
     challenges: [
-      "Class imbalance in sporadic biometric anomaly detection.",
-      "Providing actionable, clinically sound explanations rather than opaque 'black box' probabilities."
+      "Capturing idiosyncratic, non-linear trigger interactions that differ widely between individuals.",
+      "Designing clear, actionable risk visualization without inducing unnecessary patient anxiety."
     ],
     outcomes: [
-      "Demonstrated 0.89 ROC-AUC in identifying acute risk windows.",
-      "Empowered patients with clear lifestyle trigger insights reducing recurrent episodes in trial studies."
+      "Engineered an adaptive framework that personalizes trigger impact over 14-day observation cycles.",
+      "Demonstrated reliable early warning indications combining atmospheric and self-reported inputs."
     ],
     architecture: {
-      type: "Event-Driven Multimodal Predictive System",
+      type: "Predictive Analytics & Mobile Architecture",
       flow: [
-        "Biometric & Environmental Data Stream",
-        "Feature Engineering & Aggregation",
-        "XGBoost Ensemble Classifier",
-        "SHAP Explainer Module",
-        "FastAPI Asynchronous Gateway",
-        "React + D3.js Temporal Dashboard"
+        "User Lifestyle Logs & Sleep Metrics",
+        "Weather & Atmospheric Telemetry Ingestion",
+        "Feature Engineering & Adaptive Trigger Weighting",
+        "Predictive Machine Learning Risk Model",
+        "Flutter Healthcare Dashboard & Alert Notifications",
+        "Preventive Chatbot Guidance Module"
       ]
     }
   },
   {
-    id: "migraine-rag-chatbot",
-    title: "Migraine RAG Clinical Chatbot",
-    tagline: "Retrieval-Augmented Generation for grounded medical literature QA",
-    shortDescription: "An intelligent clinical assistant synthesizing peer-reviewed neurology papers and clinical guidelines using vector search and Groq LLMs with zero hallucination guardrails.",
-    detailedDescription: "Built to overcome generic LLM hallucinations in high-stakes health contexts, the Migraine RAG Chatbot indexes extensive neurological research, pharmacotherapy guidelines, and clinical trial outcomes. Queries retrieve dense vector chunks from Pinecone, which are then synthesized by Groq Llama 3 models with explicit academic citations.",
-    category: "AI/ML",
-    status: "In Development",
+    id: "rag-chatbot-migraine",
+    title: "RAG Chatbot — Literature & Memory Module",
+    tagline: "Retrieval-Augmented Generation assistant with vector search & MongoDB memory",
+    shortDescription: "A specialized RAG-powered clinical knowledge assistant featuring document ingestion, text chunking, vector embeddings, MongoDB conversational memory, and Groq LLM integration with an Express backend and React frontend.",
+    detailedDescription: "Engineered as an advanced intelligence module for MigraineGuardian, this conversational system overcomes generic LLM hallucinations. It ingests peer-reviewed clinical documents, generates dense vector embeddings, and performs similarity searches to ground responses in verified medical literature. The system incorporates persistent conversational memory in MongoDB and leverages Groq high-speed LLM inference.",
+    category: "Applied AI/ML",
+    status: "Completed",
     featured: true,
     year: "2025",
-    accentColor: "#E66B48",
-    technologies: ["LangChain", "Groq API", "Pinecone", "Vector Embeddings", "Express.js", "React"],
+    accentColor: "var(--accent-coral)",
+    technologies: ["RAG Architecture", "Groq LLM", "MongoDB", "Express.js", "React.js", "Vector Embeddings"],
     github: "https://github.com/janhvibankar/Migraine-RAG-Chatbot",
     live: null,
     metrics: [
-      { label: "Query Retrieval Time", value: "< 450ms" },
-      { label: "Indexed Papers", value: "1,200+" },
-      { label: "Citation Precision", value: "98%" }
+      { label: "Latency", value: "Sub-Second Groq" },
+      { label: "Memory", value: "MongoDB State" },
+      { label: "Grounding", value: "Vector Retrieval" }
     ],
     myContribution: [
-      "Architected the chunking, embedding generation, and vector indexing pipeline in Pinecone.",
-      "Engineered strict hallucination guardrails requiring every claim to be grounded in retrieved literature.",
-      "Built the full-stack conversational interface with streamable token responses via WebSockets."
+      "Designed and developed the end-to-end RAG pipeline: document ingestion, semantic chunking, and embedding generation.",
+      "Implemented persistent conversational memory stored in MongoDB to maintain multi-turn dialogue context.",
+      "Engineered strict grounding prompts and source citation formatting for trustworthy, verifiable responses.",
+      "Built the full-stack architecture with an Express.js backend and a responsive React frontend interface."
     ],
     keyFeatures: [
-      "Instant academic citations with direct DOI references on every factual statement.",
-      "Query expansion and re-ranking for multi-hop clinical questions.",
-      "Safety filter rejecting unverified self-diagnosis and urging professional consultation.",
-      "Sub-500ms response streaming using Groq ultra-low-latency Llama 3 inference."
+      "Grounded responses with contextual source citations extracted from indexed documentation.",
+      "Conversational multi-turn history persisted in MongoDB with session management.",
+      "High-throughput, ultra-low latency response generation utilizing Groq LLM integration.",
+      "Clean, modern React chat interface with streaming message bubbles and clear reference tags."
     ],
     challenges: [
-      "Handling ambiguous symptoms and preventing dangerous diagnostic extrapolation.",
-      "Minimizing vector chunk fragmentation across complex medical journal tables and appendices."
+      "Structuring text chunks to preserve complete clinical context without fragmentation.",
+      "Ensuring the chatbot strictly refrains from diagnostic claims while offering educational literature references."
     ],
     outcomes: [
-      "Eliminated unsupported claims by requiring strict vector-overlap verification.",
-      "Achieved sub-500ms first-token latency with ultra-high contextual relevance."
+      "Eliminated ungrounded assertions through strict context-bounded prompt templates.",
+      "Achieved responsive, sub-second generation times with rich multi-turn conversational recall."
     ],
     architecture: {
-      type: "Retrieval-Augmented Generation Architecture",
+      type: "RAG & Full-Stack Architecture",
       flow: [
-        "Medical Corpus Preprocessing & Markdown Chunking",
-        "Vector Embeddings (text-embedding-3-small)",
-        "Pinecone Vector Database (HNSW Index)",
-        "Hybrid Search & Cross-Encoder Re-Ranking",
-        "Groq LLM Context Synthesis (Llama-3-70B)",
-        "Grounded Response with DOI Footnotes"
+        "Medical Corpus Ingestion & Semantic Chunking",
+        "Vector Embeddings Generation & Vector Index",
+        "Context Retrieval & Cosine Similarity Ranking",
+        "Groq LLM Inference with Strict Grounding Prompt",
+        "Conversational Memory Synchronization in MongoDB",
+        "Express REST Gateway & React Chat Interface"
       ]
     }
   },
   {
     id: "hospital-management-system",
-    title: "MERN Hospital Operations Suite",
-    tagline: "Enterprise full-stack hospital management with automated bed scheduling",
-    shortDescription: "A comprehensive hospital ERP orchestrating patient admissions, ward bed allocations, pharmacy inventory, doctor appointments, and role-based medical records.",
-    detailedDescription: "Designed for regional healthcare centers, this full-stack enterprise web application replaces manual paper logs with automated, real-time workflows. Features include algorithmic bed scheduling that prevents double-booking, encrypted EHR storage, pharmacy re-order alerts, and granular role-based access control for doctors, nurses, and administrators.",
+    title: "Hospital Management System — MERN Stack",
+    tagline: "Full-stack enterprise application for patient records, scheduling & role-based portals",
+    shortDescription: "A comprehensive MERN-stack web application orchestrating patient registration, appointment scheduling, role-based authentication, and optimized MongoDB query operations through secure RESTful APIs.",
+    detailedDescription: "Designed to modernize hospital operations, this full-stack web application delivers reliable workflows for administrators, medical staff, and patients. It replaces manual scheduling with automated appointment booking, features role-based access control (RBAC), and manages patient records, doctor availability, and billing through optimized MongoDB queries and scalable Express REST APIs.",
     category: "Full Stack",
     status: "Completed",
-    featured: false,
+    featured: true,
     year: "2024",
-    accentColor: "#D9CBB9",
-    technologies: ["React", "Node.js", "Express.js", "MongoDB", "JWT", "Tailwind CSS"],
+    accentColor: "var(--accent-lavender)",
+    technologies: ["React.js", "Node.js", "Express.js", "MongoDB", "REST APIs", "JWT"],
     github: "https://github.com/janhvibankar/Hospital-Management-System",
     live: null,
     metrics: [
-      { label: "Ward Capacity Tracked", value: "500+ Beds" },
-      { label: "Role Portals", value: "4 Distinct Views" },
-      { label: "API Endpoints", value: "38 REST Endpoints" }
+      { label: "Architecture", value: "Full MERN Stack" },
+      { label: "Security", value: "Role-Based RBAC" },
+      { label: "APIs", value: "Scalable REST" }
     ],
     myContribution: [
-      "Architected the normalized MongoDB schema supporting high-concurrency admission and discharge transactions.",
-      "Implemented secure JWT authentication and role-based authorization middleware.",
-      "Built the responsive React client interface with dynamic filtering, appointment calendars, and billing reports."
+      "Developed the full-stack application architecture from relational MongoDB data modeling to the React client.",
+      "Implemented role-based authentication and secure session middleware using JWT.",
+      "Engineered optimized MongoDB queries and indexing strategies for fast patient record retrieval.",
+      "Designed and documented RESTful API endpoints for patient registration, appointments, and doctor rosters."
     ],
     keyFeatures: [
-      "Real-time visual ward bed occupancy map with color-coded status.",
-      "Prescription generator linked directly to central hospital pharmacy inventory.",
-      "Doctor roster scheduling with collision avoidance algorithms.",
-      "Exportable billing receipts and diagnostic PDF reports."
+      "Intuitive patient registration and appointment scheduling with conflict prevention.",
+      "Granular role-based portals for administrators, doctors, and hospital receptionists.",
+      "Secure REST APIs with token authorization and request payload validation.",
+      "Searchable medical record vault with dynamic filtering and status updating."
     ],
     challenges: [
-      "Preventing race conditions when multiple receptionists book the same emergency ward bed simultaneously.",
-      "Enforcing strict HIPAA-aligned data privacy between non-authorized staff roles."
+      "Preventing booking collisions during simultaneous appointment submissions across departments.",
+      "Enforcing strict data boundary separation between non-medical administrative staff and clinical records."
     ],
     outcomes: [
-      "Streamlined inpatient admission workflow from 25 minutes to under 3 minutes.",
-      "Engineered automated inventory deduction reducing prescription dispatch lag by 40%."
+      "Delivered a complete, functioning healthcare management portal with zero scheduling collisions.",
+      "Optimized query response times to under 100ms across high-volume mock patient databases."
     ],
     architecture: {
-      type: "Layered MVC Full-Stack Architecture",
+      type: "MERN Stack MVC Architecture",
       flow: [
-        "React Single Page Application",
-        "Express REST Routing & Role Middleware",
-        "Service Layer Business Logic",
-        "MongoDB Mongoose Data Models",
-        "JWT Session & Token Vault"
-      ]
-    }
-  },
-  {
-    id: "smart-mobility-grid",
-    title: "Smart Mobility Grid",
-    tagline: "Dynamic urban transit and traffic flow optimization using sensor telemetry",
-    shortDescription: "An intelligent traffic telemetry and routing platform analyzing intersection density, pedestrian movement, and emergency vehicle priority dispatch.",
-    detailedDescription: "Smart Mobility Grid addresses urban congestion through decentralized sensor data fusion. By ingesting live stream data from smart cameras and GPS beacons, the platform computes dynamic signal timings, predicts bottleneck propagation, and automatically clears prioritized green corridors for emergency medical services.",
-    category: "Systems & IoT",
-    status: "In Development",
-    featured: false,
-    year: "2025",
-    accentColor: "#92977B",
-    technologies: ["Python", "FastAPI", "React", "Leaflet.js", "WebSockets", "Redis"],
-    github: "https://github.com/janhvibankar/Smart-Mobility-Grid",
-    live: null,
-    metrics: [
-      { label: "Telemetry Throughput", value: "10k Events/sec" },
-      { label: "Simulated Delay Reduction", value: "28%" },
-      { label: "Emergency Corridor Clearance", value: "< 15s" }
-    ],
-    myContribution: [
-      "Developed the real-time telemetry ingestion pipeline using Redis Pub/Sub and WebSockets.",
-      "Constructed the graph-based corridor dispatch algorithm prioritizing emergency responders.",
-      "Created the interactive live operations map with Leaflet.js and custom heatmaps."
-    ],
-    keyFeatures: [
-      "Live traffic density heatmaps updated every 500ms.",
-      "Automated dynamic signal phase duration adjustments based on queuing length.",
-      "One-click Emergency Corridor creation for ambulances with proactive signal preemption.",
-      "Historical transit analytics and congestion forecasting models."
-    ],
-    challenges: [
-      "Handling sporadic packet loss and jitter from edge IoT sensor telemetry.",
-      "Ensuring sub-second signal dispatch to prevent traffic wave shocks."
-    ],
-    outcomes: [
-      "Demonstrated up to 28% reduction in intersection idling times in simulated city networks.",
-      "Successfully integrated sub-second corridor priority routing."
-    ],
-    architecture: {
-      type: "Real-Time Telemetry & Routing Engine",
-      flow: [
-        "Edge IoT Intersection Sensors",
-        "Redis Ingestion Message Broker",
-        "Graph Traversal & Signal Optimizer Engine",
-        "FastAPI WebSocket Server",
-        "Interactive React + Leaflet Live Operations Map"
-      ]
-    }
-  },
-  {
-    id: "ai-grid-failure-early-warning",
-    title: "AI Grid Failure Early Warning System",
-    tagline: "Predictive telemetry & anomaly forecasting for high-voltage power networks",
-    shortDescription: "A national hackathon-winning AI system predicting electrical grid failures, transformer overloads, and transmission line anomalies up to 48 hours in advance.",
-    detailedDescription: "Engineered as part of the Smart India Hackathon 2025, this system monitors real-time SCADA telemetry across high-voltage electrical distribution nodes. By analyzing voltage phase fluctuations, harmonic distortion, and ambient thermal conditions, deep learning anomaly detectors flag impending component breakdown and prescribe load-shedding interventions before blackouts occur.",
-    category: "AI/ML",
-    status: "Completed",
-    featured: true,
-    year: "2025",
-    accentColor: "#E66B48",
-    technologies: ["PyTorch", "Scikit-learn", "FastAPI", "React", "Kafka", "PostgreSQL"],
-    github: "https://github.com/janhvibankar/AI-Grid-Failure-Warning",
-    live: null,
-    metrics: [
-      { label: "Prediction Horizon", value: "24-48 Hours" },
-      { label: "False Positive Rate", value: "< 3.1%" },
-      { label: "Hackathon Standing", value: "SIH '25 1st Place" }
-    ],
-    myContribution: [
-      "Led the technical architecture and predictive algorithm design for the 6-person national team.",
-      "Trained temporal convolutional networks (TCN) on power-grid sensor telemetry to detect harmonic precursors.",
-      "Constructed the executive grid command dashboard delivering live anomaly alerts and automated load-balancing recommendations."
-    ],
-    keyFeatures: [
-      "Continuous predictive anomaly score calculation across all distribution substations.",
-      "Automated load shedding and rerouting recommendation engine.",
-      "Severity heatmaps depicting regional grid stress levels.",
-      "Interactive incident replay mode allowing engineers to analyze simulated stress events."
-    ],
-    challenges: [
-      "Differentiating between benign transient switching noise and genuine catastrophic insulation breakdown.",
-      "Processing millions of high-frequency SCADA metrics under strict latency constraints."
-    ],
-    outcomes: [
-      "Awarded Grand Winner at Smart India Hackathon 2025 by government & industry juries.",
-      "Achieved 96.4% recall on historical cascading blackout datasets."
-    ],
-    architecture: {
-      type: "Distributed SCADA Telemetry & Anomaly Neural Engine",
-      flow: [
-        "Substation SCADA Telemetry Streams",
-        "Kafka Distributed Streaming Pipeline",
-        "Feature Normalization & Wavelet Decomposition",
-        "Temporal Convolutional Network (TCN) Anomaly Detector",
-        "Automated Mitigation Recommendation Service",
-        "React Command Center with Audio-Visual Alerts"
-      ]
-    }
-  },
-  {
-    id: "pqc-secure-telemetry-gateway",
-    title: "Quantum-Resistant Telemetry Gateway",
-    tagline: "Post-quantum cryptographic proxy securing multi-cloud edge transmissions",
-    shortDescription: "A high-security reverse proxy implementing lattice-based cryptography (Kyber & Dilithium) to safeguard sensitive industrial telemetry against future quantum decryption threats.",
-    detailedDescription: "As part of ongoing research in post-quantum cryptography (PQC), this gateway acts as a hardened intermediary between field IoT sensors and multi-cloud backends. It benchmarks handshake overheads and implements hybrid TLS wrappers to guarantee forward secrecy against 'harvest now, decrypt later' state-level adversaries.",
-    category: "Systems & IoT",
-    status: "Active Research",
-    featured: false,
-    year: "2025",
-    accentColor: "#92977B",
-    technologies: ["Python", "C++", "Docker", "Linux", "Cryptography", "REST APIs"],
-    github: "https://github.com/janhvibankar/PQC-Telemetry-Gateway",
-    live: null,
-    metrics: [
-      { label: "Handshake Overhead", value: "< 18ms" },
-      { label: "Algorithm Standard", value: "NIST PQC" },
-      { label: "Key Exchange", value: "ML-KEM (Kyber)" }
-    ],
-    myContribution: [
-      "Benchmarked lattice-based key encapsulation mechanisms across ARM and x86 edge nodes.",
-      "Constructed a lightweight asynchronous reverse proxy wrapping outbound IoT telemetry packets.",
-      "Formulated mitigation strategies for packet fragmentation over high-loss wireless links."
-    ],
-    keyFeatures: [
-      "Hybrid post-quantum key encapsulation with classic elliptic curve fallback.",
-      "Real-time cipher benchmark telemetry logging encryption latency and packet sizes.",
-      "Zero-downtime key rotation mechanism without interrupting sensor telemetry streams.",
-      "Containerized deployment profile for low-resource edge gateways."
-    ],
-    challenges: [
-      "Mitigating the 10x larger public key and ciphertext sizes inherent to lattice cryptography.",
-      "Maintaining high network throughput under severe memory constraints on embedded hardware."
-    ],
-    outcomes: [
-      "Demonstrated reliable PQC-encrypted transmission with less than 18ms latency penalty.",
-      "Formed the architectural baseline for published university research in multi-cloud security."
-    ],
-    architecture: {
-      type: "Hardened Hybrid PQC Proxy Architecture",
-      flow: [
-        "Edge Telemetry Stream",
-        "Lattice-Based Key Encapsulation (ML-KEM)",
-        "Ephemeral Symmetric Cipher Generation (AES-256-GCM)",
-        "Zero-Trust Payload Verification",
-        "Multi-Cloud Backend Forwarder"
-      ]
-    }
-  },
-  {
-    id: "neuropredict-eeg-classifier",
-    title: "NeuroPredict: EEG Signal Feature Extractor",
-    tagline: "Machine learning classifier for neurological frequency band anomaly detection",
-    shortDescription: "An advanced signal processing suite transforming continuous electroencephalogram (EEG) time-series data into discrete cognitive state classifications.",
-    detailedDescription: "NeuroPredict decomposes multichannel brainwave telemetry using Fast Fourier Transforms (FFT) and Wavelet Decomposition. The extracted spectral densities across Alpha, Beta, Theta, and Delta bands are passed to ensemble classifiers to detect anomalous cognitive stress and early seizure precursors with high clinical precision.",
-    category: "AI/ML",
-    status: "In Development",
-    featured: false,
-    year: "2024",
-    accentColor: "#E66B48",
-    technologies: ["Python", "Scikit-learn", "NumPy", "SciPy", "Matplotlib"],
-    github: "https://github.com/janhvibankar/NeuroPredict-EEG",
-    live: null,
-    metrics: [
-      { label: "Band Filtering", value: "4 Bands (α, β, θ, δ)" },
-      { label: "Sampling Rate", value: "256 Hz" },
-      { label: "Model Recall", value: "91.8%" }
-    ],
-    myContribution: [
-      "Implemented digital Butterworth bandpass filters and continuous wavelet transforms in SciPy.",
-      "Trained random forest and gradient boosted classifiers on standardized medical EEG datasets.",
-      "Built interactive spectral density visualizers displaying real-time frequency distribution graphs."
-    ],
-    keyFeatures: [
-      "Automated artifact removal eliminating eye-blink and muscle movement interference.",
-      "Multi-channel frequency power ratio computation across 16 electrodes.",
-      "Real-time threshold alerting for abnormal spike-and-wave discharges.",
-      "Exportable clinical diagnostic reports with spectrogram visualizations."
-    ],
-    challenges: [
-      "Eliminating high-amplitude 50/60 Hz power-line interference without corrupting adjacent neurological signals.",
-      "Generalizing models across distinct patient physiologies with varying electrode contact impedance."
-    ],
-    outcomes: [
-      "Achieved 91.8% recall in discriminating acute cognitive stress states.",
-      "Reduced signal preprocessing latency to under 30 milliseconds per epoch."
-    ],
-    architecture: {
-      type: "Biomedical Signal Processing & Classifier Pipeline",
-      flow: [
-        "Raw Multichannel EEG Stream (256 Hz)",
-        "Bandpass Filtering & Notch Denoising",
-        "Discrete Wavelet Transform (DWT) Decomposition",
-        "Feature Vector Aggregation (Spectral Power)",
-        "Ensemble Machine Learning Classifier",
-        "Clinical Diagnostic Visualization"
-      ]
-    }
-  },
-  {
-    id: "campus-scheduler-erp",
-    title: "Intelligent Academic Timetable Optimizer",
-    tagline: "Constraint-satisfaction algorithm automating academic schedules and room allocations",
-    shortDescription: "A full-stack institutional scheduler resolving multi-dimensional faculty collisions, lab equipment dependencies, and classroom capacities.",
-    detailedDescription: "Manual academic scheduling in engineering colleges suffers from severe constraint collisions. This platform combines genetic optimization algorithms with a responsive React management portal, generating optimal weekly timetables for over 2,000 students and 80 faculty members while satisfying hard room and lab constraints.",
-    category: "Full Stack",
-    status: "Completed",
-    featured: false,
-    year: "2024",
-    accentColor: "#D9CBB9",
-    technologies: ["React", "Node.js", "Express.js", "MySQL", "Genetic Algorithms"],
-    github: "https://github.com/janhvibankar/Campus-Scheduler",
-    live: null,
-    metrics: [
-      { label: "Students Scheduled", value: "2,000+" },
-      { label: "Collision Rate", value: "0% (Zero Conflicts)" },
-      { label: "Generation Speed", value: "< 4.5s" }
-    ],
-    myContribution: [
-      "Engineered the core constraint-satisfaction heuristic in Node.js incorporating faculty preferences.",
-      "Designed normalized relational schemas in MySQL enforcing referential integrity across departments.",
-      "Built the intuitive drag-and-drop timetable modification interface with live collision warning indicators."
-    ],
-    keyFeatures: [
-      "Heuristic optimization eliminating teacher and classroom schedule overlap.",
-      "Role-based views for department heads, faculty members, and student cohorts.",
-      "One-click PDF timetable export customized for departmental notice boards.",
-      "Dynamic substitution planner recommending available faculty for planned leaves."
-    ],
-    challenges: [
-      "Handling deeply nested shared laboratory constraints requiring specialized hardware benches.",
-      "Scaling the search space efficiently to generate schedules in seconds rather than hours."
-    ],
-    outcomes: [
-      "Reduced university semester schedule formulation time from 2 weeks of manual labor to under 5 minutes.",
-      "Demonstrated 100% collision-free timetable generation across 8 engineering branches."
-    ],
-    architecture: {
-      type: "Constraint Satisfaction Heuristic Engine",
-      flow: [
-        "Faculty & Classroom Constraint Parameters",
-        "Genetic Search Heuristic Evaluator",
-        "Fitness Scoring & Conflict Penalty Matrix",
-        "Relational Storage in MySQL",
-        "Interactive React Drag-and-Drop Workspace"
-      ]
-    }
-  },
-  {
-    id: "aerovision-edge-inspector",
-    title: "AeroVision: Drone Edge Anomaly Inspector",
-    tagline: "Aerial edge intelligence platform detecting infrastructure cracks and solar panel defects",
-    shortDescription: "An on-device computer vision pipeline inspecting aerial thermal and RGB imagery to flag structural anomalies on bridges, wind turbines, and solar arrays.",
-    detailedDescription: "AeroVision runs directly on drone companion computers (e.g. NVIDIA Jetson). Ingesting high-definition aerial video, it runs quantized neural networks to identify hairline fractures, hot-spot thermal faults in photovoltaic cells, and corrosion, geo-tagging each defect with centimeter-accurate GPS coordinates.",
-    category: "Mobile Applications",
-    status: "In Development",
-    featured: false,
-    year: "2025",
-    accentColor: "#92977B",
-    technologies: ["PyTorch", "Flutter", "OpenCV", "TensorRT", "Python"],
-    github: "https://github.com/janhvibankar/AeroVision",
-    live: null,
-    metrics: [
-      { label: "Defect Detection mAP", value: "88.6%" },
-      { label: "FPS on Jetson", value: "28 FPS" },
-      { label: "Geo-tagging Precision", value: "RTK-level" }
-    ],
-    myContribution: [
-      "Quantized custom convolutional neural networks for INT8 execution using TensorRT.",
-      "Integrated flight telemetry logging and geo-referenced bounding box projection.",
-      "Built the ground-control mobile tablet interface in Flutter displaying live mission overlays."
-    ],
-    keyFeatures: [
-      "Real-time defect bounding boxes overlaid on live aerial video feeds.",
-      "Dual-spectrum RGB and infrared thermal anomaly fusion.",
-      "Automated inspection report generator with thumbnail crops and severity scores.",
-      "Offline-first mobile tablet telemetry synchronization."
-    ],
-    challenges: [
-      "Extreme camera shake, variable focal distances, and glare during high-altitude drone flights.",
-      "Restricting inference power consumption within the companion computer's 15W battery envelope."
-    ],
-    outcomes: [
-      "Maintained 28 FPS inference on embedded hardware while identifying defects down to 2mm in width.",
-      "Designed an intuitive tablet interface enabling non-technical inspectors to review flight assets."
-    ],
-    architecture: {
-      type: "Embedded Edge Vision & Telemetry Pipeline",
-      flow: [
-        "Drone Gimbal Video Feed (RGB / Thermal)",
-        "OpenCV Image Stabilization & Crop",
-        "TensorRT Quantized Neural Detector",
-        "GPS & Telemetry Geo-Referencing Engine",
-        "Flutter Ground Control Station Tablet UI"
+        "React.js Single Page Application Interface",
+        "Express.js REST Routing & Role-Based Auth Middleware",
+        "Business Logic & Controller Layer",
+        "MongoDB Mongoose Data Schemas & Indexed Queries",
+        "JWT Token Vault for Secure State Management"
       ]
     }
   }
 ];
-

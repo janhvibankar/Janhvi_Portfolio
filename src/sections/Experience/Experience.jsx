@@ -16,10 +16,10 @@ export const Experience = () => {
       <div className="site-container">
         <SectionHeader
           number="05"
-          label="Experience"
-          title="Leadership &"
-          serifWord="Engineering Roles"
-          subtitle="Directing design systems, mentoring developer cohorts, and investigating distributed systems architectures."
+          label="Leadership Experience"
+          title="Campus Leadership &"
+          serifWord="Community Roles"
+          subtitle="Guiding UI/UX design systems, directing technical community outreach, and mentoring fellow developers."
         />
 
         <div

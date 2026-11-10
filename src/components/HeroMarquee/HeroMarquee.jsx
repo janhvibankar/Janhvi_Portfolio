@@ -2,17 +2,17 @@ import React from 'react';
 import { motion } from 'framer-motion';
 
 const PHRASES = [
-  'BUILDING IDEAS',
+  'BUILDING WITH CODE',
   '✦',
-  'CREATING EXPERIENCES',
+  'FULL-STACK DEVELOPMENT',
   '✦',
-  'EXPLORING AI',
+  'APPLIED AI & ML',
   '✦',
-  'ENGINEERING THE FUTURE',
+  'SMART INDIA HACKATHON WINNER',
   '✦',
-  'FULL-STACK DEVELOPER',
+  'SOFTWARE DEVELOPER',
   '✦',
-  'SIH \'25 CHAMPION',
+  'HUMAN-CENTERED UI/UX',
   '✦',
 ];
 

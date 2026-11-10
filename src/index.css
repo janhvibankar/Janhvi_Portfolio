@@ -1,7 +1,7 @@
 @import './styles/variables.css';
 
 /* ==========================================================================
-   GLOBAL RESET & TYPOGRAPHY FOUNDATION
+   GLOBAL RESET & TYPOGRAPHY FOUNDATION — ELECTRIC ATELIER
    Three-Font System: Instrument Serif, Plus Jakarta Sans, DM Mono
    ========================================================================== */
 *, *::before, *::after {
@@ -29,7 +29,7 @@ body {
   min-height: 100vh;
 }
 
-/* Tactile subtle grain */
+/* Subtle architectural grain */
 body::before {
   content: '';
   position: fixed;
@@ -40,8 +40,21 @@ body::before {
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
 }
 
+/* Scroll Progress Bar at the top of the viewport */
+.scroll-progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent-cobalt), var(--accent-lime), var(--accent-coral));
+  transform-origin: 0%;
+  z-index: 99999;
+  pointer-events: none;
+}
+
 /* ==========================================================================
-   TYPOGRAPHY CLASSES
+   TYPOGRAPHY
    ========================================================================== */
 .font-serif {
   font-family: var(--font-serif);
@@ -55,7 +68,6 @@ body::before {
   font-family: var(--font-mono);
 }
 
-/* Default heading styles: Clean, human, with proper letter-spacing */
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-sans);
   font-weight: 700;
@@ -82,8 +94,8 @@ button {
 
 /* Selection */
 ::selection {
-  background-color: var(--accent-sage);
-  color: #15251F;
+  background-color: var(--accent-lime);
+  color: #151827;
 }
 
 /* Custom Scrollbar */
@@ -101,7 +113,7 @@ button {
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--accent-sage);
+  background: var(--accent-cobalt);
 }
 
 /* ==========================================================================
@@ -120,12 +132,11 @@ button {
 
 .section-wrapper {
   position: relative;
-  padding-top: clamp(4rem, 7vw, 7.5rem);
-  padding-bottom: clamp(4rem, 7vw, 7.5rem);
+  padding-top: clamp(2.75rem, 4.5vw, 4.75rem);
+  padding-bottom: clamp(2.75rem, 4.5vw, 4.75rem);
   z-index: 2;
 }
 
-/* Hairline dividers */
 .hairline-divider {
   width: 100%;
   height: 1px;
@@ -149,14 +160,14 @@ button {
 }
 
 .card-editorial:hover {
-  transform: translateY(-3px);
+  transform: translateY(-4px);
   border-color: var(--border-strong);
   box-shadow: var(--shadow-md);
 }
 
 .card-editorial-accent:hover {
-  border-color: var(--accent-sage-border);
-  box-shadow: var(--shadow-accent);
+  border-color: var(--accent-cobalt-border);
+  box-shadow: var(--shadow-cobalt);
 }
 
 /* Badges */
@@ -177,15 +188,23 @@ button {
 }
 
 .badge-tech:hover {
-  border-color: var(--accent-sage);
-  color: var(--text-primary);
-  background-color: var(--accent-sage-subtle);
+  border-color: var(--accent-cobalt);
+  color: var(--accent-cobalt);
+  background-color: var(--accent-cobalt-subtle);
 }
 
+.badge-cobalt,
 .badge-sage {
-  background-color: var(--accent-sage-subtle);
-  color: var(--accent-sage-dark);
-  border-color: var(--accent-sage-border);
+  background-color: var(--accent-cobalt-subtle);
+  color: var(--accent-cobalt);
+  border-color: var(--accent-cobalt-border);
+  font-weight: 600;
+}
+
+.badge-lime {
+  background-color: var(--accent-lime-subtle);
+  color: var(--accent-lime-dark);
+  border-color: var(--accent-lime-border);
   font-weight: 600;
 }
 
@@ -203,8 +222,8 @@ button {
   justify-content: center;
   gap: 0.6rem;
   padding: 0.85rem 1.75rem;
-  background-color: var(--text-primary);
-  color: var(--bg-primary);
+  background-color: var(--accent-cobalt);
+  color: #FFFFFF;
   font-family: var(--font-sans);
   font-size: 0.92rem;
   font-weight: 600;
@@ -216,10 +235,33 @@ button {
 }
 
 .btn-primary:hover {
-  background-color: var(--accent-sage);
-  color: #15251F;
+  background-color: var(--accent-cobalt-hover);
+  color: #FFFFFF;
   transform: translateY(-2px);
-  box-shadow: var(--shadow-accent);
+  box-shadow: var(--shadow-cobalt);
+}
+
+.btn-lime {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 0.85rem 1.75rem;
+  background-color: var(--accent-lime);
+  color: #151827;
+  font-family: var(--font-sans);
+  font-size: 0.92rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  border-radius: var(--radius-full);
+  transition: all var(--transition-fast);
+  box-shadow: var(--shadow-lime);
+  border: 1px solid transparent;
+}
+
+.btn-lime:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.05);
 }
 
 .btn-secondary {
@@ -285,7 +327,7 @@ button {
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background-color: var(--accent-sage);
+  background-color: var(--accent-lime);
   position: relative;
 }
 
@@ -294,20 +336,20 @@ button {
   position: absolute;
   inset: -3px;
   border-radius: 50%;
-  background-color: var(--accent-sage);
-  opacity: 0.45;
-  animation: pulse-ring 2.2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  background-color: var(--accent-lime);
+  opacity: 0.5;
+  animation: pulse-ring 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
 
 @keyframes pulse-ring {
   0% { transform: scale(0.9); opacity: 0.8; }
-  50% { transform: scale(1.6); opacity: 0; }
+  50% { transform: scale(1.7); opacity: 0; }
   100% { transform: scale(0.9); opacity: 0; }
 }
 
-/* Accessibility Focus States */
+/* Focus States */
 a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible {
-  outline: 2px solid var(--accent-sage);
+  outline: 2px solid var(--accent-cobalt);
   outline-offset: 3px;
 }
 

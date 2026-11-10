@@ -1,13 +1,21 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Award, ArrowUpRight } from 'lucide-react';
+import { ArrowUpRight, ExternalLink, Shield } from 'lucide-react';
 import { certificatesData, certificateCategories } from '../../data/certificates';
 import { SectionHeader } from '../../components/SectionHeader/SectionHeader';
 import { useSound } from '../../context/SoundContext';
 
+// Accent cycling for visual variety
+const CERT_ACCENTS = [
+  { badge: 'badge-cobalt', accent: 'var(--accent-cobalt)', subtle: 'var(--accent-cobalt-subtle)' },
+  { badge: 'badge-lime', accent: 'var(--accent-lime-dark)', subtle: 'var(--accent-lime-subtle)' },
+  { badge: 'badge-coral', accent: 'var(--accent-coral)', subtle: 'var(--accent-coral-subtle)' },
+];
+
 export const Certificates = ({ onSelectCertificate }) => {
   const { playSound } = useSound();
   const [activeCategory, setActiveCategory] = useState('All');
+  const [hoveredId, setHoveredId] = useState(null);
 
   const filtered = activeCategory === 'All'
     ? certificatesData
@@ -25,30 +33,21 @@ export const Certificates = ({ onSelectCertificate }) => {
         />
 
         {/* Category Filters */}
-        <div
-          style={{
-            display: 'flex',
-            flexWrap: 'wrap',
-            gap: '0.45rem',
-            marginBottom: '2.5rem'
-          }}
-        >
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.45rem', marginBottom: '2.5rem' }}>
           {certificateCategories.map((cat) => {
             const isActive = activeCategory === cat;
             return (
               <button
                 key={cat}
-                onClick={() => {
-                  playSound('click');
-                  setActiveCategory(cat);
-                }}
-                className={`badge-tech ${isActive ? 'badge-sage' : ''}`}
+                onClick={() => { playSound('click'); setActiveCategory(cat); }}
+                className="badge-tech"
                 style={{
                   padding: '0.45rem 1rem',
                   fontSize: '0.8rem',
-                  fontWeight: isActive ? 600 : 500,
-                  backgroundColor: isActive ? 'var(--accent-sage-subtle)' : 'var(--badge-bg)',
-                  borderColor: isActive ? 'var(--accent-sage)' : 'var(--border-hairline)'
+                  fontWeight: isActive ? 700 : 500,
+                  backgroundColor: isActive ? 'var(--accent-cobalt-subtle)' : 'var(--badge-bg)',
+                  borderColor: isActive ? 'var(--accent-cobalt)' : 'var(--border-hairline)',
+                  color: isActive ? 'var(--accent-cobalt)' : 'var(--text-secondary)',
                 }}
               >
                 {cat}
@@ -57,117 +56,185 @@ export const Certificates = ({ onSelectCertificate }) => {
           })}
         </div>
 
-        {/* Certificate Cards Grid */}
+        {/* Masonry-style certificate grid */}
         <div
           style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(310px, 1fr))',
-            gap: '1.5rem'
+            gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
+            gap: '1.25rem',
           }}
         >
           <AnimatePresence mode="popLayout">
-            {filtered.map((cert, idx) => (
-              <motion.div
-                key={cert.id}
-                layout
-                initial={{ opacity: 0, y: 15 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.95 }}
-                transition={{ duration: 0.35, delay: idx * 0.04 }}
-                className="card-editorial card-editorial-accent"
-                onClick={() => {
-                  playSound('click');
-                  onSelectCertificate(cert);
-                }}
-                data-cursor="explore"
-                style={{
-                  padding: 'clamp(1.5rem, 3vw, 1.85rem)',
-                  cursor: 'pointer',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  justifyContent: 'space-between',
-                  minHeight: '240px'
-                }}
-              >
-                <div>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.85rem' }}>
-                    <span className="badge-tech badge-sage" style={{ fontSize: '0.7rem' }}>{cert.badge}</span>
-                    <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.74rem', color: 'var(--text-muted)' }}>
-                      {cert.date}
-                    </span>
-                  </div>
+            {filtered.map((cert, idx) => {
+              const accentMeta = CERT_ACCENTS[idx % CERT_ACCENTS.length];
+              const isHovered = hoveredId === cert.id;
 
-                  <h3
-                    style={{
-                      fontFamily: 'var(--font-sans)',
-                      fontSize: '1.2rem',
-                      fontWeight: 700,
-                      color: 'var(--text-primary)',
-                      letterSpacing: '-0.015em',
-                      marginBottom: '0.3rem',
-                      lineHeight: 1.3
-                    }}
-                  >
-                    {cert.title}
-                  </h3>
-
-                  <p
-                    style={{
-                      fontFamily: 'var(--font-mono)',
-                      fontSize: '0.8rem',
-                      color: 'var(--accent-coral)',
-                      marginBottom: '0.75rem',
-                      fontWeight: 500
-                    }}
-                  >
-                    {cert.issuer}
-                  </p>
-
-                  <p
-                    style={{
-                      fontSize: '0.86rem',
-                      lineHeight: 1.55,
-                      color: 'var(--text-secondary)',
-                      display: '-webkit-box',
-                      WebkitLineClamp: 2,
-                      WebkitBoxOrient: 'vertical',
-                      overflow: 'hidden'
-                    }}
-                  >
-                    {cert.description}
-                  </p>
-                </div>
-
-                <div
+              return (
+                <motion.div
+                  key={cert.id}
+                  layout
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, scale: 0.95 }}
+                  transition={{ duration: 0.35, delay: idx * 0.03 }}
+                  className="card-editorial"
+                  data-cursor="explore"
+                  onClick={() => { playSound('click'); onSelectCertificate(cert); }}
+                  onMouseEnter={() => { playSound('hover'); setHoveredId(cert.id); }}
+                  onMouseLeave={() => setHoveredId(null)}
                   style={{
+                    cursor: 'pointer',
                     display: 'flex',
-                    alignItems: 'center',
+                    flexDirection: 'column',
                     justifyContent: 'space-between',
-                    borderTop: '1px solid var(--border-hairline)',
-                    paddingTop: '0.85rem',
-                    marginTop: '1.25rem'
+                    minHeight: '220px',
+                    overflow: 'hidden',
+                    borderColor: isHovered ? accentMeta.accent : 'var(--border-hairline)',
+                    boxShadow: isHovered ? `0 12px 36px ${accentMeta.subtle}` : 'none',
+                    transition: 'all var(--transition-normal)',
+                    position: 'relative',
                   }}
                 >
-                  <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.72rem', color: 'var(--text-muted)' }}>
-                    ID: {cert.credentialId}
-                  </span>
-                  <span
+                  {/* Top accent line */}
+                  <div
                     style={{
-                      display: 'inline-flex',
+                      position: 'absolute',
+                      top: 0,
+                      left: 0,
+                      right: 0,
+                      height: '3px',
+                      backgroundColor: accentMeta.accent,
+                      transform: isHovered ? 'scaleX(1)' : 'scaleX(0)',
+                      transformOrigin: 'left',
+                      transition: 'transform 0.35s ease',
+                    }}
+                  />
+
+                  <div style={{ padding: 'clamp(1.35rem, 2.5vw, 1.75rem)' }}>
+                    {/* Header */}
+                    <div
+                      style={{
+                        display: 'flex',
+                        justifyContent: 'space-between',
+                        alignItems: 'flex-start',
+                        marginBottom: '0.85rem',
+                        gap: '0.5rem',
+                      }}
+                    >
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                        <div
+                          style={{
+                            width: '32px',
+                            height: '32px',
+                            borderRadius: '8px',
+                            backgroundColor: accentMeta.subtle,
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            flexShrink: 0,
+                          }}
+                        >
+                          <Shield size={14} style={{ color: accentMeta.accent }} />
+                        </div>
+                        <span className={`badge-tech ${accentMeta.badge}`} style={{ fontSize: '0.68rem' }}>
+                          {cert.badge}
+                        </span>
+                      </div>
+                      <span
+                        style={{
+                          fontFamily: 'var(--font-mono)',
+                          fontSize: '0.72rem',
+                          color: 'var(--text-muted)',
+                          flexShrink: 0,
+                        }}
+                      >
+                        {cert.date}
+                      </span>
+                    </div>
+
+                    {/* Title & issuer */}
+                    <h3
+                      style={{
+                        fontFamily: 'var(--font-sans)',
+                        fontSize: '1.1rem',
+                        fontWeight: 700,
+                        color: 'var(--text-primary)',
+                        letterSpacing: '-0.015em',
+                        marginBottom: '0.3rem',
+                        lineHeight: 1.3,
+                      }}
+                    >
+                      {cert.title}
+                    </h3>
+                    <p
+                      style={{
+                        fontFamily: 'var(--font-mono)',
+                        fontSize: '0.76rem',
+                        color: accentMeta.accent,
+                        marginBottom: '0.75rem',
+                        fontWeight: 600,
+                      }}
+                    >
+                      {cert.issuer}
+                    </p>
+                    <p
+                      style={{
+                        fontSize: '0.84rem',
+                        lineHeight: 1.55,
+                        color: 'var(--text-secondary)',
+                        display: '-webkit-box',
+                        WebkitLineClamp: 2,
+                        WebkitBoxOrient: 'vertical',
+                        overflow: 'hidden',
+                      }}
+                    >
+                      {cert.description}
+                    </p>
+                  </div>
+
+                  {/* Footer */}
+                  <div
+                    style={{
+                      padding: '0.85rem 1.5rem',
+                      borderTop: '1px solid var(--border-hairline)',
+                      display: 'flex',
                       alignItems: 'center',
-                      gap: '0.3rem',
-                      fontFamily: 'var(--font-sans)',
-                      fontSize: '0.82rem',
-                      fontWeight: 600,
-                      color: 'var(--accent-coral)'
+                      justifyContent: 'space-between',
+                      backgroundColor: isHovered ? accentMeta.subtle : 'transparent',
+                      transition: 'background-color var(--transition-fast)',
                     }}
                   >
-                    <span>Inspect</span>
-                    <ArrowUpRight size={13} />
-                  </span>
-                </div>
-              </motion.div>
-            ))}
+                    <span
+                      style={{
+                        fontFamily: 'var(--font-mono)',
+                        fontSize: '0.68rem',
+                        color: 'var(--text-muted)',
+                        overflow: 'hidden',
+                        textOverflow: 'ellipsis',
+                        whiteSpace: 'nowrap',
+                        maxWidth: '160px',
+                      }}
+                    >
+                      ID: {cert.credentialId}
+                    </span>
+                    <span
+                      style={{
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        gap: '0.3rem',
+                        fontFamily: 'var(--font-sans)',
+                        fontSize: '0.78rem',
+                        fontWeight: 700,
+                        color: accentMeta.accent,
+                      }}
+                    >
+                      Inspect
+                      <ArrowUpRight size={12} />
+                    </span>
+                  </div>
+                </motion.div>
+              );
+            })}
           </AnimatePresence>
         </div>
       </div>

@@ -201,7 +201,7 @@ export const Navbar = ({ onOpenResume }) => {
                 justifyContent: 'center',
                 backgroundColor: 'var(--badge-bg)',
                 border: '1px solid var(--border-hairline)',
-                color: soundEnabled ? 'var(--accent-sage)' : 'var(--text-muted)',
+                color: soundEnabled ? 'var(--accent-cobalt)' : 'var(--text-muted)',
                 transition: 'all var(--transition-fast)'
               }}
             >

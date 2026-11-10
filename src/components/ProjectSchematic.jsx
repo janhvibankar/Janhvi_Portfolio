@@ -1,8 +1,9 @@
 import React from 'react';
 
 export const ProjectSchematic = ({ id }) => {
-  const sageColor = 'var(--accent-sage)';
+  const sageColor = 'var(--accent-cobalt)';
   const coralColor = 'var(--accent-coral)';
+  const limeColor = 'var(--accent-lime)';
 
   switch (id) {
     case 'bharatanatyam-mudra-detector':

@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { motion } from 'framer-motion';
+import { useScroll, useSpring } from 'framer-motion';
 import { ThemeProvider } from './context/ThemeContext';
 import { SoundProvider } from './context/SoundContext';
 import { CustomCursor } from './components/CustomCursor/CustomCursor';
@@ -6,6 +8,7 @@ import { Preloader } from './components/Preloader/Preloader';
 import { Navbar } from './components/Navbar/Navbar';
 import { Hero } from './sections/Hero/Hero';
 import { About } from './sections/About/About';
+import { HeroMarquee } from './components/HeroMarquee/HeroMarquee';
 import { Skills } from './sections/Skills/Skills';
 import { Projects } from './sections/Projects/Projects';
 import { Achievements } from './sections/Achievements/Achievements';
@@ -16,6 +19,20 @@ import { ProjectModal } from './components/ProjectModal/ProjectModal';
 import { CertificateModal } from './components/CertificateModal/CertificateModal';
 import { ResumeModal } from './components/ResumeModal/ResumeModal';
 import { projectsData } from './data/projects';
+import { useState } from 'react';
+
+// Scroll progress bar component
+function ScrollProgressBar() {
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, { stiffness: 100, damping: 30, restDelta: 0.001 });
+
+  return (
+    <motion.div
+      className="scroll-progress-bar"
+      style={{ scaleX }}
+    />
+  );
+}
 
 function PortfolioApp() {
   const [preloaderDone, setPreloaderDone] = useState(false);
@@ -30,51 +47,40 @@ function PortfolioApp() {
 
   return (
     <div className="portfolio-root" style={{ position: 'relative', minHeight: '100vh' }}>
-      {/* Refined Quick Preloader */}
+      {/* Scroll progress indicator */}
+      <ScrollProgressBar />
+
+      {/* Preloader */}
       {!preloaderDone && <Preloader onComplete={() => setPreloaderDone(true)} />}
 
-      {/* Custom Context Cursor (Desktop fine pointer only) */}
+      {/* Custom cursor (desktop only) */}
       <CustomCursor />
 
-      {/* Floating Navigation Header */}
+      {/* Floating navigation */}
       <Navbar onOpenResume={() => setIsResumeOpen(true)} />
 
-      {/* Main Editorial Sections: 7-Part Rhythm */}
+      {/* Main sections */}
       <main>
-        {/* 1. Hero */}
         <Hero onOpenResume={() => setIsResumeOpen(true)} />
-
-        {/* 2. About + Skills */}
+        <HeroMarquee />
         <About />
         <Skills />
-
-        {/* 3 & 4. Featured Projects + More Projects */}
         <Projects onSelectProject={(p) => setSelectedProject(p)} />
-
-        {/* 5. Achievements + Experience */}
         <Achievements onSelectProjectById={handleSelectProjectById} />
         <Experience />
-
-        {/* 6. Certificates */}
         <Certificates onSelectCertificate={(c) => setSelectedCertificate(c)} />
-
-        {/* 7. Contact & Expressive Footer */}
         <Contact onOpenResume={() => setIsResumeOpen(true)} />
       </main>
 
-      {/* Project Detail Modal */}
+      {/* Modals */}
       <ProjectModal
         project={selectedProject}
         onClose={() => setSelectedProject(null)}
       />
-
-      {/* Certificate Inspection Modal */}
       <CertificateModal
         certificate={selectedCertificate}
         onClose={() => setSelectedCertificate(null)}
       />
-
-      {/* Resume Modal Sheet */}
       <ResumeModal
         isOpen={isResumeOpen}
         onClose={() => setIsResumeOpen(false)}

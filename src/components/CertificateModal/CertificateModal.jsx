@@ -106,8 +106,8 @@ export const CertificateModal = ({ certificate, onClose }) => {
                 width: '56px',
                 height: '56px',
                 borderRadius: '50%',
-                backgroundColor: 'var(--accent-sage-subtle)',
-                color: 'var(--accent-sage-dark)',
+                backgroundColor: 'var(--accent-cobalt-subtle)',
+                color: 'var(--accent-cobalt)',
                 display: 'inline-flex',
                 alignItems: 'center',
                 justifyContent: 'center',
@@ -189,7 +189,7 @@ export const CertificateModal = ({ certificate, onClose }) => {
                 <ExternalLink size={14} />
               </a>
             ) : (
-              <span className="badge-tech badge-sage">Verified Credential</span>
+              <span className="badge-tech badge-cobalt">Verified Credential</span>
             )}
 
             <button
@@ -208,3 +208,4 @@ export const CertificateModal = ({ certificate, onClose }) => {
     </AnimatePresence>
   );
 };
+

@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { ExternalLink, ArrowUpRight, Sparkles, Layers, Cpu } from 'lucide-react';
+import React, { useState, useRef } from 'react';
+import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
+import { ExternalLink, ArrowUpRight, Sparkles, ChevronLeft, ChevronRight } from 'lucide-react';
 import { projectsData, projectCategories } from '../../data/projects';
 import { SectionHeader } from '../../components/SectionHeader/SectionHeader';
 import { ProjectSchematic } from '../../components/ProjectSchematic';
@@ -9,16 +9,46 @@ import { useSound } from '../../context/SoundContext';
 export const Projects = ({ onSelectProject }) => {
   const { playSound } = useSound();
   const [activeCategory, setActiveCategory] = useState('All');
+  const carouselRef = useRef(null);
+  const [isDragging, setIsDragging] = useState(false);
+  const [dragStartX, setDragStartX] = useState(0);
+  const [scrollStartX, setScrollStartX] = useState(0);
 
-  // Filter projects by category
   const filtered = activeCategory === 'All'
     ? projectsData
     : projectsData.filter(p => p.category === activeCategory);
 
-  // If "All" is active, show top 3-4 as flagship showcases, and remainder as compact gallery
   const isAll = activeCategory === 'All';
   const flagshipProjects = isAll ? filtered.slice(0, 3) : filtered.slice(0, 2);
   const compactProjects = isAll ? filtered.slice(3) : filtered.slice(2);
+
+  // Carousel drag handlers
+  const handleMouseDown = (e) => {
+    setIsDragging(true);
+    setDragStartX(e.pageX);
+    setScrollStartX(carouselRef.current?.scrollLeft || 0);
+  };
+
+  const handleMouseMove = (e) => {
+    if (!isDragging || !carouselRef.current) return;
+    const delta = e.pageX - dragStartX;
+    carouselRef.current.scrollLeft = scrollStartX - delta;
+  };
+
+  const handleMouseUp = () => setIsDragging(false);
+
+  const scrollCarousel = (dir) => {
+    if (!carouselRef.current) return;
+    carouselRef.current.scrollBy({ left: dir * 360, behavior: 'smooth' });
+    playSound('click');
+  };
+
+  // Accent per project index
+  const ACCENTS = [
+    { border: 'var(--accent-cobalt-border)', badge: 'badge-cobalt', glow: 'var(--shadow-cobalt)' },
+    { border: 'var(--accent-lime-border)', badge: 'badge-lime', glow: 'var(--shadow-lime)' },
+    { border: 'var(--accent-coral-border)', badge: 'badge-coral', glow: '0 12px 36px rgba(255,120,94,0.2)' },
+  ];
 
   return (
     <section id="projects" className="section-wrapper">
@@ -26,36 +56,28 @@ export const Projects = ({ onSelectProject }) => {
         <SectionHeader
           number="03"
           label="Exhibition"
-          title="Curated Engineering Works"
-          serifWord="& Digital Systems"
-          subtitle="A selection of machine learning architectures, distributed backends, and full-stack systems designed for real-world impact."
+          title="Curated Engineering"
+          serifWord="Works & Systems"
+          subtitle="Machine learning architectures, distributed backends, and full-stack systems designed for real-world impact."
         />
 
         {/* Category Filter Pills */}
-        <div
-          style={{
-            display: 'flex',
-            flexWrap: 'wrap',
-            gap: '0.45rem',
-            marginBottom: '3rem'
-          }}
-        >
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.45rem', marginBottom: '3rem' }}>
           {projectCategories.map((cat) => {
             const isActive = activeCategory === cat;
             return (
               <button
                 key={cat}
-                onClick={() => {
-                  playSound('click');
-                  setActiveCategory(cat);
-                }}
-                className={`badge-tech ${isActive ? 'badge-sage' : ''}`}
+                onClick={() => { playSound('click'); setActiveCategory(cat); }}
+                className="badge-tech"
                 style={{
                   padding: '0.5rem 1.15rem',
                   fontSize: '0.82rem',
-                  fontWeight: isActive ? 600 : 500,
-                  backgroundColor: isActive ? 'var(--accent-sage-subtle)' : 'var(--badge-bg)',
-                  borderColor: isActive ? 'var(--accent-sage)' : 'var(--border-hairline)'
+                  fontWeight: isActive ? 700 : 500,
+                  backgroundColor: isActive ? 'var(--accent-cobalt-subtle)' : 'var(--badge-bg)',
+                  borderColor: isActive ? 'var(--accent-cobalt)' : 'var(--border-hairline)',
+                  color: isActive ? 'var(--accent-cobalt)' : 'var(--text-secondary)',
+                  transition: 'all var(--transition-fast)',
                 }}
               >
                 {cat}
@@ -64,50 +86,76 @@ export const Projects = ({ onSelectProject }) => {
           })}
         </div>
 
-        {/* ===================================================================
-            FLAGSHIP PROJECT SHOWCASES (Top 3-4 Featured Projects)
-            =================================================================== */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '3rem', marginBottom: '4.5rem' }}>
+        {/* ========================================================
+            FLAGSHIP EDITORIAL SHOWCASES
+            ======================================================== */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '2.5rem', marginBottom: '5rem' }}>
           {flagshipProjects.map((project, idx) => {
             const isReversed = idx % 2 === 1;
+            const accent = ACCENTS[idx % ACCENTS.length];
 
             return (
-              <motion.div
+              <motion.article
                 key={`flagship-${project.id}`}
-                initial={{ opacity: 0, y: 25 }}
+                initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-50px' }}
-                transition={{ duration: 0.55 }}
-                className="card-editorial card-editorial-accent"
+                viewport={{ once: true, margin: '-60px' }}
+                transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                className="card-editorial flagship-card-grid"
                 data-cursor="project"
-                onClick={() => {
-                  playSound('click');
-                  onSelectProject(project);
-                }}
+                onClick={() => { playSound('click'); onSelectProject(project); }}
                 style={{
-                  padding: 'clamp(2rem, 5vw, 3.25rem)',
+                  padding: 'clamp(1.75rem, 4vw, 3rem)',
                   cursor: 'pointer',
                   borderRadius: 'var(--radius-xl)',
                   display: 'grid',
-                  gridTemplateColumns: isReversed ? 'minmax(0, 1fr) minmax(0, 1.25fr)' : 'minmax(0, 1.25fr) minmax(0, 1fr)',
-                  gap: 'clamp(2rem, 5vw, 3.5rem)',
-                  alignItems: 'center'
+                  gridTemplateColumns: isReversed
+                    ? 'minmax(0, 1fr) minmax(0, 1.3fr)'
+                    : 'minmax(0, 1.3fr) minmax(0, 1fr)',
+                  gap: 'clamp(1.5rem, 4vw, 3rem)',
+                  alignItems: 'center',
+                  borderColor: accent.border,
+                  position: 'relative',
+                  overflow: 'hidden',
+                }}
+                whileHover={{
+                  y: -6,
+                  boxShadow: accent.glow,
+                  borderColor: 'var(--accent-cobalt-border)',
                 }}
               >
-                {/* Text Content */}
-                <div style={{ order: isReversed ? 2 : 1 }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem', marginBottom: '0.85rem', flexWrap: 'wrap' }}>
-                    <span className="badge-tech badge-sage" style={{ fontSize: '0.72rem' }}>
-                      <Sparkles size={11} />
-                      FEATURED EXHIBIT
+                {/* Number label */}
+                <div
+                  style={{
+                    position: 'absolute',
+                    top: '1.5rem',
+                    right: '1.75rem',
+                    fontFamily: 'var(--font-serif)',
+                    fontStyle: 'italic',
+                    fontSize: '4rem',
+                    color: 'var(--border-hairline)',
+                    lineHeight: 1,
+                    pointerEvents: 'none',
+                    userSelect: 'none',
+                  }}
+                >
+                  0{idx + 1}
+                </div>
+
+                {/* Text content */}
+                <div style={{ order: isReversed ? 2 : 1, position: 'relative', zIndex: 1 }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', marginBottom: '1rem', flexWrap: 'wrap' }}>
+                    <span className={`badge-tech ${accent.badge}`} style={{ fontSize: '0.68rem' }}>
+                      <Sparkles size={10} />
+                      FEATURED
                     </span>
-                    <span className="badge-tech">{project.category}</span>
+                    <span className="badge-tech" style={{ fontSize: '0.72rem' }}>{project.category}</span>
                     <span
                       style={{
                         fontFamily: 'var(--font-mono)',
-                        fontSize: '0.74rem',
-                        color: project.status === 'Completed' ? 'var(--accent-sage-dark)' : 'var(--accent-coral)',
-                        fontWeight: 600
+                        fontSize: '0.72rem',
+                        color: project.status === 'Completed' ? 'var(--accent-lime-dark)' : 'var(--accent-coral)',
+                        fontWeight: 600,
                       }}
                     >
                       • {project.status}
@@ -117,12 +165,12 @@ export const Projects = ({ onSelectProject }) => {
                   <h3
                     style={{
                       fontFamily: 'var(--font-sans)',
-                      fontSize: 'clamp(1.75rem, 3.5vw, 2.5rem)',
-                      fontWeight: 700,
+                      fontSize: 'clamp(1.6rem, 3vw, 2.35rem)',
+                      fontWeight: 800,
                       color: 'var(--text-primary)',
-                      letterSpacing: '-0.025em',
-                      marginBottom: '0.35rem',
-                      lineHeight: 1.2
+                      letterSpacing: '-0.03em',
+                      marginBottom: '0.3rem',
+                      lineHeight: 1.15,
                     }}
                   >
                     {project.title}
@@ -131,10 +179,10 @@ export const Projects = ({ onSelectProject }) => {
                   <p
                     style={{
                       fontFamily: 'var(--font-mono)',
-                      fontSize: '0.85rem',
+                      fontSize: '0.82rem',
                       color: 'var(--accent-coral)',
-                      marginBottom: '1rem',
-                      fontWeight: 500
+                      marginBottom: '0.85rem',
+                      fontWeight: 500,
                     }}
                   >
                     {project.tagline}
@@ -143,36 +191,52 @@ export const Projects = ({ onSelectProject }) => {
                   <p
                     style={{
                       fontFamily: 'var(--font-sans)',
-                      fontSize: '0.98rem',
+                      fontSize: '0.95rem',
                       lineHeight: 1.65,
                       color: 'var(--text-secondary)',
-                      marginBottom: '1.5rem',
-                      maxWidth: '620px'
+                      marginBottom: '1.25rem',
+                      maxWidth: '560px',
                     }}
                   >
                     {project.shortDescription}
                   </p>
 
-                  {/* Metrics Row */}
+                  {/* Metrics */}
                   {project.metrics && (
                     <div
                       style={{
                         display: 'grid',
-                        gridTemplateColumns: 'repeat(auto-fit, minmax(130px, 1fr))',
-                        gap: '0.75rem',
-                        marginBottom: '1.5rem',
+                        gridTemplateColumns: `repeat(${Math.min(project.metrics.length, 3)}, 1fr)`,
+                        gap: '0.65rem',
+                        marginBottom: '1.25rem',
                         padding: '0.85rem 1rem',
                         backgroundColor: 'var(--bg-card-subtle)',
                         borderRadius: 'var(--radius-md)',
-                        border: '1px solid var(--border-hairline)'
+                        border: '1px solid var(--border-hairline)',
                       }}
                     >
                       {project.metrics.map((m, mIdx) => (
                         <div key={mIdx}>
-                          <div style={{ fontFamily: 'var(--font-sans)', fontSize: '1.25rem', fontWeight: 700, color: 'var(--text-primary)' }}>
+                          <div
+                            style={{
+                              fontFamily: 'var(--font-sans)',
+                              fontSize: '1.3rem',
+                              fontWeight: 800,
+                              color: 'var(--text-primary)',
+                              letterSpacing: '-0.02em',
+                            }}
+                          >
                             {m.value}
                           </div>
-                          <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.66rem', color: 'var(--text-muted)', textTransform: 'uppercase' }}>
+                          <div
+                            style={{
+                              fontFamily: 'var(--font-mono)',
+                              fontSize: '0.64rem',
+                              color: 'var(--text-muted)',
+                              textTransform: 'uppercase',
+                              letterSpacing: '0.04em',
+                            }}
+                          >
                             {m.label}
                           </div>
                         </div>
@@ -180,25 +244,40 @@ export const Projects = ({ onSelectProject }) => {
                     </div>
                   )}
 
-                  {/* Tech Tags */}
-                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.4rem', marginBottom: '1.75rem' }}>
-                    {project.technologies.map((t, idx) => (
-                      <span key={idx} className="badge-tech" style={{ fontSize: '0.72rem' }}>
-                        {t}
-                      </span>
+                  {/* Tech tags */}
+                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.35rem', marginBottom: '1.5rem' }}>
+                    {project.technologies.slice(0, 6).map((t, ti) => (
+                      <span key={ti} className="badge-tech" style={{ fontSize: '0.7rem' }}>{t}</span>
                     ))}
+                    {project.technologies.length > 6 && (
+                      <span className="badge-tech" style={{ fontSize: '0.7rem', color: 'var(--text-muted)' }}>
+                        +{project.technologies.length - 6}
+                      </span>
+                    )}
                   </div>
 
-                  <span
-                    className="btn-primary"
-                    style={{ fontSize: '0.86rem', padding: '0.7rem 1.5rem' }}
-                  >
-                    <span>Inspect Architecture</span>
-                    <ArrowUpRight size={15} />
-                  </span>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem', flexWrap: 'wrap' }}>
+                    <span className="btn-primary" style={{ fontSize: '0.84rem', padding: '0.65rem 1.4rem' }}>
+                      <span>Inspect Architecture</span>
+                      <ArrowUpRight size={14} />
+                    </span>
+                    {project.githubUrl && (
+                      <a
+                        href={project.githubUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={(e) => e.stopPropagation()}
+                        className="btn-secondary"
+                        style={{ fontSize: '0.82rem', padding: '0.6rem 1.2rem' }}
+                      >
+                        <ExternalLink size={13} />
+                        <span>Source</span>
+                      </a>
+                    )}
+                  </div>
                 </div>
 
-                {/* Visual Schematic Blueprint Preview */}
+                {/* Schematic visual */}
                 <div
                   style={{
                     order: isReversed ? 1 : 2,
@@ -206,45 +285,92 @@ export const Projects = ({ onSelectProject }) => {
                     overflow: 'hidden',
                     border: '1px solid var(--border-hairline)',
                     backgroundColor: 'var(--code-bg)',
-                    boxShadow: 'var(--shadow-sm)'
+                    aspectRatio: '4/3',
                   }}
                 >
                   <ProjectSchematic id={project.id} />
                 </div>
-              </motion.div>
+              </motion.article>
             );
           })}
         </div>
 
-        {/* ===================================================================
-            MORE PROJECTS GALLERY (Compact & Filterable)
-            =================================================================== */}
+        {/* ========================================================
+            HORIZONTAL COMPACT CAROUSEL
+            ======================================================== */}
         {compactProjects.length > 0 && (
           <div>
-            <div style={{ marginBottom: '2rem' }}>
-              <h3
-                style={{
-                  fontFamily: 'var(--font-sans)',
-                  fontSize: '1.5rem',
-                  fontWeight: 700,
-                  color: 'var(--text-primary)',
-                  letterSpacing: '-0.02em',
-                  marginBottom: '0.35rem'
-                }}
-              >
-                More Projects & Prototypes
-              </h3>
-              <p style={{ fontFamily: 'var(--font-mono)', fontSize: '0.8rem', color: 'var(--text-muted)' }}>
-                Additional systems, research initiatives, and development repositories.
-              </p>
-            </div>
-
+            {/* Carousel header */}
             <div
               style={{
-                display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
-                gap: '1.75rem'
+                display: 'flex',
+                justifyContent: 'space-between',
+                alignItems: 'center',
+                marginBottom: '1.5rem',
               }}
+            >
+              <div>
+                <h3
+                  style={{
+                    fontFamily: 'var(--font-sans)',
+                    fontSize: '1.4rem',
+                    fontWeight: 700,
+                    color: 'var(--text-primary)',
+                    letterSpacing: '-0.02em',
+                    marginBottom: '0.2rem',
+                  }}
+                >
+                  More Projects &{' '}
+                  <span
+                    style={{
+                      fontFamily: 'var(--font-serif)',
+                      fontStyle: 'italic',
+                      fontWeight: 400,
+                    }}
+                  >
+                    Prototypes
+                  </span>
+                </h3>
+                <p style={{ fontFamily: 'var(--font-mono)', fontSize: '0.76rem', color: 'var(--text-muted)' }}>
+                  Drag to explore — additional systems and development repositories
+                </p>
+              </div>
+              {/* Nav buttons */}
+              <div style={{ display: 'flex', gap: '0.5rem', flexShrink: 0 }}>
+                <button
+                  onClick={() => scrollCarousel(-1)}
+                  className="badge-tech"
+                  style={{ width: '38px', height: '38px', padding: 0, borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+                >
+                  <ChevronLeft size={16} />
+                </button>
+                <button
+                  onClick={() => scrollCarousel(1)}
+                  className="badge-tech"
+                  style={{ width: '38px', height: '38px', padding: 0, borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+                >
+                  <ChevronRight size={16} />
+                </button>
+              </div>
+            </div>
+
+            {/* Scrollable carousel */}
+            <div
+              ref={carouselRef}
+              onMouseDown={handleMouseDown}
+              onMouseMove={handleMouseMove}
+              onMouseUp={handleMouseUp}
+              onMouseLeave={handleMouseUp}
+              style={{
+                display: 'flex',
+                gap: '1.25rem',
+                overflowX: 'auto',
+                scrollbarWidth: 'none',
+                cursor: isDragging ? 'grabbing' : 'grab',
+                paddingBottom: '1rem',
+                WebkitOverflowScrolling: 'touch',
+              }}
+              className="hide-scrollbar"
             >
               <AnimatePresence mode="popLayout">
                 {compactProjects.map((project, idx) => (
@@ -254,34 +380,39 @@ export const Projects = ({ onSelectProject }) => {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, scale: 0.95 }}
-                    transition={{ duration: 0.4, delay: idx * 0.05 }}
-                    className="card-editorial card-editorial-accent"
+                    transition={{ duration: 0.4, delay: idx * 0.04 }}
+                    className="card-editorial"
                     data-cursor="project"
-                    onClick={() => {
-                      playSound('click');
-                      onSelectProject(project);
-                    }}
+                    onClick={() => { if (!isDragging) { playSound('click'); onSelectProject(project); } }}
                     style={{
-                      padding: 'clamp(1.5rem, 3vw, 2rem)',
+                      padding: 'clamp(1.35rem, 2.5vw, 1.75rem)',
                       cursor: 'pointer',
                       display: 'flex',
                       flexDirection: 'column',
                       justifyContent: 'space-between',
-                      minHeight: '320px'
+                      minHeight: '300px',
+                      minWidth: '310px',
+                      maxWidth: '310px',
+                      flexShrink: 0,
                     }}
+                    whileHover={{ y: -4, borderColor: 'var(--accent-cobalt-border)', boxShadow: 'var(--shadow-cobalt)' }}
                   >
                     <div>
-                      {/* Card Top */}
-                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.85rem' }}>
-                        <span className="badge-tech badge-sage" style={{ fontSize: '0.7rem' }}>
-                          {project.category}
-                        </span>
+                      <div
+                        style={{
+                          display: 'flex',
+                          justifyContent: 'space-between',
+                          alignItems: 'center',
+                          marginBottom: '0.75rem',
+                        }}
+                      >
+                        <span className="badge-tech" style={{ fontSize: '0.68rem' }}>{project.category}</span>
                         <span
                           style={{
                             fontFamily: 'var(--font-mono)',
-                            fontSize: '0.72rem',
-                            color: project.status === 'Completed' ? 'var(--accent-sage-dark)' : 'var(--accent-coral)',
-                            fontWeight: 600
+                            fontSize: '0.68rem',
+                            color: project.status === 'Completed' ? 'var(--accent-lime-dark)' : 'var(--accent-coral)',
+                            fontWeight: 600,
                           }}
                         >
                           {project.status}
@@ -291,12 +422,12 @@ export const Projects = ({ onSelectProject }) => {
                       <h4
                         style={{
                           fontFamily: 'var(--font-sans)',
-                          fontSize: '1.35rem',
+                          fontSize: '1.2rem',
                           fontWeight: 700,
                           color: 'var(--text-primary)',
                           letterSpacing: '-0.02em',
-                          marginBottom: '0.35rem',
-                          lineHeight: 1.25
+                          marginBottom: '0.3rem',
+                          lineHeight: 1.25,
                         }}
                       >
                         {project.title}
@@ -305,10 +436,10 @@ export const Projects = ({ onSelectProject }) => {
                       <p
                         style={{
                           fontFamily: 'var(--font-mono)',
-                          fontSize: '0.78rem',
+                          fontSize: '0.74rem',
                           color: 'var(--accent-coral)',
-                          marginBottom: '0.85rem',
-                          fontWeight: 500
+                          marginBottom: '0.75rem',
+                          fontWeight: 500,
                         }}
                       >
                         {project.tagline}
@@ -316,14 +447,14 @@ export const Projects = ({ onSelectProject }) => {
 
                       <p
                         style={{
-                          fontSize: '0.88rem',
+                          fontSize: '0.84rem',
                           lineHeight: 1.6,
                           color: 'var(--text-secondary)',
                           display: '-webkit-box',
                           WebkitLineClamp: 3,
                           WebkitBoxOrient: 'vertical',
                           overflow: 'hidden',
-                          marginBottom: '1.25rem'
+                          marginBottom: '1rem',
                         }}
                       >
                         {project.shortDescription}
@@ -331,45 +462,40 @@ export const Projects = ({ onSelectProject }) => {
                     </div>
 
                     <div>
-                      {/* Tech tags */}
-                      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.35rem', marginBottom: '1.25rem' }}>
-                        {project.technologies.slice(0, 4).map((t, tIdx) => (
-                          <span key={tIdx} className="badge-tech" style={{ fontSize: '0.7rem' }}>
-                            {t}
-                          </span>
+                      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.3rem', marginBottom: '1rem' }}>
+                        {project.technologies.slice(0, 4).map((t, ti) => (
+                          <span key={ti} className="badge-tech" style={{ fontSize: '0.68rem' }}>{t}</span>
                         ))}
                         {project.technologies.length > 4 && (
-                          <span className="badge-tech" style={{ fontSize: '0.7rem', color: 'var(--text-muted)' }}>
+                          <span className="badge-tech" style={{ fontSize: '0.68rem', color: 'var(--text-muted)' }}>
                             +{project.technologies.length - 4}
                           </span>
                         )}
                       </div>
-
                       <div
                         style={{
                           display: 'flex',
                           alignItems: 'center',
                           justifyContent: 'space-between',
                           borderTop: '1px solid var(--border-hairline)',
-                          paddingTop: '0.85rem'
+                          paddingTop: '0.75rem',
                         }}
                       >
-                        <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.72rem', color: 'var(--text-muted)' }}>
+                        <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.68rem', color: 'var(--text-muted)' }}>
                           {project.year}
                         </span>
                         <span
                           style={{
                             display: 'inline-flex',
                             alignItems: 'center',
-                            gap: '0.3rem',
+                            gap: '0.25rem',
                             fontFamily: 'var(--font-sans)',
-                            fontSize: '0.82rem',
-                            fontWeight: 600,
-                            color: 'var(--accent-coral)'
+                            fontSize: '0.78rem',
+                            fontWeight: 700,
+                            color: 'var(--accent-cobalt)',
                           }}
                         >
-                          <span>View Details</span>
-                          <ArrowUpRight size={14} />
+                          View <ArrowUpRight size={12} />
                         </span>
                       </div>
                     </div>
@@ -382,8 +508,10 @@ export const Projects = ({ onSelectProject }) => {
       </div>
 
       <style>{`
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
         @media (max-width: 900px) {
-          .card-editorial-accent {
+          .flagship-card-grid {
             grid-template-columns: 1fr !important;
           }
         }

@@ -85,7 +85,7 @@ export const ResumeModal = ({ isOpen, onClose }) => {
             }}
           >
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-              <span className="badge-tech badge-sage">Curriculum Vitae</span>
+              <span className="badge-tech badge-cobalt">Curriculum Vitae</span>
               <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.74rem', color: 'var(--text-muted)' }}>
                 2025–2026
               </span>
@@ -177,15 +177,15 @@ export const ResumeModal = ({ isOpen, onClose }) => {
                 }}
               >
                 <span style={{ display: 'flex', alignItems: 'center', gap: '0.35rem' }}>
-                  <Mail size={13} style={{ color: 'var(--accent-sage-dark)' }} />
+                  <Mail size={13} style={{ color: 'var(--accent-cobalt)' }} />
                   {profileData.contact.email}
                 </span>
                 <span style={{ display: 'flex', alignItems: 'center', gap: '0.35rem' }}>
-                  <MapPin size={13} style={{ color: 'var(--accent-sage-dark)' }} />
+                  <MapPin size={13} style={{ color: 'var(--accent-cobalt)' }} />
                   {profileData.location.city}, {profileData.location.state}, India
                 </span>
                 <span style={{ display: 'flex', alignItems: 'center', gap: '0.35rem' }}>
-                  <Github size={13} style={{ color: 'var(--accent-sage-dark)' }} />
+                  <Github size={13} style={{ color: 'var(--accent-cobalt)' }} />
                   github.com/janhvibankar
                 </span>
               </div>
@@ -238,7 +238,7 @@ export const ResumeModal = ({ isOpen, onClose }) => {
                   </div>
                 </div>
                 <div style={{ textAlign: 'right' }}>
-                  <div style={{ fontFamily: 'var(--font-mono)', fontWeight: 600, color: 'var(--accent-sage-dark)', fontSize: '0.92rem' }}>
+                  <div style={{ fontFamily: 'var(--font-mono)', fontWeight: 600, color: 'var(--accent-cobalt)', fontSize: '0.92rem' }}>
                     CPI: {profileData.education.cpi} / 10.0
                   </div>
                   <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.74rem', color: 'var(--text-muted)' }}>
@@ -265,7 +265,7 @@ export const ResumeModal = ({ isOpen, onClose }) => {
                 Key Honors
               </h2>
               <div style={{ display: 'flex', gap: '0.65rem', marginBottom: '0.45rem' }}>
-                <Award size={16} style={{ color: 'var(--accent-sage-dark)', flexShrink: 0, marginTop: '2px' }} />
+                <Award size={16} style={{ color: 'var(--accent-cobalt)', flexShrink: 0, marginTop: '2px' }} />
                 <div>
                   <div style={{ fontFamily: 'var(--font-sans)', fontWeight: 700, color: 'var(--text-primary)', fontSize: '0.92rem' }}>
                     Smart India Hackathon 2025 — Grand Winner (1st Place)
@@ -364,3 +364,4 @@ export const ResumeModal = ({ isOpen, onClose }) => {
     </AnimatePresence>
   );
 };
+

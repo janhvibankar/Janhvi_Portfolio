@@ -94,12 +94,12 @@ export const ProjectModal = ({ project, onClose }) => {
 
           {/* Header Metadata */}
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem', marginBottom: '0.85rem', flexWrap: 'wrap' }}>
-            <span className="badge-tech badge-sage">{project.category}</span>
+            <span className="badge-tech badge-cobalt">{project.category}</span>
             <span
               style={{
                 fontFamily: 'var(--font-mono)',
                 fontSize: '0.74rem',
-                color: project.status === 'Completed' ? 'var(--accent-sage-dark)' : 'var(--accent-coral)',
+                color: project.status === 'Completed' ? 'var(--accent-cobalt)' : 'var(--accent-coral)',
                 fontWeight: 600
               }}
             >
@@ -283,7 +283,7 @@ export const ProjectModal = ({ project, onClose }) => {
               <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
                 {project.myContribution.map((item, idx) => (
                   <li key={idx} style={{ display: 'flex', gap: '0.65rem', fontSize: '0.92rem', color: 'var(--text-secondary)' }}>
-                    <CheckCircle2 size={16} style={{ color: 'var(--accent-sage-dark)', flexShrink: 0, marginTop: '3px' }} />
+                    <CheckCircle2 size={16} style={{ color: 'var(--accent-cobalt)', flexShrink: 0, marginTop: '3px' }} />
                     <span>{item}</span>
                   </li>
                 ))}
@@ -425,3 +425,4 @@ export const ProjectModal = ({ project, onClose }) => {
     </AnimatePresence>
   );
 };
+

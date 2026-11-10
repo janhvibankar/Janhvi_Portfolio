@@ -1,134 +1,160 @@
 /* ==========================================================================
-   DESIGN TOKENS & REFINED PALETTE — JANHVI BANKAR PORTFOLIO V2
-   Creative Editorial + Experimental Developer + Modern Personal Brand
-   Three-Font System: Instrument Serif, Plus Jakarta Sans, DM Mono
+   ELECTRIC ATELIER — JANHVI BANKAR PORTFOLIO V3
+   Bold, Energetic, Editorial & Interactive Creative Developer Theme
+   Light: Porcelain (#F7F3EA), Forest Ink (#151827), Electric Cobalt (#6258E8), Acid Lime (#D9F36A), Tangerine Coral (#FF785E)
+   Dark:  Midnight (#151827), Surface (#202438), Pale (#F7F3EA), Cobalt (#8178FF), Lime (#D9F36A), Coral (#FF785E)
    ========================================================================== */
 
 :root {
-  /* Three-Font System */
+  /* Typography System */
   --font-serif: 'Instrument Serif', Georgia, serif;
   --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-mono: 'DM Mono', monospace;
 
-  /* Common Motion & Layout Values */
+  /* Transitions */
   --transition-fast: 0.18s cubic-bezier(0.16, 1, 0.3, 1);
   --transition-normal: 0.32s cubic-bezier(0.16, 1, 0.3, 1);
   --transition-slow: 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-  --transition-theme: background-color 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-                      color 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-                      border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-                      box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-theme: background-color 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+                      color 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+                      border-color 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+                      box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 
-  --radius-xs: 4px;
-  --radius-sm: 8px;
-  --radius-md: 14px;
-  --radius-lg: 22px;
-  --radius-xl: 32px;
+  --radius-xs: 6px;
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-xl: 36px;
   --radius-full: 9999px;
 
-  --container-max: 1280px;
+  --container-max: 1320px;
   --container-pad: clamp(1.25rem, 4vw, 3.5rem);
 }
 
 /* ==========================================================================
-   LIGHT MODE: Porcelain, Forest Ink, Fresh Sage, Soft Coral & Pale Sand
+   LIGHT MODE: Warm Porcelain, Cobalt, Acid Lime & Tangerine Coral
    ========================================================================== */
 :root[data-theme="light"] {
-  --bg-primary: #F4F3EC;           /* Porcelain */
-  --bg-secondary: #EBE9DF;
+  --bg-primary: #F7F3EA;             /* Warm Editorial Porcelain */
+  --bg-secondary: #EFE9DC;
   --bg-card: #FFFFFF;
-  --bg-card-hover: #F8F7F0;
-  --bg-card-muted: #DDDCCF;         /* Pale Sand */
-  --bg-card-subtle: #FAF9F3;
-  --bg-overlay: rgba(244, 243, 236, 0.9);
+  --bg-card-hover: #FCFBF7;
+  --bg-card-subtle: #F3EFE4;
+  --bg-overlay: rgba(247, 243, 234, 0.92);
 
-  --text-primary: #202923;          /* Forest Ink */
-  --text-secondary: #48544B;
-  --text-muted: #7A857D;
-  --text-dim: #9FAAA2;
-  --text-inverse: #F4F3EC;
+  --text-primary: #151827;            /* Deep Forest Ink / Midnight */
+  --text-secondary: #626779;          /* Refined Slate */
+  --text-muted: #8E93A4;
+  --text-dim: #BAC0CE;
+  --text-inverse: #F7F3EA;
 
-  --accent-sage: #B8D9B2;           /* Fresh Sage Primary */
-  --accent-sage-dark: #3F683A;      /* High contrast sage for text on light bg */
-  --accent-sage-subtle: rgba(184, 217, 178, 0.32);
-  --accent-sage-border: rgba(63, 104, 58, 0.25);
+  /* Electric Atelier Accents */
+  --accent-cobalt: #6258E8;           /* Electric Cobalt */
+  --accent-cobalt-hover: #5044DC;
+  --accent-cobalt-subtle: rgba(98, 88, 232, 0.12);
+  --accent-cobalt-border: rgba(98, 88, 232, 0.3);
 
-  --accent-coral: #E98570;          /* Soft Coral Highlight */
-  --accent-coral-subtle: rgba(233, 133, 112, 0.16);
-  --accent-coral-border: rgba(233, 133, 112, 0.4);
+  --accent-lime: #D9F36A;             /* Acid Lime Highlight */
+  --accent-lime-dark: #6D8500;        /* Readable lime for text */
+  --accent-lime-subtle: rgba(217, 243, 106, 0.32);
+  --accent-lime-border: rgba(109, 133, 0, 0.28);
 
-  --accent-sand: #DDDCCF;           /* Pale Sand */
-  --accent-sand-subtle: rgba(221, 220, 207, 0.5);
+  --accent-coral: #FF785E;            /* Tangerine Coral */
+  --accent-coral-subtle: rgba(255, 120, 94, 0.14);
+  --accent-coral-border: rgba(255, 120, 94, 0.35);
 
-  --border-hairline: rgba(32, 41, 35, 0.08);
-  --border-strong: rgba(32, 41, 35, 0.2);
-  --border-accent: rgba(63, 104, 58, 0.3);
+  --border-hairline: rgba(21, 24, 39, 0.08);
+  --border-strong: rgba(21, 24, 39, 0.18);
+  --border-accent: rgba(98, 88, 232, 0.35);
 
-  --shadow-sm: 0 2px 8px rgba(32, 41, 35, 0.03);
-  --shadow-md: 0 8px 24px rgba(32, 41, 35, 0.05);
-  --shadow-lg: 0 20px 48px rgba(32, 41, 35, 0.08);
-  --shadow-accent: 0 10px 30px rgba(184, 217, 178, 0.35);
+  --shadow-sm: 0 2px 8px rgba(21, 24, 39, 0.04);
+  --shadow-md: 0 10px 30px rgba(21, 24, 39, 0.07);
+  --shadow-lg: 0 24px 60px rgba(21, 24, 39, 0.1);
+  --shadow-cobalt: 0 12px 36px rgba(98, 88, 232, 0.25);
+  --shadow-lime: 0 10px 30px rgba(217, 243, 106, 0.4);
 
-  --glass-bg: rgba(255, 255, 255, 0.85);
-  --glass-border: rgba(32, 41, 35, 0.08);
-  --nav-bg: rgba(244, 243, 236, 0.88);
+  --glass-bg: rgba(255, 255, 255, 0.88);
+  --glass-border: rgba(21, 24, 39, 0.08);
+  --nav-bg: rgba(247, 243, 234, 0.88);
 
-  --badge-bg: rgba(32, 41, 35, 0.05);
-  --badge-text: #202923;
+  --badge-bg: rgba(21, 24, 39, 0.05);
+  --badge-text: #151827;
 
-  --code-bg: #EAE8DC;
-  --code-border: rgba(32, 41, 35, 0.1);
-  --grain-opacity: 0.03;
+  --code-bg: #EAE4D5;
+  --code-border: rgba(21, 24, 39, 0.1);
+  --grain-opacity: 0.025;
+
+  /* Legacy sage aliases → mapped to cobalt for backward compat */
+  --accent-sage: var(--accent-cobalt);
+  --accent-sage-dark: var(--accent-cobalt);
+  --accent-sage-border: var(--accent-cobalt-border);
+  --accent-sage-subtle: var(--accent-cobalt-subtle);
+  --accent-primary: var(--accent-cobalt);
+  --accent-primary-subtle: var(--accent-cobalt-subtle);
+  --bg-card-muted: var(--bg-card-subtle);
+  --font-display: var(--font-serif);
 }
 
 /* ==========================================================================
-   DARK MODE: Deep Evergreen, Dark Surface, Pale Mist, Fresh Sage, Soft Coral
-   Rich green undertone, not a generic black dashboard!
+   DARK MODE: Midnight, Electric Cobalt, Acid Lime & Tangerine Coral
    ========================================================================== */
 :root[data-theme="dark"] {
-  --bg-primary: #15251F;           /* Deep Evergreen */
-  --bg-secondary: #1A2E26;
-  --bg-card: #202D26;              /* Dark Surface */
-  --bg-card-hover: #273830;
-  --bg-card-muted: #1A2721;
-  --bg-card-subtle: #23332B;
-  --bg-overlay: rgba(21, 37, 31, 0.92);
+  --bg-primary: #151827;             /* Rich Midnight / Deep Ink */
+  --bg-secondary: #1B2033;
+  --bg-card: #202438;                /* Electric Atelier Dark Surface */
+  --bg-card-hover: #272C44;
+  --bg-card-subtle: #1C2032;
+  --bg-overlay: rgba(21, 24, 39, 0.94);
 
-  --text-primary: #E6E9DD;          /* Pale Mist */
-  --text-secondary: #A8B5AC;
-  --text-muted: #748378;
-  --text-dim: #546258;
-  --text-inverse: #15251F;
+  --text-primary: #F7F3EA;            /* Crisp Warm Pale */
+  --text-secondary: #B3B7C7;          /* Soft Pale Slate */
+  --text-muted: #7A8196;
+  --text-dim: #545B70;
+  --text-inverse: #151827;
 
-  --accent-sage: #B8D9B2;           /* Fresh Sage */
-  --accent-sage-dark: #B8D9B2;
-  --accent-sage-subtle: rgba(184, 217, 178, 0.18);
-  --accent-sage-border: rgba(184, 217, 178, 0.35);
+  /* Electric Atelier Accents */
+  --accent-cobalt: #8178FF;           /* Luminous Cobalt */
+  --accent-cobalt-hover: #968EFF;
+  --accent-cobalt-subtle: rgba(129, 120, 255, 0.18);
+  --accent-cobalt-border: rgba(129, 120, 255, 0.38);
 
-  --accent-coral: #E98570;          /* Soft Coral */
-  --accent-coral-subtle: rgba(233, 133, 112, 0.18);
-  --accent-coral-border: rgba(233, 133, 112, 0.4);
+  --accent-lime: #D9F36A;             /* Acid Lime Highlight */
+  --accent-lime-dark: #D9F36A;
+  --accent-lime-subtle: rgba(217, 243, 106, 0.18);
+  --accent-lime-border: rgba(217, 243, 106, 0.42);
 
-  --accent-sand: #DDDCCF;           /* Pale Sand */
-  --accent-sand-subtle: rgba(221, 220, 207, 0.12);
+  --accent-coral: #FF785E;            /* Tangerine Coral */
+  --accent-coral-subtle: rgba(255, 120, 94, 0.18);
+  --accent-coral-border: rgba(255, 120, 94, 0.42);
 
-  --border-hairline: rgba(230, 233, 221, 0.08);
-  --border-strong: rgba(230, 233, 221, 0.18);
-  --border-accent: rgba(184, 217, 178, 0.4);
+  --border-hairline: rgba(247, 243, 234, 0.08);
+  --border-strong: rgba(247, 243, 234, 0.18);
+  --border-accent: rgba(129, 120, 255, 0.45);
 
-  --shadow-sm: 0 2px 10px rgba(10, 20, 16, 0.35);
-  --shadow-md: 0 10px 28px rgba(10, 20, 16, 0.5);
-  --shadow-lg: 0 24px 56px rgba(10, 20, 16, 0.65);
-  --shadow-accent: 0 10px 32px rgba(184, 217, 178, 0.22);
+  --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 10px 32px rgba(0, 0, 0, 0.55);
+  --shadow-lg: 0 24px 64px rgba(0, 0, 0, 0.7);
+  --shadow-cobalt: 0 12px 40px rgba(129, 120, 255, 0.3);
+  --shadow-lime: 0 12px 36px rgba(217, 243, 106, 0.25);
 
-  --glass-bg: rgba(32, 45, 38, 0.85);
-  --glass-border: rgba(230, 233, 221, 0.08);
-  --nav-bg: rgba(21, 37, 31, 0.88);
+  --glass-bg: rgba(32, 36, 56, 0.88);
+  --glass-border: rgba(247, 243, 234, 0.09);
+  --nav-bg: rgba(21, 24, 39, 0.88);
 
-  --badge-bg: rgba(230, 233, 221, 0.065);
-  --badge-text: #E6E9DD;
+  --badge-bg: rgba(247, 243, 234, 0.065);
+  --badge-text: #F7F3EA;
 
-  --code-bg: #121E19;
-  --code-border: rgba(230, 233, 221, 0.1);
-  --grain-opacity: 0.04;
+  --code-bg: #111422;
+  --code-border: rgba(247, 243, 234, 0.1);
+  --grain-opacity: 0.035;
+
+  /* Legacy sage aliases → mapped to cobalt for backward compat */
+  --accent-sage: var(--accent-cobalt);
+  --accent-sage-dark: var(--accent-cobalt);
+  --accent-sage-border: var(--accent-cobalt-border);
+  --accent-sage-subtle: var(--accent-cobalt-subtle);
+  --accent-primary: var(--accent-cobalt);
+  --accent-primary-subtle: var(--accent-cobalt-subtle);
+  --bg-card-muted: var(--bg-card-subtle);
+  --font-display: var(--font-serif);
 }

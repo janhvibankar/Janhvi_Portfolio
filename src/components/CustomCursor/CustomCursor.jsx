@@ -29,6 +29,7 @@ export const CustomCursor = () => {
 
       const projectCard = target.closest('[data-cursor="project"]');
       const exploreTarget = target.closest('[data-cursor="explore"]');
+      const copyTarget = target.closest('[data-cursor="copy"]');
       const interactive = target.closest('a, button, input, select, textarea, [role="button"], [data-cursor="pointer"]');
 
       if (projectCard) {
@@ -37,6 +38,9 @@ export const CustomCursor = () => {
       } else if (exploreTarget) {
         setCursorState('explore');
         setCursorText('EXPLORE');
+      } else if (copyTarget) {
+        setCursorState('copy');
+        setCursorText('COPY');
       } else if (interactive) {
         setCursorState('pointer');
         setCursorText('');
@@ -69,7 +73,7 @@ export const CustomCursor = () => {
 
   if (isTouchDevice || cursorState === 'hidden') return null;
 
-  const isPill = cursorState === 'project' || cursorState === 'explore';
+  const isPill = cursorState === 'project' || cursorState === 'explore' || cursorState === 'copy';
 
   return (
     <div
@@ -95,7 +99,7 @@ export const CustomCursor = () => {
           width: 6,
           height: 6,
           borderRadius: '50%',
-          backgroundColor: 'var(--accent-coral)',
+          backgroundColor: 'var(--accent-lime)',
           position: 'absolute'
         }}
       />
@@ -103,13 +107,15 @@ export const CustomCursor = () => {
       {/* Trailing context ring / capsule */}
       <motion.div
         animate={{
-          x: mousePosition.x - (isPill ? 58 : cursorState === 'pointer' ? 22 : 16),
-          y: mousePosition.y - (isPill ? 18 : cursorState === 'pointer' ? 22 : 16),
-          width: isPill ? 116 : cursorState === 'pointer' ? 44 : 32,
-          height: isPill ? 36 : cursorState === 'pointer' ? 44 : 32,
-          borderRadius: isPill ? 18 : 999,
-          backgroundColor: isPill ? 'var(--accent-sage)' : 'transparent',
-          borderColor: isPill ? 'transparent' : 'var(--accent-sage)',
+          x: mousePosition.x - (isPill ? (cursorState === 'copy' ? 36 : 58) : cursorState === 'pointer' ? 22 : 16),
+          y: mousePosition.y - (isPill ? 17 : cursorState === 'pointer' ? 22 : 16),
+          width: isPill ? (cursorState === 'copy' ? 72 : 116) : cursorState === 'pointer' ? 44 : 32,
+          height: isPill ? 34 : cursorState === 'pointer' ? 44 : 32,
+          borderRadius: isPill ? 17 : 999,
+          backgroundColor: isPill
+            ? (cursorState === 'copy' ? 'var(--accent-coral)' : 'var(--accent-lime)')
+            : 'transparent',
+          borderColor: isPill ? 'transparent' : 'var(--accent-cobalt)',
           borderWidth: isPill ? 0 : 1.5,
           scale: cursorState === 'pointer' ? 1.15 : 1
         }}
@@ -120,12 +126,12 @@ export const CustomCursor = () => {
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          color: '#15251F',
+          color: '#151827',
           fontSize: '9.5px',
           fontFamily: 'var(--font-mono)',
           fontWeight: 700,
           letterSpacing: '0.08em',
-          boxShadow: isPill ? '0 8px 24px rgba(184, 217, 178, 0.4)' : 'none'
+          boxShadow: isPill ? '0 8px 24px rgba(217, 243, 106, 0.4)' : 'none'
         }}
       >
         {cursorText && (

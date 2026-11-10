@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>JPB.ARCHITECT | Janhvi Pradip Bankar</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=JetBrains+Mono:wght@500;700&amp;family=Geist:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind Config -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "error-container": "#93000a",
+                    "surface-container": "#1c1f2a",
+                    "error": "#ffb4ab",
+                    "primary-fixed-dim": "#4cd7f6",
+                    "secondary-fixed-dim": "#d0bcff",
+                    "surface-variant": "#313540",
+                    "surface-tint": "#4cd7f6",
+                    "secondary": "#d0bcff",
+                    "on-primary": "#003640",
+                    "primary": "#4cd7f6",
+                    "on-secondary-fixed-variant": "#5516be",
+                    "primary-fixed": "#acedff",
+                    "surface-dim": "#0f131d",
+                    "on-secondary-container": "#c4abff",
+                    "surface-container-highest": "#313540",
+                    "outline-variant": "#3d494c",
+                    "tertiary-fixed": "#6ffbbe",
+                    "on-background": "#dfe2f1",
+                    "on-primary-fixed": "#001f26",
+                    "on-error-container": "#ffdad6",
+                    "on-tertiary-container": "#00452e",
+                    "on-tertiary-fixed-variant": "#005236",
+                    "inverse-surface": "#dfe2f1",
+                    "surface-container-high": "#262a35",
+                    "inverse-primary": "#00687a",
+                    "secondary-container": "#571bc1",
+                    "on-surface": "#dfe2f1",
+                    "secondary-fixed": "#e9ddff",
+                    "on-primary-container": "#00424f",
+                    "primary-container": "#06b6d4",
+                    "on-secondary-fixed": "#23005c",
+                    "tertiary-fixed-dim": "#4edea3",
+                    "tertiary": "#4edea3",
+                    "outline": "#869397",
+                    "surface": "#0f131d",
+                    "surface-container-lowest": "#0a0e18",
+                    "on-primary-fixed-variant": "#004e5c",
+                    "surface-container-low": "#171b26",
+                    "on-error": "#690005",
+                    "on-secondary": "#3c0091",
+                    "surface-bright": "#353944",
+                    "inverse-on-surface": "#2c303b",
+                    "tertiary-container": "#1bbd85",
+                    "on-tertiary": "#003824",
+                    "on-surface-variant": "#bcc9cd",
+                    "on-tertiary-fixed": "#002113",
+                    "background": "#0f131d"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "unit": "4px",
+                    "gutter": "24px",
+                    "margin-desktop": "80px",
+                    "container-max": "1280px",
+                    "margin-mobile": "20px"
+            },
+            "fontFamily": {
+                    "body-lg": ["Inter"],
+                    "display-lg-mobile": ["Geist"],
+                    "label-caps": ["JetBrains Mono"],
+                    "display-lg": ["Geist"],
+                    "body-md": ["Inter"],
+                    "headline-md": ["Geist"],
+                    "label-code": ["JetBrains Mono"]
+            },
+            "fontSize": {
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "display-lg-mobile": ["40px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "label-caps": ["12px", {"lineHeight": "1.0", "letterSpacing": "0.1em", "fontWeight": "700"}],
+                    "display-lg": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "headline-md": ["32px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "label-code": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .neon-glow-primary:hover {
+            box-shadow: 0 0 20px rgba(76, 215, 246, 0.3);
+            border-color: rgba(76, 215, 246, 0.5);
+        }
+        .text-gradient {
+            background: linear-gradient(90deg, #4cd7f6 0%, #d0bcff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: #0f131d; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #3d494c; border-radius: 10px; }
+        
+        @keyframes pulse-dot {
+            0% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.2); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+        .pulse { animation: pulse-dot 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md selection:bg-primary-container selection:text-on-primary-container overflow-x-hidden custom-scrollbar">
+<!-- Background Shader -->
+<!-- STITCH_SHADER_START:ANIMATION_3 class="fixed inset-0 w-full h-full -z-10 opacity-40" -->
+<div class="fixed inset-0 w-full h-full -z-10 opacity-40" style="display:block;">
+<canvas id="shader-canvas-ANIMATION_3" style="display:block;width:100%;height:100%"></canvas>
+<script>
+(function() {
+  const canvas = document.getElementById('shader-canvas-ANIMATION_3');
+
+  // Sync the WebGL drawing-buffer size with the CSS-driven layout size.
+  // This fires on initial layout and whenever the element is resized.
+  function syncSize() {
+    const w = canvas.clientWidth  || 1280;
+    const h = canvas.clientHeight || 720;
+    if (canvas.width !== w || canvas.height !== h) {
+      canvas.width  = w;
+      canvas.height = h;
+    }
+  }
+  if (typeof ResizeObserver !== 'undefined') {
+    new ResizeObserver(syncSize).observe(canvas);
+  }
+  syncSize();
+
+  const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+  if (!gl) return;
+  const vs = `attribute vec2 a_position;
+varying vec2 v_texCoord;
+void main() {
+  v_texCoord = a_position * 0.5 + 0.5;
+  gl_Position = vec4(a_position, 0.0, 1.0);
+}`;
+  const fs = `precision highp float;
+uniform float u_time;
+uniform vec2 u_resolution;
+uniform vec2 u_mouse;
+varying vec2 v_texCoord;
+
+void main() {
+    vec2 uv = v_texCoord;
+    vec2 p = (gl_FragCoord.xy * 2.0 - u_resolution.xy) / min(u_resolution.y, u_resolution.x);
+    
+    // Slow drifting movement
+    float t = u_time * 0.2;
+    
+    // Create a mesh-like grid pattern with glow
+    vec2 grid = fract(uv * 15.0 - t * 0.1);
+    float line = smoothstep(0.02, 0.0, abs(grid.x - 0.5)) + smoothstep(0.02, 0.0, abs(grid.y - 0.5));
+    
+    // Ambient color pulses
+    vec3 color1 = vec3(0.023, 0.714, 0.831); // Cyan #06B6D4
+    vec3 color2 = vec3(0.545, 0.361, 0.965); // Purple #8B5CF6
+    
+    float pulse = sin(p.x * 2.0 + p.y * 3.0 + t) * 0.5 + 0.5;
+    vec3 bg = mix(vec3(0.043, 0.059, 0.098), vec3(0.012, 0.027, 0.071), pulse); // bg-[#0B0F19] to #030712
+    
+    // Mouse interaction glow
+    vec2 mouse = u_mouse / u_resolution;
+    float dist = length(uv - mouse);
+    float mGlow = smoothstep(0.3, 0.0, dist) * 0.4;
+    
+    vec3 finalColor = bg + (line * 0.05 * color1) + (mGlow * color2);
+    
+    gl_FragColor = vec4(finalColor, 1.0);
+}`;
+  function cs(type, src) {
+    const s = gl.createShader(type);
+    gl.shaderSource(s, src);
+    gl.compileShader(s);
+    return s;
+  }
+  const prog = gl.createProgram();
+  gl.attachShader(prog, cs(gl.VERTEX_SHADER, vs));
+  gl.attachShader(prog, cs(gl.FRAGMENT_SHADER, fs));
+  gl.linkProgram(prog);
+  gl.useProgram(prog);
+  const buf = gl.createBuffer();
+  gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 1,-1, -1,1, 1,1]), gl.STATIC_DRAW);
+  const pos = gl.getAttribLocation(prog, 'a_position');
+  gl.enableVertexAttribArray(pos);
+  gl.vertexAttribPointer(pos, 2, gl.FLOAT, false, 0, 0);
+  const uTime = gl.getUniformLocation(prog, 'u_time');
+  const uRes = gl.getUniformLocation(prog, 'u_resolution');
+  const uMouse = gl.getUniformLocation(prog, 'u_mouse');
+
+  // u_mouse is in pixel coordinates matching u_resolution (ShaderToy convention).
+  // Shaders that need normalized coords should use: u_mouse / u_resolution.
+  let mouse = { x: canvas.width / 2, y: canvas.height / 2 };
+  window.addEventListener('mousemove', (event) => {
+    const rect = canvas.getBoundingClientRect();
+    if (rect.width && rect.height) {
+      const nx = (event.clientX - rect.left) / rect.width;
+      const ny = 1.0 - (event.clientY - rect.top) / rect.height;
+      mouse.x = nx * canvas.width;
+      mouse.y = ny * canvas.height;
+    }
+  });
+
+  function render(t) {
+    if (typeof ResizeObserver === 'undefined') syncSize();
+    gl.viewport(0, 0, canvas.width, canvas.height);
+    if (uTime) gl.uniform1f(uTime, t * 0.001);
+    if (uRes) gl.uniform2f(uRes, canvas.width, canvas.height);
+    if (uMouse) gl.uniform2f(uMouse, mouse.x, mouse.y);
+    gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+    requestAnimationFrame(render);
+  }
+  render(0);
+})();
+</script>
+</div>
+<!-- STITCH_SHADER_END:ANIMATION_3 -->
+<!-- Top Navigation Bar -->
+<nav class="fixed top-4 left-1/2 -translate-x-1/2 w-[90%] max-w-container-max rounded-full backdrop-blur-md bg-white/[0.02] border border-white/10 shadow-[0_0_20px_rgba(76,215,246,0.15)] flex justify-between items-center px-gutter h-16 z-50 transition-all duration-300">
+<div class="font-label-code text-label-code tracking-tighter text-primary">JPB.ARCHITECT</div>
+<div class="hidden md:flex items-center gap-6">
+<a class="font-body-md text-body-md text-primary font-bold hover:text-primary transition-colors duration-300" href="#hero">Hero</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors duration-300" href="#about">About</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors duration-300" href="#skills">Skills</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors duration-300" href="#work">Work</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors duration-300" href="#research">Research</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors duration-300" href="#timeline">Timeline</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors duration-300" href="#contact">Contact</a>
+</div>
+<button class="bg-primary text-on-primary px-6 py-2 rounded-full font-label-caps text-label-caps scale-95 active:scale-90 transition-transform">Hire Me</button>
+</nav>
+<main class="relative z-10 space-y-[120px] pb-20">
+<!-- Hero Section -->
+<section class="min-h-screen flex flex-col justify-center items-center text-center px-margin-mobile md:px-margin-desktop pt-32" id="hero">
+<div class="max-w-4xl space-y-8">
+<div class="flex flex-wrap justify-center gap-3 mb-6">
+<span class="px-4 py-1 rounded-full border border-primary/30 bg-primary/10 text-primary font-label-code text-label-code">SIH 2025 Winner</span>
+<span class="px-4 py-1 rounded-full border border-secondary/30 bg-secondary/10 text-secondary font-label-code text-label-code">Research Assistant</span>
+<span class="px-4 py-1 rounded-full border border-tertiary/30 bg-tertiary/10 text-tertiary font-label-code text-label-code">Full Stack Dev</span>
+</div>
+<h1 class="font-display-lg text-display-lg md:text-display-lg text-gradient leading-[1.1]">Janhvi Pradip Bankar</h1>
+<p class="font-headline-md text-headline-md text-on-surface-variant max-w-2xl mx-auto">
+                    Computer Science Undergraduate | Building Intelligent Monitoring, Backend Architecture, and Edge AI Systems.
+                </p>
+<div class="flex flex-col md:flex-row items-center justify-center gap-6 pt-8">
+<a class="group relative px-8 py-4 bg-primary text-on-primary rounded-xl font-label-caps text-label-caps overflow-hidden transition-all hover:shadow-[0_0_30px_rgba(76,215,246,0.4)]" href="#work">
+<span class="relative z-10">Explore My Work</span>
+</a>
+<a class="px-8 py-4 glass-panel text-on-surface rounded-xl font-label-caps text-label-caps hover:bg-white/5 transition-all" href="#">
+                        Download Resume
+                    </a>
+</div>
+</div>
+<div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-50">
+<span class="font-label-code text-[10px] tracking-widest uppercase">Scroll to Initialise</span>
+<div class="w-1 h-12 bg-gradient-to-b from-primary to-transparent rounded-full"></div>
+</div>
+</section>
+<!-- About Section -->
+<section class="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto" id="about">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+<div class="glass-panel rounded-xl overflow-hidden shadow-2xl">
+<div class="bg-surface-container-high px-4 py-3 flex items-center gap-2">
+<div class="flex gap-1.5">
+<div class="w-3 h-3 rounded-full bg-error"></div>
+<div class="w-3 h-3 rounded-full bg-secondary"></div>
+<div class="w-3 h-3 rounded-full bg-tertiary"></div>
+</div>
+<span class="text-label-code font-label-code text-outline ml-4 opacity-70">developer_identity.json</span>
+</div>
+<div class="p-6 font-label-code text-label-code text-primary-fixed-dim leading-relaxed bg-surface-container-lowest">
+<pre><code>{
+  "name": "Janhvi Pradip Bankar",
+  "location": "Sangola, MH, India",
+  "education": {
+    "institute": "RIT",
+    "course": "B.Tech CSE",
+    "cpi": 8.37
+  },
+  "specialization": [
+    "Intelligent Monitoring",
+    "Edge AI",
+    "Cloud Architecture"
+  ],
+  "status": "building_the_future"
+}</code></pre>
+</div>
+</div>
+<div class="space-y-6">
+<h2 class="font-headline-md text-headline-md text-primary">Architecting Intelligence</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">
+                        I specialize in creating high-performance automation and intelligent monitoring systems tailored for complex industrial environments. My approach integrates backend robustness with Edge AI efficiency.
+                    </p>
+<div class="grid grid-cols-2 gap-4 pt-4">
+<div class="glass-panel p-6 rounded-xl text-center">
+<div class="text-display-lg-mobile text-primary">8.37</div>
+<div class="font-label-code text-label-code text-outline uppercase tracking-wider">Current CPI</div>
+</div>
+<div class="glass-panel p-6 rounded-xl text-center">
+<div class="text-display-lg-mobile text-secondary">01</div>
+<div class="font-label-code text-label-code text-outline uppercase tracking-wider">SIH '25 Winner</div>
+</div>
+<div class="glass-panel p-6 rounded-xl text-center col-span-2">
+<div class="text-display-lg-mobile text-tertiary">5+</div>
+<div class="font-label-code text-label-code text-outline uppercase tracking-wider">Enterprise Projects Completed</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Skills Section -->
+<section class="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto" id="skills">
+<div class="text-center mb-16">
+<h2 class="font-headline-md text-headline-md text-gradient mb-4">The Tech Stack</h2>
+<p class="text-on-surface-variant max-w-xl mx-auto">A specialized toolkit for modern engineering challenges.</p>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+<!-- Languages -->
+<div class="glass-panel p-6 rounded-xl neon-glow-primary transition-all group">
+<span class="material-symbols-outlined text-primary mb-4 block">terminal</span>
+<h3 class="font-label-caps text-label-caps mb-3 text-on-surface">Languages</h3>
+<ul class="font-label-code text-label-code text-on-surface-variant space-y-2">
+<li>C / C++</li>
+<li>Java (Spring Boot)</li>
+<li>Python (AI/ML)</li>
+<li>JavaScript / TS</li>
+</ul>
+</div>
+<!-- Frameworks -->
+<div class="glass-panel p-6 rounded-xl neon-glow-primary transition-all group">
+<span class="material-symbols-outlined text-secondary mb-4 block">layers</span>
+<h3 class="font-label-caps text-label-caps mb-3 text-on-surface">Frameworks</h3>
+<ul class="font-label-code text-label-code text-on-surface-variant space-y-2">
+<li>Flutter</li>
+<li>React / Next.js</li>
+<li>Node / Express</li>
+<li>TensorFlow</li>
+</ul>
+</div>
+<!-- Databases -->
+<div class="glass-panel p-6 rounded-xl neon-glow-primary transition-all group">
+<span class="material-symbols-outlined text-tertiary mb-4 block">database</span>
+<h3 class="font-label-caps text-label-caps mb-3 text-on-surface">Databases</h3>
+<ul class="font-label-code text-label-code text-on-surface-variant space-y-2">
+<li>MySQL</li>
+<li>MongoDB</li>
+<li>Vector DBs</li>
+<li>Redis Cache</li>
+</ul>
+</div>
+<!-- Tools -->
+<div class="glass-panel p-6 rounded-xl neon-glow-primary transition-all group">
+<span class="material-symbols-outlined text-primary mb-4 block">build</span>
+<h3 class="font-label-caps text-label-caps mb-3 text-on-surface">Tools</h3>
+<ul class="font-label-code text-label-code text-on-surface-variant space-y-2">
+<li>Git / CI-CD</li>
+<li>Docker</li>
+<li>Colab / Jupyter</li>
+<li>Postman</li>
+</ul>
+</div>
+<!-- Theory -->
+<div class="glass-panel p-6 rounded-xl neon-glow-primary transition-all group">
+<span class="material-symbols-outlined text-secondary mb-4 block">book</span>
+<h3 class="font-label-caps text-label-caps mb-3 text-on-surface">Theory</h3>
+<ul class="font-label-code text-label-code text-on-surface-variant space-y-2">
+<li>OOP &amp; Design Patterns</li>
+<li>DBMS Internals</li>
+<li>TOC</li>
+<li>PQC Algorithms</li>
+</ul>
+</div>
+</div>
+</section>
+<!-- Projects Section -->
+<section class="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto" id="work">
+<div class="flex justify-between items-end mb-16">
+<div>
+<h2 class="font-headline-md text-headline-md text-primary">Featured Work</h2>
+<p class="text-on-surface-variant">Production-ready solutions for complex problems.</p>
+</div>
+<button class="font-label-caps text-label-caps text-primary border-b border-primary/30 pb-1">View Archive</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<!-- AI Bharatanatyam -->
+<div class="glass-panel rounded-2xl overflow-hidden group hover:translate-y-[-8px] transition-transform duration-500">
+<div class="h-64 relative overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-t from-surface-dim to-transparent z-10"></div>
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="A futuristic UI interface for an AI-powered dance learning application. The screen shows a dancer overlaid with a digital skeleton rig tracking movements using computer vision. Cyan neon lines highlight joint positions against a dark, minimalist stage background. The aesthetic is clean, technological, and educational." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBn9mVHiuv0hBx8CHynhCEesHuQwHXJSVa-zm1TilcEIinKPBjDELQwK4CjuiP-15wyC-WyW8Qhv1eH1-WOAqW8Zi60S6xZSBXJSZ0bB3LfXEIYNfYN6BUB6Do8j0d2LHuBAx39CCdTK5EZCYbaREwQ_bjDt01k-ylQHtkow_AEuitK5CL4t470YvVI051lurreSBfMpTHPdzAcxt_8nD7rpBFRg-g2snE4P_XNdivJMewyBP8M2pJnmfTzul1HGp70cyffVRqYgbc"/>
+<div class="absolute bottom-4 left-6 z-20">
+<span class="font-label-code text-label-code bg-primary/20 text-primary px-3 py-1 rounded backdrop-blur-sm border border-primary/30">AI / Computer Vision</span>
+</div>
+</div>
+<div class="p-8 space-y-4">
+<h3 class="font-headline-md text-headline-md text-on-surface">AI Bharatanatyam App</h3>
+<p class="text-on-surface-variant line-clamp-2">Real-time posture correction and gesture recognition for classical dance using YOLO and CNN architectures.</p>
+<div class="flex flex-wrap gap-2">
+<span class="px-3 py-1 glass-panel text-[10px] font-label-code text-outline uppercase rounded">YOLOv8</span>
+<span class="px-3 py-1 glass-panel text-[10px] font-label-code text-outline uppercase rounded">Flutter</span>
+<span class="px-3 py-1 glass-panel text-[10px] font-label-code text-outline uppercase rounded">OpenCV</span>
+</div>
+</div>
+</div>
+<!-- MigraineGuardian -->
+<div class="glass-panel rounded-2xl overflow-hidden group hover:translate-y-[-8px] transition-transform duration-500">
+<div class="h-64 relative overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-t from-surface-dim to-transparent z-10"></div>
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="A sophisticated medical health dashboard showing neural patterns and predictive data visualizations. Glowing violet graphs map health metrics over time, with a clean dark-mode interface designed for clinical accuracy. Soft atmospheric lighting creates a sense of high-tech wellness and medical precision." src="https://lh3.googleusercontent.com/aida-public/AB6AXuClK0wnLthVOrfPTw7cwdWBTwcrf6-5fE7uKeCkHAlM8TeambMq1PgcFzcVdYp4T28yNkJSAx_vNjvfOKcb235YYhU9onlfIOIBOHiva8aBQ2PO5I-O6Iq8nYlhi3ZuJs-WuEqRH3O2Y8gRNgZPI4f0TL7Y9S6A4A5lPt0Jdg_gcKRfhbd1OIk8Jooo3_mwnOATG5fieBPj9T7SBaUOtrd-MmRyPyhHVwqvRJw4w9se9It7avc6t_Hy00uG5RCiimk1HJc2GBvOOEk"/>
+<div class="absolute bottom-4 left-6 z-20">
+<span class="font-label-code text-label-code bg-secondary/20 text-secondary px-3 py-1 rounded backdrop-blur-sm border border-secondary/30">Predictive Healthcare</span>
+</div>
+</div>
+<div class="p-8 space-y-4">
+<h3 class="font-headline-md text-headline-md text-on-surface">MigraineGuardian AI</h3>
+<p class="text-on-surface-variant line-clamp-2">Risk prediction system using multi-modal health data to alert users before migraine onset.</p>
+<div class="flex flex-wrap gap-2">
+<span class="px-3 py-1 glass-panel text-[10px] font-label-code text-outline uppercase rounded">Machine Learning</span>
+<span class="px-3 py-1 glass-panel text-[10px] font-label-code text-outline uppercase rounded">D3.js</span>
+<span class="px-3 py-1 glass-panel text-[10px] font-label-code text-outline uppercase rounded">FastAPI</span>
+</div>
+</div>
+</div>
+<!-- RAG Chatbot -->
+<div class="glass-panel p-8 rounded-2xl flex flex-col justify-between border-l-4 border-l-tertiary">
+<div>
+<div class="flex items-center gap-3 mb-6">
+<span class="material-symbols-outlined text-tertiary text-4xl">neurology</span>
+<h3 class="font-headline-md text-headline-md text-on-surface">RAG-Powered Chatbot</h3>
+</div>
+<p class="text-on-surface-variant mb-6">Enterprise-grade document intelligence system utilizing Groq LLMs and Vector Embeddings for contextual query resolution.</p>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex -space-x-2">
+<div class="w-8 h-8 rounded-full border border-background bg-tertiary/20 flex items-center justify-center text-[10px] font-bold">G</div>
+<div class="w-8 h-8 rounded-full border border-background bg-primary/20 flex items-center justify-center text-[10px] font-bold">JS</div>
+<div class="w-8 h-8 rounded-full border border-background bg-secondary/20 flex items-center justify-center text-[10px] font-bold">V</div>
+</div>
+<span class="text-label-code font-label-code text-outline">Groq, Express, Pinecone</span>
+</div>
+</div>
+<!-- Hospital Management -->
+<div class="glass-panel p-8 rounded-2xl flex flex-col justify-between border-l-4 border-l-primary">
+<div>
+<div class="flex items-center gap-3 mb-6">
+<span class="material-symbols-outlined text-primary text-4xl">monitor_heart</span>
+<h3 class="font-headline-md text-headline-md text-on-surface">MERN Hospital Suite</h3>
+</div>
+<p class="text-on-surface-variant mb-6">Full-stack ERP system for large-scale hospitals featuring automated bed scheduling and prescription tracking.</p>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex -space-x-2">
+<div class="w-8 h-8 rounded-full border border-background bg-primary/20 flex items-center justify-center text-[10px] font-bold">M</div>
+<div class="w-8 h-8 rounded-full border border-background bg-secondary/20 flex items-center justify-center text-[10px] font-bold">E</div>
+<div class="w-8 h-8 rounded-full border border-background bg-tertiary/20 flex items-center justify-center text-[10px] font-bold">R</div>
+</div>
+<span class="text-label-code font-label-code text-outline">MongoDB, Express, React, Node</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Research Section -->
+<section class="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto py-16 bg-surface-container-lowest/50 rounded-[40px] border border-white/5" id="research">
+<div class="max-w-4xl mx-auto space-y-12">
+<div class="text-center space-y-4">
+<span class="font-label-caps text-label-caps text-secondary tracking-widest uppercase">Ongoing Research</span>
+<h2 class="font-display-lg-mobile text-display-lg-mobile md:font-display-lg md:text-display-lg text-on-surface">Intelligent Workload Scheduling for PQC Multi-Cloud Architectures</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="glass-panel p-8 rounded-2xl text-center space-y-4 border-t-2 border-t-primary">
+<span class="material-symbols-outlined text-primary text-4xl">memory</span>
+<h4 class="font-label-caps text-label-caps text-on-surface">AI-Driven Scheduling</h4>
+<p class="text-label-code font-label-code text-on-surface-variant">Reinforcement learning models for dynamic resource allocation.</p>
+</div>
+<div class="glass-panel p-8 rounded-2xl text-center space-y-4 border-t-2 border-t-secondary">
+<span class="material-symbols-outlined text-secondary text-4xl">enhanced_encryption</span>
+<h4 class="font-label-caps text-label-caps text-on-surface">PQC Integration</h4>
+<p class="text-label-code font-label-code text-on-surface-variant">Post-Quantum Cryptographic secure communication protocols.</p>
+</div>
+<div class="glass-panel p-8 rounded-2xl text-center space-y-4 border-t-2 border-t-tertiary">
+<span class="material-symbols-outlined text-tertiary text-4xl">balance</span>
+<h4 class="font-label-caps text-label-caps text-on-surface">Predictive Balancing</h4>
+<p class="text-label-code font-label-code text-on-surface-variant">Time-series forecasting for proactive multi-cloud load shifting.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Timeline Section -->
+<section class="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto" id="timeline">
+<div class="mb-16">
+<h2 class="font-headline-md text-headline-md text-primary">Mission Timeline</h2>
+</div>
+<div class="relative space-y-8 before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-outline/20 before:to-transparent">
+<!-- 2025 -->
+<div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
+<div class="flex items-center justify-center w-10 h-10 rounded-full border border-primary/50 bg-background text-primary shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2">
+<span class="material-symbols-outlined text-sm" data-weight="fill">workspace_premium</span>
+</div>
+<div class="w-[calc(100%-4rem)] md:w-[45%] glass-panel p-6 rounded-2xl">
+<div class="flex items-center justify-between mb-2">
+<span class="font-label-code text-label-code text-primary">2025</span>
+<span class="text-label-caps text-[10px] text-tertiary bg-tertiary/10 px-2 py-0.5 rounded">Major Milestone</span>
+</div>
+<h4 class="font-headline-md text-[20px] text-on-surface mb-2">SIH 2025 Grand Winner</h4>
+<p class="text-on-surface-variant font-body-md text-[14px]">Led the team to victory in Smart India Hackathon, delivering an innovative industrial automation solution.</p>
+</div>
+</div>
+<!-- 2024 -->
+<div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
+<div class="flex items-center justify-center w-10 h-10 rounded-full border border-secondary/50 bg-background text-secondary shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2">
+<span class="material-symbols-outlined text-sm">palette</span>
+</div>
+<div class="w-[calc(100%-4rem)] md:w-[45%] glass-panel p-6 rounded-2xl">
+<div class="flex items-center justify-between mb-2">
+<span class="font-label-code text-label-code text-secondary">2024</span>
+</div>
+<h4 class="font-headline-md text-[20px] text-on-surface mb-2">OysterCode UI/UX Head</h4>
+<p class="text-on-surface-variant font-body-md text-[14px]">Directed design systems and frontend architecture for major campus development initiatives.</p>
+</div>
+</div>
+<!-- Certs -->
+<div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
+<div class="flex items-center justify-center w-10 h-10 rounded-full border border-tertiary/50 bg-background text-tertiary shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2">
+<span class="material-symbols-outlined text-sm">school</span>
+</div>
+<div class="w-[calc(100%-4rem)] md:w-[45%] glass-panel p-6 rounded-2xl">
+<h4 class="font-label-caps text-label-caps text-on-surface mb-4">Core Certifications</h4>
+<div class="flex flex-wrap gap-2">
+<span class="px-2 py-1 bg-surface-container-high rounded text-[10px] font-label-code">NPTEL: ML/Java/DBMS</span>
+<span class="px-2 py-1 bg-surface-container-high rounded text-[10px] font-label-code">Google: iOS Dev</span>
+<span class="px-2 py-1 bg-surface-container-high rounded text-[10px] font-label-code">Infosys: HTML5/CSS3</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Contact Section -->
+<section class="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto" id="contact">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+<div class="space-y-12">
+<div>
+<h2 class="font-display-lg-mobile text-display-lg-mobile text-on-surface mb-4">Let's Interface</h2>
+<p class="text-on-surface-variant font-body-lg">Seeking opportunities to collaborate on research, enterprise backend, or AI-integrated systems.</p>
+</div>
+<div class="space-y-6">
+<div class="glass-panel p-6 rounded-xl flex items-center gap-6">
+<div class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">sensors</span>
+</div>
+<div>
+<div class="text-label-caps text-[10px] text-outline uppercase">Global Location</div>
+<div class="font-label-code text-on-surface">Sangola, India (UTC +5:30)</div>
+</div>
+</div>
+<div class="glass-panel p-6 rounded-xl flex items-center gap-6">
+<div class="w-12 h-12 rounded-lg bg-secondary/10 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined">alternate_email</span>
+</div>
+<div>
+<div class="text-label-caps text-[10px] text-outline uppercase">Email Protocol</div>
+<div class="font-label-code text-on-surface">janhvi.bankar@rit.edu</div>
+</div>
+</div>
+<div class="glass-panel p-6 rounded-xl flex items-center gap-6">
+<div class="pulse w-3 h-3 rounded-full bg-tertiary"></div>
+<div>
+<div class="text-label-caps text-[10px] text-outline uppercase">System Status</div>
+<div class="font-label-code text-on-surface">Open for Winter Internships 2025</div>
+</div>
+</div>
+</div>
+</div>
+<form class="glass-panel p-10 rounded-3xl space-y-6 relative overflow-hidden border border-primary/20">
+<div class="absolute top-0 right-0 p-4">
+<span class="material-symbols-outlined text-primary/30 text-6xl rotate-45">send</span>
+</div>
+<div class="grid grid-cols-2 gap-6">
+<div class="space-y-2">
+<label class="font-label-caps text-[10px] text-outline">Name</label>
+<input class="w-full bg-surface-container-high/50 border border-white/10 rounded-lg px-4 py-3 focus:outline-none focus:border-primary text-on-surface transition-colors" placeholder="John Doe" type="text"/>
+</div>
+<div class="space-y-2">
+<label class="font-label-caps text-[10px] text-outline">Email</label>
+<input class="w-full bg-surface-container-high/50 border border-white/10 rounded-lg px-4 py-3 focus:outline-none focus:border-primary text-on-surface transition-colors" placeholder="john@example.com" type="email"/>
+</div>
+</div>
+<div class="space-y-2">
+<label class="font-label-caps text-[10px] text-outline">Subject</label>
+<select class="w-full bg-surface-container-high/50 border border-white/10 rounded-lg px-4 py-3 focus:outline-none focus:border-primary text-on-surface transition-colors appearance-none">
+<option>Collaboration Opportunity</option>
+<option>Research Query</option>
+<option>General Inquiry</option>
+</select>
+</div>
+<div class="space-y-2">
+<label class="font-label-caps text-[10px] text-outline">Message</label>
+<textarea class="w-full bg-surface-container-high/50 border border-white/10 rounded-lg px-4 py-3 focus:outline-none focus:border-primary text-on-surface transition-colors resize-none" placeholder="Transmission payload..." rows="4"></textarea>
+</div>
+<button class="w-full bg-primary text-on-primary py-4 rounded-xl font-label-caps text-label-caps hover:shadow-[0_0_20px_rgba(76,215,246,0.3)] transition-all active:scale-95">Send Transmission</button>
+</form>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full bottom-0 bg-surface-container-lowest border-t border-outline-variant flex flex-col md:flex-row justify-between items-center px-margin-desktop py-gutter gap-4 relative z-20">
+<div class="font-label-caps text-label-caps text-on-surface">© 2024 JPB.SYSTEMS | ALL RIGHTS RESERVED</div>
+<div class="flex items-center gap-8">
+<span class="font-label-code text-label-code text-tertiary flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-tertiary pulse"></span>
+                Status: Online
+            </span>
+<span class="font-label-code text-label-code text-outline">Latency: 12ms</span>
+<span class="font-label-code text-label-code text-outline">Environment: Production</span>
+</div>
+</footer>
+<script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Simple Intersection Observer for Fade-Up animations
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('opacity-100', 'translate-y-0');
+                    entry.target.classList.remove('opacity-0', 'translate-y-10');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section > div').forEach(el => {
+            el.classList.add('transition-all', 'duration-700', 'opacity-0', 'translate-y-10');
+            observer.observe(el);
+        });
+        
+        // Navigation active state logic
+        window.addEventListener('scroll', () => {
+            const sections = ['hero', 'about', 'skills', 'work', 'research', 'timeline', 'contact'];
+            let current = 'hero';
+            
+            sections.forEach(section => {
+                const element = document.getElementById(section);
+                if (element) {
+                    const rect = element.getBoundingClientRect();
+                    if (rect.top <= 100) {
+                        current = section;
+                    }
+                }
+            });
+
+            document.querySelectorAll('nav a').forEach(a => {
+                a.classList.remove('text-primary', 'font-bold');
+                a.classList.add('text-on-surface-variant');
+                if (a.getAttribute('href').slice(1) === current) {
+                    a.classList.add('text-primary', 'font-bold');
+                    a.classList.remove('text-on-surface-variant');
+                }
+            });
+        });
+    </script>
+</body></html>

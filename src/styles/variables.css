@@ -1,0 +1,142 @@
+/* ==========================================================================
+   DESIGN TOKENS & THEME SYSTEM — JANHVI BANKAR PORTFOLIO
+   Awwwards-Level Editorial & Creative Technologist Visual Direction
+   Two bespoke themes: Light (Warm Ivory & Terracotta) & Dark (Deep Charcoal & Burnt Orange)
+   ========================================================================== */
+
+:root {
+  /* Common System Values */
+  --font-display: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Space Mono', monospace;
+
+  --transition-fast: 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-normal: 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-slow: 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-theme: background-color 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                      color 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                      border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                      box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 24px;
+  --radius-xl: 36px;
+  --radius-full: 9999px;
+
+  --container-max: 1360px;
+  --container-pad: clamp(1.25rem, 4vw, 3.5rem);
+}
+
+/* ==========================================================================
+   LIGHT MODE: Warm Ivory, Architectural Deep Charcoal & Terracotta
+   ========================================================================== */
+:root[data-theme="light"] {
+  --bg-primary: #F5F0E8;
+  --bg-secondary: #EBE5DB;
+  --bg-card: #FFFFFF;
+  --bg-card-hover: #FCFBF8;
+  --bg-card-muted: #EFE8DC;
+  --bg-card-subtle: #F9F6F0;
+  --bg-overlay: rgba(245, 240, 232, 0.88);
+
+  --text-primary: #20201E;
+  --text-secondary: #52514B;
+  --text-muted: #828075;
+  --text-dim: #A8A69C;
+  --text-inverse: #F5F0E8;
+
+  --accent-primary: #E66B48;          /* Terracotta */
+  --accent-primary-hover: #D65A37;
+  --accent-primary-subtle: rgba(230, 107, 72, 0.12);
+  --accent-primary-border: rgba(230, 107, 72, 0.32);
+  --accent-primary-glow: rgba(230, 107, 72, 0.18);
+
+  --accent-olive: #8A8D6E;            /* Muted Architectural Olive */
+  --accent-olive-subtle: rgba(138, 141, 110, 0.16);
+
+  --accent-sand: #D9CBB9;             /* Soft Sand */
+  --accent-sand-subtle: rgba(217, 203, 185, 0.35);
+
+  --border-hairline: rgba(32, 32, 30, 0.09);
+  --border-strong: rgba(32, 32, 30, 0.22);
+  --border-accent: rgba(230, 107, 72, 0.4);
+
+  --shadow-sm: 0 2px 10px rgba(32, 32, 30, 0.04);
+  --shadow-md: 0 10px 32px rgba(32, 32, 30, 0.06);
+  --shadow-lg: 0 24px 60px rgba(32, 32, 30, 0.09);
+  --shadow-accent: 0 14px 36px rgba(230, 107, 72, 0.22);
+
+  --glass-bg: rgba(255, 255, 255, 0.82);
+  --glass-border: rgba(32, 32, 30, 0.08);
+  --nav-bg: rgba(245, 240, 232, 0.86);
+
+  --grid-line: rgba(32, 32, 30, 0.045);
+  --grain-opacity: 0.038;
+
+  --badge-bg: rgba(32, 32, 30, 0.05);
+  --badge-text: #20201E;
+
+  --code-bg: #EAE3D6;
+  --code-border: rgba(32, 32, 30, 0.12);
+  --syntax-keyword: #D65A37;
+  --syntax-string: #637852;
+  --syntax-comment: #828075;
+}
+
+/* ==========================================================================
+   DARK MODE: Deep Charcoal, Warm Off-White & Burnt Orange
+   ========================================================================== */
+:root[data-theme="dark"] {
+  --bg-primary: #171715;
+  --bg-secondary: #1F1F1C;
+  --bg-card: #252521;
+  --bg-card-hover: #2C2C27;
+  --bg-card-muted: #1B1B18;
+  --bg-card-subtle: #21211D;
+  --bg-overlay: rgba(23, 23, 21, 0.9);
+
+  --text-primary: #F5F0E8;
+  --text-secondary: #A8A79E;
+  --text-muted: #727168;
+  --text-dim: #54534D;
+  --text-inverse: #171715;
+
+  --accent-primary: #E66B48;          /* Burnt Orange / Terracotta */
+  --accent-primary-hover: #F27B59;
+  --accent-primary-subtle: rgba(230, 107, 72, 0.18);
+  --accent-primary-border: rgba(230, 107, 72, 0.42);
+  --accent-primary-glow: rgba(230, 107, 72, 0.25);
+
+  --accent-olive: #92977B;            /* Muted Olive Dark */
+  --accent-olive-subtle: rgba(146, 151, 123, 0.2);
+
+  --accent-sand: #D9CBB9;             /* Soft Sand */
+  --accent-sand-subtle: rgba(217, 203, 185, 0.14);
+
+  --border-hairline: rgba(245, 240, 232, 0.09);
+  --border-strong: rgba(245, 240, 232, 0.2);
+  --border-accent: rgba(230, 107, 72, 0.45);
+
+  --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.35);
+  --shadow-md: 0 10px 32px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 24px 64px rgba(0, 0, 0, 0.65);
+  --shadow-accent: 0 14px 40px rgba(230, 107, 72, 0.28);
+
+  --glass-bg: rgba(37, 37, 33, 0.82);
+  --glass-border: rgba(245, 240, 232, 0.09);
+  --nav-bg: rgba(23, 23, 21, 0.86);
+
+  --grid-line: rgba(245, 240, 232, 0.04);
+  --grain-opacity: 0.048;
+
+  --badge-bg: rgba(245, 240, 232, 0.065);
+  --badge-text: #F5F0E8;
+
+  --code-bg: #121210;
+  --code-border: rgba(245, 240, 232, 0.1);
+  --syntax-keyword: #F27B59;
+  --syntax-string: #A4B792;
+  --syntax-comment: #727168;
+}

@@ -640,12 +640,13 @@ export const Contact = ({ onOpenResume }) => {
           <div>
             <span
               style={{
-                fontFamily: 'var(--font-serif)',
-                fontStyle: 'italic',
-                fontSize: '1.25rem',
+                fontFamily: 'var(--font-sans)',
+                fontWeight: 700,
+                fontSize: '1.15rem',
                 color: 'var(--text-primary)',
+                letterSpacing: '-0.015em',
                 display: 'block',
-                marginBottom: '0.1rem',
+                marginBottom: '0.15rem',
               }}
             >
               Janhvi Pradip Bankar

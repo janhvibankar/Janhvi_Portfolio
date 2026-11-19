@@ -381,28 +381,19 @@ export const Hero = ({ onOpenResume }) => {
               style={{ marginBottom: '1rem' }}
             >
               <h1
+                className="hero-name"
                 style={{
+                  fontFamily: 'var(--font-sans)',
                   fontSize: 'clamp(2.75rem, 6.2vw, 5.25rem)',
-                  lineHeight: 1.02,
+                  lineHeight: 1.05,
                   letterSpacing: '-0.035em',
                   color: 'var(--text-primary)',
                   margin: 0,
                   fontWeight: 800,
                 }}
               >
-                <span>Janhvi Pradip</span>
-                <span
-                  style={{
-                    fontFamily: 'var(--font-serif)',
-                    fontStyle: 'italic',
-                    fontWeight: 400,
-                    display: 'block',
-                    color: 'var(--accent-coral)',
-                    marginTop: '-0.08em',
-                  }}
-                >
-                  Bankar
-                </span>
+                <span style={{ display: 'block' }}>Janhvi Pradip</span>
+                <span style={{ display: 'block' }}>Bankar</span>
               </h1>
             </motion.div>
 

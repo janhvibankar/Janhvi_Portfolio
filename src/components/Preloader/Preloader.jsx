@@ -71,9 +71,10 @@ export const Preloader = ({ onComplete }) => {
             >
               <span
                 style={{
-                  fontFamily: 'var(--font-serif)',
-                  fontSize: 'clamp(3rem, 7.5vw, 5.5rem)',
-                  fontStyle: 'italic',
+                  fontFamily: 'var(--font-sans)',
+                  fontSize: 'clamp(2.5rem, 6.5vw, 4.8rem)',
+                  fontWeight: 800,
+                  letterSpacing: '-0.025em',
                   color: 'var(--text-primary)',
                   lineHeight: 1
                 }}

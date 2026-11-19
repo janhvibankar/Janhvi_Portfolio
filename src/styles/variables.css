@@ -42,7 +42,7 @@
   --bg-card-subtle: #F6F3ED;
   --bg-overlay: rgba(250, 248, 245, 0.94);
 
-  --text-primary: #0A1128;            /* Deep Navy */
+  --text-primary: #101A35;            /* Deep Navy */
   --text-secondary: #5A677E;          /* Muted Slate Navy */
   --text-muted: #8492A6;
   --text-dim: #BAC3D2;
@@ -112,7 +112,7 @@
   --bg-card-subtle: #0D1635;
   --bg-overlay: rgba(10, 17, 40, 0.95);
 
-  --text-primary: #F8F9FA;            /* Crisp Warm Off-White */
+  --text-primary: #FFFFFF;            /* Pure White */
   --text-secondary: #A5B4CB;          /* Soft Slate */
   --text-muted: #72829E;
   --text-dim: #4B5872;

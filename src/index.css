@@ -76,6 +76,37 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--text-primary);
 }
 
+/* Theme-Aware Personal Name & Hero Branding */
+.hero-name {
+  color: var(--text-primary);
+  transition: color var(--transition-theme);
+}
+
+[data-theme="light"] .hero-name,
+:root[data-theme="light"] .hero-name {
+  color: #101A35;
+}
+
+[data-theme="dark"] .hero-name,
+:root[data-theme="dark"] .hero-name {
+  color: #FFFFFF;
+}
+
+.nav-title-desktop {
+  color: var(--text-primary);
+  transition: color var(--transition-theme);
+}
+
+[data-theme="light"] .nav-title-desktop,
+:root[data-theme="light"] .nav-title-desktop {
+  color: #101A35;
+}
+
+[data-theme="dark"] .nav-title-desktop,
+:root[data-theme="dark"] .nav-title-desktop {
+  color: #FFFFFF;
+}
+
 p {
   color: var(--text-secondary);
 }

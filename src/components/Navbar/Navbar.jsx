@@ -135,11 +135,13 @@ export const Navbar = ({ onOpenResume, currentView = 'home', onNavigateHome, onN
               display: 'flex',
               alignItems: 'center',
               gap: '0.6rem',
-              fontWeight: 600,
+              fontWeight: 700,
               fontFamily: 'var(--font-sans)',
               fontSize: '0.95rem',
               color: 'var(--text-primary)',
-              letterSpacing: '-0.01em'
+              letterSpacing: '-0.01em',
+              whiteSpace: 'nowrap',
+              textDecoration: 'none',
             }}
           >
             <span
@@ -153,7 +155,16 @@ export const Navbar = ({ onOpenResume, currentView = 'home', onNavigateHome, onN
             >
               JB
             </span>
-            <span className="nav-title-desktop" style={{ display: 'none', fontWeight: 600 }}>
+            <span
+              className="nav-title-desktop"
+              style={{
+                display: 'none',
+                fontWeight: 700,
+                fontFamily: 'var(--font-sans)',
+                color: 'var(--text-primary)',
+                whiteSpace: 'nowrap',
+              }}
+            >
               Janhvi Pradip Bankar
             </span>
           </a>

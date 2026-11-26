@@ -68,7 +68,7 @@ export const certificatesData = [
     thumbnailUrl: "images/certificates/cisco-cybersecurity-essentials.jpg",
     description: "Foundational cybersecurity defense: threat detection, mitigation countermeasures, security architecture, cryptography basics, and network vulnerability assessment.",
     badge: "Cisco NetAcad",
-    featured: true
+    featured: false
   },
   {
     id: "cert-infosys-selenium",

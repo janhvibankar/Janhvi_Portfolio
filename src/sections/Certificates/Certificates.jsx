@@ -16,8 +16,8 @@ export const Certificates = ({ onSelectCertificate, onViewAllCertificates }) => 
   const { playSound } = useSound();
   const [hoveredId, setHoveredId] = useState(null);
 
-  // Take the 4 primary featured certificates for the homepage
-  const featuredCerts = certificatesData.filter(c => c.featured).slice(0, 4);
+  // Take the 3 primary featured certificates for the homepage
+  const featuredCerts = certificatesData.filter(c => c.featured).slice(0, 3);
 
   return (
     <section id="certificates" className="section-wrapper">
@@ -44,7 +44,7 @@ export const Certificates = ({ onSelectCertificate, onViewAllCertificates }) => 
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
             <span className="badge-tech badge-cobalt" style={{ fontSize: '0.75rem', display: 'inline-flex', alignItems: 'center', gap: '0.35rem' }}>
               <ShieldCheck size={13} />
-              <span>4 Featured · {certificatesData.length} Total Verified</span>
+              <span>3 Featured · {certificatesData.length} Total Verified</span>
             </span>
           </div>
 
@@ -69,11 +69,12 @@ export const Certificates = ({ onSelectCertificate, onViewAllCertificates }) => 
           </button>
         </div>
 
-        {/* 4 Featured Cards Grid */}
+        {/* 3 Featured Cards Grid */}
         <div
+          className="certificates-grid"
           style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+            gridTemplateColumns: 'repeat(3, 1fr)',
             gap: '1.25rem',
             marginBottom: '2.5rem'
           }}

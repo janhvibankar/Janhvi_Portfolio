@@ -3,10 +3,10 @@ export const experienceData = [
     id: "oystercode-club",
     role: "UI/UX Head",
     organization: "OysterCode Club",
-    period: "2024 – Present",
+    period: "July 2025 – August 2026",
     type: "Leadership & Creative Design",
     location: "RIT Campus",
-    current: true,
+    current: false,
     description: "Led creative design and visual communication initiatives for the club, developing promotional creatives, event posters, social media graphics, and digital marketing materials. Contributed to building a cohesive visual identity for club events and initiatives.",
     responsibilities: [
       "Designed high-impact promotional posters and visual assets for club events and technical activities.",
@@ -21,7 +21,7 @@ export const experienceData = [
     id: "cryptex-club",
     role: "Social Media Head | Founding Committee",
     organization: "Cryptex Security Club",
-    period: "2023 – 2024",
+    period: "October 2025 – February 2026",
     type: "Leadership & Communications",
     location: "RIT Campus",
     current: false,
@@ -50,5 +50,21 @@ export const experienceData = [
       "Provided creative support for digital content and promotional materials used in student-led initiatives."
     ],
     technologies: ["Community Engagement", "Team Collaboration", "Digital Literacy"]
+  },
+  {
+    id: "cesa-volunteer",
+    role: "Event Volunteer",
+    organization: "CESA Committee",
+    period: "",
+    type: "Event Support",
+    location: "RIT Campus",
+    current: false,
+    description: "Volunteered during CESA committee events, supporting a range of academic, technical, and cultural activities. Assisted with event registrations, arrangements, decorations, and on-ground coordination while also actively participating in departmental events. Contributed to creating a welcoming and engaging experience for students through teamwork and event support.",
+    responsibilities: [
+      "Assisted with event registration and attendee management during departmental activities.",
+      "Helped with event setup, decoration, and logistics to ensure a professional environment.",
+      "Provided on-ground support and coordination during academic and cultural events."
+    ],
+    technologies: ["Event Support", "Teamwork", "Logistics", "Coordination"]
   }
 ];

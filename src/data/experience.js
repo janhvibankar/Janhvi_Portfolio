@@ -15,7 +15,7 @@ export const experienceData = [
       "Translated event themes and communication requirements into cohesive and visually appealing design assets.",
       "Collaborated with event organizers to maintain visual consistency across all club digital and printed materials."
     ],
-    technologies: ["Graphic Design", "Visual Communication", "Figma", "Digital Content Creation", "Brand Identity"]
+    technologies: ["Graphic Design", "Visual Communication", "Canva", "Digital Content Creation"]
   },
   {
     id: "cryptex-club",

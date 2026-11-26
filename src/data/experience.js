@@ -19,20 +19,21 @@ export const experienceData = [
   },
   {
     id: "cryptex-club",
-    role: "Social Media Head",
-    organization: "Cryptex Club",
+    role: "Social Media Head | Founding Committee",
+    organization: "Cryptex Security Club",
     period: "2023 – 2024",
-    type: "Technical Outreach & Engagement",
+    type: "Leadership & Communications",
     location: "RIT Campus",
     current: false,
-    description: "Managed technical branding, communication, and event outreach for coding competitions and technical meetups, significantly boosting student participation across campus tech initiatives.",
+    description: "Played an active role in establishing the club's early digital presence as a founding member of its first committee. Led social media communication across Instagram and LinkedIn, overseeing digital content, event promotions, announcements, and online outreach. Contributed to strengthening the club's visibility, maintaining consistent communication, and engaging the student community through its digital platforms.",
     responsibilities: [
-      "Formulated communication strategies and visual campaigns for campus coding marathons, tech talks, and algorithmic contests.",
-      "Curated and published technical content, including event highlights and spotlights, to enhance student engagement across official channels.",
-      "Collaborated with executive leadership to organize flagship coding tournaments and industry guest speaker sessions.",
-      "Designed promotional visual assets and announcements, ensuring adherence to club branding guidelines."
+      "Led digital communication efforts across Instagram and LinkedIn, maintaining a consistent and professional online brand.",
+      "Developed and managed digital content plans, including event promotions, announcements, and online outreach campaigns.",
+      "Collaborated with the founding committee to establish the club's initial digital identity and visibility.",
+      "Maintained regular communication with the student community, providing updates on activities and initiatives.",
+      "Facilitated community engagement through proactive digital content creation and management."
     ],
-    technologies: ["Technical Outreach", "Digital Branding", "Community Leadership", "Event Coordination"]
+    technologies: ["Social Media Management", "Digital Communication", "Content Strategy", "Instagram & LinkedIn Management", "Promotional Content", "Community Engagement"]
   },
   {
     id: "social-shuffle",

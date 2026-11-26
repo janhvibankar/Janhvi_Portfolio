@@ -37,13 +37,13 @@ export const experienceData = [
   },
   {
     id: "social-shuffle",
-    role: "Contributor",
+    role: "Social Shuffle Contributor",
     organization: "Social Shuffle Initiative",
     period: "2024",
     type: "Community Initiative",
     location: "Maharashtra, India",
     current: false,
-    description: "Supported community outreach and engagement programs, fostering youth collaboration and participating in the coordination of peer-learning and interactive student initiatives.",
+    description: "Contributed to the Social Shuffle initiative, bringing together students from engineering and medical backgrounds to promote blood donation awareness through youth-led peer engagement and community outreach. Participated in awareness activities, encouraged conversations around the importance of blood donation, and connected with students and individuals from diverse backgrounds. The initiative focused on using the collective energy of young people to spread awareness, build meaningful connections, and encourage a socially responsible mindset.",
     responsibilities: [
       "Collaborated on social engagement programs designed to foster student networking and peer learning.",
       "Assisted in the logistics and coordination of youth activities and community networking events.",

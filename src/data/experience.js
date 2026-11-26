@@ -4,17 +4,18 @@ export const experienceData = [
     role: "UI/UX Head",
     organization: "OysterCode Club",
     period: "2024 – Present",
-    type: "Leadership & UI/UX Design",
+    type: "Leadership & Creative Design",
     location: "RIT Campus",
     current: true,
-    description: "Leading the UI/UX design direction for campus technical products, organizing design workshops, and mentoring students in creating responsive, user-friendly frontend interfaces.",
+    description: "Led creative design and visual communication initiatives for the club, developing promotional creatives, event posters, social media graphics, and digital marketing materials. Contributed to building a cohesive visual identity for club events and initiatives.",
     responsibilities: [
-      "Architected clean, accessible UI components and design guidelines for student hackathon projects and club portals.",
-      "Conducted interactive UI/UX workshops teaching design thinking, Figma wireframing, and frontend practices to 100+ students.",
-      "Mentored junior developers through design and code reviews, ensuring responsive layouts and consistent aesthetic execution.",
-      "Bridged design and engineering teams to ensure pixel-perfect, accessible implementations across desktop and mobile devices."
+      "Designed high-impact promotional posters and visual assets for club events and technical activities.",
+      "Created engaging social media creatives, stories, and graphics for special occasions, festivals, and key announcements.",
+      "Developed and designed certificates for workshops, competitions, and various club-led initiatives.",
+      "Translated event themes and communication requirements into cohesive and visually appealing design assets.",
+      "Collaborated with event organizers to maintain visual consistency across all club digital and printed materials."
     ],
-    technologies: ["UI/UX Design", "Figma", "React.js", "Design Systems", "Responsive Web"]
+    technologies: ["Graphic Design", "Visual Communication", "Figma", "Digital Content Creation", "Brand Identity"]
   },
   {
     id: "cryptex-club",
@@ -24,12 +25,12 @@ export const experienceData = [
     type: "Technical Outreach & Engagement",
     location: "RIT Campus",
     current: false,
-    description: "Spearheaded technical branding, communication, and event outreach for coding competitions and technical meetups, increasing student participation across technical campus initiatives.",
+    description: "Managed technical branding, communication, and event outreach for coding competitions and technical meetups, significantly boosting student participation across campus tech initiatives.",
     responsibilities: [
       "Formulated communication strategies and visual campaigns for campus coding marathons, tech talks, and algorithmic contests.",
-      "Increased student engagement across technical channels through curated technical posts, tips, and event spotlights.",
+      "Curated and published technical content, including event highlights and spotlights, to enhance student engagement across official channels.",
       "Collaborated with executive leadership to organize flagship coding tournaments and industry guest speaker sessions.",
-      "Designed visual assets and announcements adhering to cohesive design and branding guidelines."
+      "Designed promotional visual assets and announcements, ensuring adherence to club branding guidelines."
     ],
     technologies: ["Technical Outreach", "Digital Branding", "Community Leadership", "Event Coordination"]
   },
@@ -41,11 +42,11 @@ export const experienceData = [
     type: "Community Initiative",
     location: "Maharashtra, India",
     current: false,
-    description: "Contributed to community engagement programs aimed at youth collaboration, peer learning, and interactive student initiatives.",
+    description: "Supported community outreach and engagement programs, fostering youth collaboration and participating in the coordination of peer-learning and interactive student initiatives.",
     responsibilities: [
-      "Collaborated on social and peer-learning initiatives supporting student engagement and digital collaboration.",
-      "Helped coordinate youth activities and peer networking events promoting creative teamwork.",
-      "Supported technical and creative aspects of student engagement programs."
+      "Collaborated on social engagement programs designed to foster student networking and peer learning.",
+      "Assisted in the logistics and coordination of youth activities and community networking events.",
+      "Provided creative support for digital content and promotional materials used in student-led initiatives."
     ],
     technologies: ["Community Engagement", "Team Collaboration", "Digital Literacy"]
   }

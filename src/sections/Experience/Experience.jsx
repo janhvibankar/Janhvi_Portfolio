@@ -19,7 +19,7 @@ export const Experience = () => {
           label="Leadership Experience"
           title="Campus Leadership &"
           serifWord="Community Roles"
-          subtitle="Guiding UI/UX design systems, directing technical community outreach, and mentoring fellow developers."
+          subtitle="Leading creative visual communications, directing technical community outreach, and supporting collaborative student initiatives."
         />
 
         <div
